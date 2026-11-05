@@ -4,6 +4,7 @@ Motor de composición para el informe técnico-jurídico (python-docx).
 Define estilos, numeración multinivel, tablas con sombreado, cajas de énfasis,
 encabezado/pie con campos, numeración de páginas y utilidades de contenido.
 """
+import os
 import datetime
 from docx import Document
 from docx.shared import Pt, Cm, RGBColor, Emu
@@ -651,8 +652,47 @@ def tabla(doc, encabezados, filas, anchos, titulo=None, fuente=None,
     return t
 
 
+RECUADROS = os.environ.get("SIN_RECUADROS", "1") == "1"
+
+
+def _trozos(linea):
+    """Normaliza una línea de caja (str / tupla (txt, fmt) / lista de ambas) en trozos."""
+    if isinstance(linea, str):
+        return [(linea, {})]
+    if isinstance(linea, tuple):
+        return [(linea[0], linea[1])]
+    return [(it, {}) if isinstance(it, str) else (it[0], it[1]) for it in linea]
+
+
+def _prosa_antetitulo(doc, titulo, lineas):
+    """Vuelca una caja como texto corrido: entrada negrita + párrafos justificados."""
+    primero = True
+    for ln in lineas:
+        par = doc.add_paragraph()
+        par.style = doc.styles['Normal']
+        par.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        par.paragraph_format.space_after = Pt(6)
+        if primero:
+            r = par.add_run(titulo.rstrip('.') + ". ")
+            r.bold = True
+            r.font.size = Pt(11)
+            primero = False
+        for txt, fmt in _trozos(ln):
+            rr = par.add_run(txt)
+            rr.bold = fmt.get('b', False)
+            rr.italic = fmt.get('i', False)
+            rr.font.size = Pt(11)
+    return None
+
+
 def caja(doc, titulo, lineas, tipo='info', ancho=16.0):
-    """Caja de énfasis con barra lateral de color."""
+    """Recuadro de énfasis. Con SIN_RECUADROS=1, el contenido se vierte como prosa:
+
+    el antetítulo se convierte en entrada negrita y el resto en párrafos normales, sin
+    color ni borde. El razonamiento no se pierde; solo deja de ir enmarcado.
+    """
+    if RECUADROS:
+        return _prosa_antetitulo(doc, titulo, lineas)
     paleta = {
         'info': (HEX_AZUL, HEX_CELESTE),
         'alerta': (HEX_VINO, 'FBEDEA'),

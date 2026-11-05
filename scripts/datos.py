@@ -41,6 +41,17 @@ EMPRESA = {
     "matricula_inmobiliaria": "No consta en el acta",
 }
 
+# Entidades del sistema a las que está afiliada la planta (confirmadas por la titular, 04/11/2026)
+ENTIDADES = {
+    "eps": "EPS Sura",
+    "arl": "ARL Sura",
+    "afp_rpm": "Colpensiones",
+    "afp_rais": "Porvenir",
+    "caja": "Caja de Compensación Familiar Cafam",
+    "arl_codigo": "1475901",
+    "arl_clase": "I",
+}
+
 ACTA = {
     "numero": "028-050164-26",
     "formato": "SL-FR-028, versión 1 (aprobado el 07/10/2022)",

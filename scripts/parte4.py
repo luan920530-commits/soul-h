@@ -7,10 +7,21 @@ from docx_engine import (p, rich, h, bullet, cita, tabla, caja, salto_pagina,
                          aplicar_numeracion, AZUL, VINO, GRIS, GRIS_CLARO, NEGRO,
                          HEX_AZUL, HEX_CELESTE, sombrear, bordes_celda, set_col_widths,
                          margenes_celda, linea_horizontal, FUENTE_SANS)
-from datos import SMLMV, money, IBC_TOTAL, TOPE_CUANTIA
+from datos import SMLMV, money, IBC_TOTAL, TOPE_CUANTIA, ENTIDADES, EMPRESA
+from datos import REPARACION_PLENA, MESADA_RAIS_SIN_GARANTIA, DIF_MENSUAL
 
 AUTOR = "Julia Inés Buitrago García"
 NIT = "39626936-8"
+CC = "39626936"
+DIR = "carrera 4 n.° 60-17, barrio La Despensa, comuna 3"
+TEL = EMPRESA["telefono"]
+MAIL = EMPRESA["correo"]
+CIUDAD_FECHA = "Soacha (Cundinamarca), noviembre de 2026"
+EPS = ENTIDADES["eps"]
+ARL = ENTIDADES["arl"]
+AFP_RPM = ENTIDADES["afp_rpm"]
+AFP_RAIS = ENTIDADES["afp_rais"]
+CAJA = ENTIDADES["caja"]
 
 
 # ---------------------------------------------------------------- utilidades
@@ -61,7 +72,7 @@ def encabezado_escrito(doc, entidad, ciudad_fecha):
     c.text = ""
     par = c.paragraphs[0]
     par.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = par.add_run("DOCUMENTO MODELO PARA RADICACIÓN")
+    r = par.add_run("DOCUMENTO PARA RADICACIÓN")
     r.bold = True; r.font.size = Pt(8); r.font.name = FUENTE_SANS; r.font.color.rgb = AZUL
     r.font.all_caps = True
     par2 = c.add_paragraph(); par2.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -79,9 +90,9 @@ def firma(doc):
     p(doc, "", space_after=18)
     linea_horizontal(doc, color="9AA4B1", sz=4, space_after=2)
     par = p(doc, AUTOR, size=10.5, bold=True, align=WD_ALIGN_PARAGRAPH.LEFT, space_after=0)
-    p(doc, "C.C. ____________________  ·  Representante legal de EXTINTORES S C M  ·  NIT %s" % NIT,
+    p(doc, "C.C. %s  ·  Representante legal de EXTINTORES S C M  ·  NIT %s" % (CC, NIT),
       size=9, color=GRIS, space_after=2)
-    p(doc, "Correo electrónico de notificaciones: ____________________  ·  Teléfono: ____________________",
+    p(doc, "Correo electrónico de notificaciones: %s  ·  Teléfono: %s" % (MAIL, TEL),
       size=9, color=GRIS, space_after=2)
 
 
@@ -144,47 +155,49 @@ def eje_iv(doc):
                "sobre el silencio administrativo. Lo segundo sí importa: el silencio es lo que "
                "permite contar el término desde una fecha cierta."])
     salto_pagina(doc)
-    encabezado_escrito(doc, "ADMINISTRADORA DE RIESGOS LABORALES [NOMBRE DE LA ARL]  ·  "
-                            "OFICINA DE ATENCIÓN AL USUARIO", "Soacha (Cundinamarca), noviembre de 2026")
+    encabezado_escrito(doc, "%s  ·  OFICINA DE ATENCIÓN AL USUARIO" % ARL.upper(), CIUDAD_FECHA)
     rotulo(doc, "Referencia")
     parrafo_doc(doc, "Asunto: derecho de petición de interés particular. Solicitud de revisión de la "
                      "clasificación del riesgo, reconocimiento de prestaciones derivadas del "
-                     "accidente de trabajo AT-2026-014 y expedición de copias.", bold=True, size=10.5)
+                     "accidente de trabajo del 12 de agosto de 2026 y expedición de copias.",
+                     bold=True, size=10.5)
     rotulo(doc, "Identificación del peticionario")
-    parrafo_doc(doc, "%s, mayor de edad, identificada con cédula de ciudadanía número __________ "
-                     "expedida en Soacha, en calidad de representante legal y titular de la empresa "
-                     "EXTINTORES S C M, identificada con cédula/NIT %s, con domicilio en el municipio "
-                     "de Soacha (Cundinamarca), carrera 4 n.° 60-17, barrio La Despensa, "
-                     "dirección __________, correo electrónico __________, teléfono __________, "
-                     "actuando en nombre propio y en ejercicio del derecho fundamental de petición "
-                     "consagrado en el artículo 23 de la Constitución Política y regulado por la Ley "
-                     "1755 de 2015, presento la siguiente solicitud." % (AUTOR, NIT))
+    parrafo_doc(doc, "%s, mayor de edad, identificada con cédula de ciudadanía número %s expedida en "
+                     "Soacha, en calidad de representante legal y titular de la empresa EXTINTORES S C "
+                     "M, identificada con cédula/NIT %s, con domicilio en %s, %s (Cundinamarca), "
+                     "correo electrónico %s y teléfono %s, actuando en nombre propio y en ejercicio "
+                     "del derecho fundamental de petición consagrado en el artículo 23 de la "
+                     "Constitución Política y regulado por la Ley 1755 de 2015, presento la siguiente "
+                     "solicitud."
+                     % (AUTOR, CC, NIT, DIR, EMPRESA["municipio"], MAIL, TEL))
 
     rotulo(doc, "Hechos")
-    hechos = [
-        "La empresa EXTINTORES S C M se encuentra afiliada a esa administradora desde el __ de "
-        "__________ de ____, con el número de afiliación __________, y tiene a su cargo tres (3) "
-        "trabajadores dependientes, todos afiliados al Sistema General de Riesgos Laborales.",
+    for i, t in enumerate([
+        "La empresa EXTINTORES S C M se encuentra afiliada a esa administradora con el código de "
+        "actividad 1475901, clase de riesgo I, y tiene a su cargo tres (3) trabajadores dependientes, "
+        "todos afiliados al Sistema General de Riesgos Laborales. La fecha y el número de afiliación "
+        "constan en el certificado de afiliación que se anexa.",
         "La actividad económica principal registrada en el Registro Único Tributario corresponde al "
         "código CIIU 4759 (comercio al por menor de otros artículos domésticos en establecimientos "
         "especializados), que la tabla del Decreto 768 de 2022 clasifica en clase de riesgo I, "
-        "subactividad 4759-01, con una tarifa inicial del 0,522 % del ingreso base de cotización. Ese "
+        "subactividad 4759-01, con tarifa inicial del 0,522 %% del ingreso base de cotización. Ese "
         "código coincide con el reportado a la Secretaría de Salud de Soacha en el acta "
         "028-050164-26 del 09/09/2026.",
-        "A pesar de esa clasificación, en las planillas de liquidación de aportes de los últimos ____ "
-        "periodos la empresa ha cotizado con una tarifa equivalente a la clase de riesgo II, sin que "
-        "obre decisión motivada de esa administradora que justifique la clasificación aplicada.",
-        "El 12 de agosto de 2026 el trabajador Luis Antonio Aguilar Rodríguez, C.C. 1073694256, sufrió "
-        "un accidente de trabajo durante la "
-        "prueba hidrostática de un cilindro extintor, que le produjo fractura conminuta de los dedos "
-        "índice y medio de la mano derecha y lesión del tendón flexor.",
-        "El accidente fue reportado a esa administradora el 17 de agosto de 2026, es decir, cinco "
-        "días después de su ocurrencia.",
-        "A la fecha de esta solicitud han transcurrido más de ____ días desde el reporte sin que esa "
-        "administradora haya notificado decisión de fondo sobre el reconocimiento de las prestaciones "
-        "económicas ni sobre la calificación de la pérdida de la capacidad laboral del trabajador.",
-    ]
-    for i, t in enumerate(hechos, 1):
+        "En el mismo establecimiento se ejecutan, además, tareas de recarga, mantenimiento y prueba "
+        "hidrostática de extintores, que no corresponden a la subactividad 4759-01 y que fueron "
+        "advertidas por la autoridad sanitaria en la visita del 09/09/2026. La empresa solicita que "
+        "esa administradora evalúe la clasificación a la luz del proceso real y no solo del código "
+        "declarado.",
+        "El 12 de agosto de 2026 el trabajador Luis Antonio Aguilar Rodríguez, C.C. 1073694256, "
+        "sufrió un accidente de trabajo durante la prueba hidrostática de un cilindro extintor, que "
+        "le produjo fractura conminuta de los dedos índice y medio de la mano derecha y lesión del "
+        "tendón flexor.",
+        "El accidente fue reportado a esa administradora el 17 de agosto de 2026, cinco días después "
+        "de su ocurrencia, y fue atendido por la red prestadora de la EPS %s." % EPS,
+        "A la fecha de esta solicitud esa administradora ha reconocido el subsidio por incapacidad "
+        "temporal, pero no ha notificado decisión de fondo sobre la calificación de la pérdida de "
+        "capacidad laboral ni sobre la indemnización por incapacidad permanente parcial.",
+    ], 1):
         numerado_doc(doc, i, t)
 
     rotulo(doc, "Fundamentos de derecho")
@@ -203,32 +216,34 @@ def eje_iv(doc):
         bullet(doc, t, size=10)
 
     rotulo(doc, "Peticiones")
-    peticiones = [
-        "Que se revise y, en su caso, se corrija la clase de riesgo asignada a EXTINTORES S C M, "
-        "conforme al código CIIU 4759 y a la tabla del Decreto 768 de 2022, con efectos a partir del "
-        "periodo en que se produjo la discrepancia.",
-        "Que se reliquiden las planillas de aportes y se devuelvan o compensen las sumas pagadas en "
-        "exceso, con los intereses a que haya lugar.",
-        "Que se reconozcan y paguen las prestaciones asistenciales y económicas derivadas del "
-        "accidente de trabajo AT-2026-014, incluido el subsidio por incapacidad temporal y, previa "
-        "calificación, la indemnización por incapacidad permanente parcial.",
+    for i, t in enumerate([
+        "Que se revise la clasificación de la actividad y, si corresponde, se ajuste la clase de "
+        "riesgo de EXTINTORES S C M con efectos a partir del periodo en que se produjo la "
+        "discrepancia, previa evaluación del proceso de recarga y prueba hidrostática.",
+        "Que se expida copia de la decisión de clasificación del riesgo y de los soportes técnicos en "
+        "que se fundamentó.",
+        "Que se confirme por escrito el reconocimiento y pago del subsidio por incapacidad temporal "
+        "derivado del accidente del 12 de agosto de 2026, con la liquidación aplicada.",
         "Que se practique la calificación del origen y del porcentaje de pérdida de la capacidad "
-        "laboral del trabajador, con sujeción al manual único adoptado por el Decreto 1507 de 2014.",
-        "Que se expida copia íntegra del expediente administrativo del evento y de la decisión de "
-        "clasificación del riesgo.",
-        "Que se informe el nombre y el cargo del funcionario responsable de resolver, y se notifique "
+        "laboral del trabajador, con sujeción al manual único adoptado por el Decreto 1507 de 2014, "
+        "y se notifique el resultado.",
+        "Que, previa calificación, se reconozca y pague la indemnización por incapacidad permanente "
+        "parcial a que haya lugar.",
+        "Que se expida copia íntegra del expediente administrativo del evento.",
+        "Que se informe el nombre y el cargo del funcionario responsable de resolver y se notifique "
         "la respuesta al correo electrónico indicado.",
-    ]
-    for i, t in enumerate(peticiones, 1):
+    ], 1):
         numerado_doc(doc, i, t)
 
     rotulo(doc, "Pruebas y anexos")
     for t in [
-        "Certificado de existencia y representación o documento de identidad del peticionario.",
-        "Registro Único Tributario y certificado de cámara de comercio, si aplica.",
-        "Copias de las planillas de liquidación de aportes de los periodos objeto de la solicitud.",
+        "Copia del documento de identidad de la peticionaria y certificado de existencia y "
+        "representación, si aplica.",
+        "Registro Único Tributario y certificado de afiliación a esa administradora.",
+        "Copias de las planillas de liquidación de aportes de los últimos doce periodos.",
         "Copia del reporte del accidente de trabajo y de los certificados de incapacidad.",
-        "Historia clínica ocupacional y concepto del médico laboral, cuando exista.",
+        "Copia del acta sanitaria 028-050164-26 del 09/09/2026 y de la historia clínica ocupacional, "
+        "cuando exista.",
     ]:
         bullet(doc, t, size=10)
     parrafo_doc(doc, "Solicito que las notificaciones se surtan en la dirección y el correo "
@@ -247,29 +262,29 @@ def eje_iv(doc):
                "otra lo confirma por ausencia. Y con ese papel en la mano se decide si se demanda la "
                "ineficacia."])
     p(doc, "", space_after=6)
-    encabezado_escrito(doc, "ADMINISTRADORA DE FONDOS DE PENSIONES [NOMBRE DE LA AFP]  ·  "
-                            "OFICINA DE SERVICIO AL CLIENTE", "Soacha (Cundinamarca), noviembre de 2026")
+    encabezado_escrito(doc, "%s  ·  OFICINA DE SERVICIO AL CLIENTE" % AFP_RAIS.upper(), CIUDAD_FECHA)
     rotulo(doc, "Referencia")
     parrafo_doc(doc, "Asunto: derecho de petición. Solicitud de copia del expediente de afiliación y "
                      "del acta de doble asesoría de Luis Antonio Aguilar Rodríguez, y "
                      "reclamación por déficit de información en el traslado de régimen pensional.",
                      bold=True, size=10.5)
     rotulo(doc, "Identificación")
-    parrafo_doc(doc, "%s, identificada con cédula de ciudadanía número __________, en calidad de "
+    parrafo_doc(doc, "%s, identificada con cédula de ciudadanía número %s, en calidad de "
                      "representante legal de EXTINTORES S C M (NIT %s) y empleadora de Luis Antonio "
                      "Aguilar Rodríguez, identificado con cédula de ciudadanía 1073694256, presento "
                      "derecho de petición y formulo reclamación en los siguientes términos."
-                     % (AUTOR, NIT))
+                     % (AUTOR, CC, NIT))
     rotulo(doc, "Hechos")
     for i, t in enumerate([
-        "Luis Antonio Aguilar Rodríguez se afilió a esa administradora en el año 1997, cuando contaba con 27 años "
-        "de edad, y permanece vinculado como cotizante dependiente a través de EXTINTORES S C M.",
+        "Luis Antonio Aguilar Rodríguez está afiliado a esa administradora en el Régimen de Ahorro "
+        "Individual con Solidaridad y cotiza como dependiente a través de EXTINTORES S C M. La fecha "
+        "del traslado consta en el expediente que se solicita.",
         "A la fecha cuenta con 1.150 semanas cotizadas y 56 años de edad, y aspira a acceder a la "
         "pensión de vejez en el año 2027.",
-        "La afiliada manifiesta que la decisión de traslado se produjo tras una visita de un asesor "
+        "El afiliado manifiesta que la decisión de traslado se produjo tras una visita de un asesor "
         "comercial, quien le indicó que obtendría una mesada superior, sin que se le entregara "
         "simulación, proyección o documento comparativo de los regímenes.",
-        "La afiliada no conserva copia del formulario de afiliación ni recuerda haber suscrito acta "
+        "El afiliado no conserva copia del formulario de afiliación ni recuerda haber suscrito acta "
         "de doble asesoría.",
         "La empresa empleadora no es titular del deber de asesoría, que corresponde a la "
         "administradora conforme a los artículos 20, 48 y 53 de la Constitución Política y a la Ley "
@@ -314,7 +329,7 @@ def eje_iv(doc):
                "corregir el error sin llegar a juicio y deja documentada la reclamación para "
                "interrumpir la prescripción y probar el agotamiento de la vía interna."])
     p(doc, "", space_after=6)
-    encabezado_escrito(doc, "EXTINTORES S C M  ·  GERENCIA GENERAL", "Soacha (Cundinamarca), noviembre de 2026")
+    encabezado_escrito(doc, "EXTINTORES S C M  ·  GERENCIA GENERAL", CIUDAD_FECHA)
     rotulo(doc, "Referencia")
     parrafo_doc(doc, "Asunto: solicitud de agotamiento de la vía interna y reclamación por "
                      "diferencias en el reconocimiento de prestaciones económicas del Sistema de "
@@ -322,15 +337,15 @@ def eje_iv(doc):
     rotulo(doc, "Hechos")
     for i, t in enumerate([
         "La suscrita es titular y representante legal de la empresa EXTINTORES S C M, empleadora de "
-        "diez (10) trabajadores dependientes.",
+        "tres (3) trabajadores dependientes.",
         "En la auditoría interna practicada en octubre de 2026 se identificaron diferencias en la "
         "liquidación de una licencia de paternidad y en el reporte de novedades de uno de los "
         "trabajadores.",
-        "Las diferencias ascienden a %s y afectan el ingreso de Felipe Martínez (C.C. 8686834), por la "
-        "licencia de paternidad, y las semanas reportadas de los tres trabajadores de la planta."
-        % money(412000),
+        "Las diferencias ascienden a %s y afectan el ingreso de Felipe Martínez (C.C. 8686834), por "
+        "la licencia de paternidad, así como el reporte de las semanas de los tres trabajadores de "
+        "la planta." % money(412000),
         "La empresa reconoce la procedencia de la corrección y requiere formalizar el trámite para "
-        "que produzca efectos frente a la EPS y al fondo de pensiones.",
+        "que produzca efectos frente a la EPS %s y a las administradoras de pensiones." % EPS,
     ], 1):
         numerado_doc(doc, i, t)
     rotulo(doc, "Solicitud")

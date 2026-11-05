@@ -89,21 +89,16 @@ def contenido(doc):
     h_sin_num(doc, 1, "TABLA DE CONTENIDO")
     add_tabla_contenido(doc, "1-3")
     p(doc, "", space_after=4)
-    caja(doc, "Cómo usar esta plantilla",
-         ["El documento tiene dos tipos de contenido. El primero es el ",
-          ("desarrollo jurídico ya redactado", {"b": True}),
-          ": marco normativo, análisis de casos, liquidaciones, escritos procesales y "
-          "conclusiones, con la norma y la jurisprudencia citadas en cada punto. El segundo son "
-          "los ",
-          ("campos por diligenciar", {"b": True}),
-          ": los anexos del capítulo final y los espacios marcados con líneas de puntos. Ahí van "
-          "los soportes reales de EXTINTORES S C M: planillas PILA, comprobantes de nómina, "
-          "certificados de afiliación, historia laboral y documentos del SG-SST.",
-          "Al abrir el archivo, actualice la tabla de contenido: clic derecho sobre el texto azul → "
-          "«Actualizar campo» → «Actualizar toda la tabla». Los recuadros de color son ayudas de "
-          "estudio: los azules orientan la lectura, los rojos señalan riesgos jurídicos y los ámbar "
-          "advierten puntos de verificación."],
-         tipo='info')
+    rich(doc, ["El documento combina dos tipos de contenido. El primero es el ",
+               ("desarrollo jurídico ya redactado", {"b": True}),
+               ": marco normativo, análisis de casos, liquidaciones, escritos y conclusiones, con "
+               "la norma y la jurisprudencia citadas en cada punto. El segundo son los ",
+               ("campos por diligenciar", {"b": True}),
+               ": los formatos del capítulo final y los espacios marcados con líneas de puntos, "
+               "donde van los soportes de EXTINTORES S C M."])
+    rich(doc, ["Al abrir el archivo hay que actualizar la tabla de contenido: clic derecho sobre el "
+               "texto azul, «Actualizar campo» y «Actualizar toda la tabla». Sin ese paso, los "
+               "números de página quedan desfasados."])
     salto_pagina(doc)
 
 

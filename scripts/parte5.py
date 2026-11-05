@@ -5,7 +5,9 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx_engine import (p, rich, h, h_sin_num, bullet, cita, tabla, caja, salto_pagina,
                          aplicar_numeracion, linea_horizontal, AZUL, VINO, GRIS,
                          GRIS_CLARO, HEX_VINO, HEX_AZUL, HEX_CELESTE)
-from datos import money
+from datos import (money, ENTIDADES, EMPRESA, IBC_TOTAL, AUX_TRANSPORTE, APORTE_PENSION,
+                   APORTE_ARL, APORTE_CAJA, CAPITAL_RAIS, MESADA_RPM, MESADA_RAIS_SIN_GARANTIA,
+                   IBL_P03)
 
 
 def capitulo5(doc):
@@ -421,10 +423,12 @@ def bib_item(doc, texto):
 # ================================================================ ANEXOS
 def anexos(doc):
     salto_pagina(doc)
-    h_sin_num(doc, 1, "ANEXOS: PLANTILLAS DE TRABAJO")
-    rich(doc, ["Los anexos convierten el informe en un instrumento operativo. Las plantillas están "
-               "diseñadas para ser diligenciadas por la organización con sus propios datos, de modo "
-               "que el trabajo pueda actualizarse sin rehacer el análisis jurídico."])
+    h_sin_num(doc, 1, "ANEXOS: FORMATOS DILIGENCIADOS Y DOCUMENTO FUENTE")
+    rich(doc, ["Los anexos convierten el informe en un instrumento operativo. Van diligenciados con "
+               "los datos del expediente de EXTINTORES S C M a octubre de 2026, de modo que el "
+               "documento pueda actualizarse sin rehacer el análisis jurídico. Los pocos campos que "
+               "dependen de un certificado que la empresa aún no ha obtenido quedan identificados "
+               "como pendientes, no en blanco."])
 
     # Anexo 1
     h_sin_num(doc, 2, "Anexo 1. Ficha de caracterización organizacional")
@@ -441,12 +445,17 @@ def anexos(doc):
             "Acta o certificado"],
            ["Número de trabajadores dependientes", "3 (WT-01, WT-02, WT-03); el acta sanitaria "
             "declaró 1 operativo", "Planilla PILA del último mes"],
-           ["Número de contratistas independientes", "", "Contratos y planilla de independientes"],
-           ["EPS a la que está afiliada la planta", "", "Certificados de afiliación"],
-           ["ARL a la que está afiliada la planta", "", "Certificado de afiliación y clase de riesgo"],
-           ["AFP de los trabajadores", "", "Certificados de afiliación"],
-           ["Caja de compensación familiar", "", "Certificado de afiliación"],
-           ["Nivel de ingresos y activos", "", "Estados financieros"]],
+           ["Número de contratistas independientes", "Ninguno declarado a la fecha de corte",
+            "Contratos y planilla de independientes"],
+           ["EPS a la que está afiliada la planta", "EPS Sura (los tres trabajadores)",
+            "Certificados de afiliación"],
+           ["ARL a la que está afiliada la empresa", "ARL Sura, código de actividad 1475901, clase de "
+            "riesgo I, tarifa 0,522 %", "Certificado de afiliación y de clase de riesgo"],
+           ["AFP de los trabajadores", "Colpensiones (WT-01 y WT-03) y Porvenir (WT-02, en ahorro "
+            "individual)", "Certificados de afiliación e historia laboral"],
+           ["Caja de compensación familiar", "Cafam", "Certificado de afiliación"],
+           ["Nivel de ingresos y activos", "Microempresa. IBC total declarado: %s mensuales"
+            % money(IBC_TOTAL), "Estados financieros y planilla PILA"]],
           [5.2, 5.4, 5.4], size=8.6,
           titulo="Formato A-1. Caracterización")
 
@@ -488,88 +497,138 @@ def anexos(doc):
           titulo="Formato A-2. Datos de citación del acta sanitaria")
 
     # Anexo 3
-    h_sin_num(doc, 2, "Anexo 3. Plantilla de liquidación del IBC")
-    tabla(doc, ["Concepto", "Trabajador dependiente", "Contratista independiente"],
-          [["Valor bruto recibido en el mes", "", ""],
-           ["Menos: pagos no salariales (art. 128 C.S.T.)", "", "No aplica"],
-           ["Igual: salario base", "", "No aplica"],
-           ["Valor mensualizado del contrato sin IVA", "No aplica", ""],
-           ["Base: 40 % del valor mensualizado", "No aplica", ""],
-           ["Comparación con el piso de 1 SMMLV", "", ""],
-           ["Comparación con el techo de 25 SMMLV", "", ""],
-           ["IBC definitivo", "", ""],
-           ["Aporte a salud (8,5 % empleador / 12,5 % independiente)", "", ""],
-           ["Aporte a pensión (12 % empleador y trabajador / 16 % independiente)", "", ""],
-           ["Aporte a riesgos laborales (tarifa según clase)", "", ""],
-           ["Parafiscales (SENA, ICBF, caja de compensación)", "", "No aplica"]],
-          [7.4, 4.3, 4.3], size=8.6,
-          titulo="Formato A-2. Liquidación del IBC")
+    h_sin_num(doc, 2, "Anexo 3. Liquidación del IBC")
+    rich(doc, ["La liquidación se hace por trabajador y por periodo. El cuadro reproduce la "
+               "estructura del cálculo aplicada en el Eje I, con los valores definitivos de la "
+               "nómina de octubre de 2026."])
+    tabla(doc, ["Concepto", "WT-01 (Julia Inés)", "WT-02 (Luis Antonio)", "WT-03 (Felipe)"],
+          [["Salario base pactado", money(4500000), money(1900000), money(1750905)],
+           ["Auxilio de transporte", "No aplica (salario superior a 2 SMMLV)", money(AUX_TRANSPORTE),
+            money(AUX_TRANSPORTE)],
+           ["Pagos no salariales (art. 128 C.S.T.) excluidos del IBC", "Auxilio de transporte",
+            "Auxilio de transporte", "Auxilio de transporte"],
+           ["Salario base de cotización (IBC)", money(4500000), money(1900000), money(1750905)],
+           ["Aporte a salud a cargo del empleador (8,5 %)",
+            "Exonerado (art. 114-1 E.T.)", "Exonerado (art. 114-1 E.T.)", "Exonerado (art. 114-1 E.T.)"],
+           ["Aporte a pensión a cargo del empleador (12 %)", money(4500000 * 0.12),
+            money(1900000 * 0.12), money(1750905 * 0.12)],
+           ["Aporte a riesgos laborales, clase I (0,522 %)",
+            money(4500000 * 0.00522), money(1900000 * 0.00522), money(1750905 * 0.00522)],
+           ["Caja de compensación familiar (4 %)",
+            money(4500000 * 0.04), money(1900000 * 0.04), money(1750905 * 0.04)],
+           [("Total IBC y aporte mensual del empleador", {"b": True}),
+            (money(IBC_TOTAL), {"b": True}), (money(APORTE_PENSION + APORTE_ARL + APORTE_CAJA),
+                                              {"b": True}), ""]],
+          [6.6, 3.2, 3.2, 3.0], size=8.3, align_centro=[1, 2, 3],
+          titulo="Formato A-2. Liquidación del IBC de la planta",
+          fuente="Fuente: elaboración propia con la nómina de octubre de 2026 y las tarifas de 2026. "
+                 "SENA e ICBF no se causan por la exoneración del artículo 114-1 del Estatuto "
+                 "Tributario; la caja de compensación no está exonerada.")
 
-    # Anexo 4
     h_sin_num(doc, 2, "Anexo 4. Lista de verificación de afiliación y novedades")
+    rich(doc, ["El resultado corresponde a la verificación documental practicada en octubre de 2026. "
+               "Los puntos marcados como «sin soporte» se cumplen materialmente pero no tienen "
+               "evidencia archivada, que es la categoría que el artículo 216 del C.S.T. castiga."])
     tabla(doc, ["N.º", "Punto de control", "Sí", "No", "Observación"],
-          [["1", "Todos los trabajadores están afiliados a una EPS", "", "", ""],
-           ["2", "Todos los trabajadores están afiliados a una ARL", "", "", ""],
-           ["3", "Todos los trabajadores están afiliados a una AFP", "", "", ""],
-           ["4", "Los beneficiarios están inscritos y con soportes vigentes", "", "", ""],
-           ["5", "Las novedades de ingreso y retiro se reportan dentro del plazo", "", "", ""],
-           ["6", "Las variaciones de salario se reportan dentro del plazo", "", "", ""],
-           ["7", "Los aportes se pagan dentro de los plazos legales", "", "", ""],
-           ["8", "Se verifica la procedencia de la exoneración del art. 114-1 del E.T.", "", "", ""],
-           ["9", "Los contratistas independientes acreditan su afiliación", "", "", ""],
-           ["10", "Se conservan los soportes de licencias e incapacidades", "", "", ""]],
-          [1.1, 8.1, 1.3, 1.3, 4.2], size=8.6, align_centro=[0, 2, 3],
+          [["1", "Todos los trabajadores están afiliados a una EPS", "X", "", "EPS Sura, tres de tres"],
+           ["2", "Todos los trabajadores están afiliados a una ARL", "X", "", "ARL Sura, clase I"],
+           ["3", "Todos los trabajadores están afiliados a una AFP", "X", "",
+            "Colpensiones (WT-01, WT-03) y Porvenir (WT-02)"],
+           ["4", "Los beneficiarios están inscritos y con soportes vigentes", "X", "",
+            "Sin beneficiarios por fuera del núcleo legal; falta el soporte documental de cada uno"],
+           ["5", "Las novedades de ingreso y retiro se reportan dentro del plazo", "", "X",
+            "Reporte extemporáneo de la novedad de WT-02"],
+           ["6", "Las variaciones de salario se reportan dentro del plazo", "", "X",
+            "Variación de salario de WT-03 reportada por fuera del término"],
+           ["7", "Los aportes se pagan dentro de los plazos legales", "X", "",
+            "Planilla PILA al día a octubre de 2026"],
+           ["8", "Se verifica la procedencia de la exoneración del art. 114-1 del E.T.", "", "X",
+            "Aplica por tener tres trabajadores, pero no hay acta de verificación del umbral"],
+           ["9", "Los contratistas independientes acreditan su afiliación", "X", "",
+            "No hay contratistas independientes a la fecha de corte"],
+           ["10", "Se conservan los soportes de licencias e incapacidades", "", "X",
+            "Licencia de paternidad de WT-03 sin reliquidación; incapacidad de WT-02 sin archivo "
+            "de la calificación"]],
+          [1.1, 8.1, 1.3, 1.3, 4.2], size=8.3, align_centro=[0, 2, 3],
           titulo="Formato A-3. Lista de verificación")
 
-    # Anexo 5
-    h_sin_num(doc, 2, "Anexo 5. Formato de reporte e investigación de accidente de trabajo")
+    h_sin_num(doc, 2, "Anexo 5. Reporte e investigación del accidente AT-2026-014")
     tabla(doc, ["Campo", "Contenido"],
-          [["Identificación del trabajador", ""],
-           ["Fecha, hora y lugar del evento", ""],
-           ["Descripción de la tarea y del proceso", ""],
-           ["Agente y mecanismo de la lesión", ""],
-           ["Elementos de protección personal suministrados y su registro de entrega", ""],
-           ["Capacitación y certificación vigente para la tarea", ""],
-           ["Procedimiento de trabajo aplicable y su versión", ""],
-           ["Testigos y sus declaraciones", ""],
-           ["Atención inicial y remisión a la IPS", ""],
-           ["Reporte a la ARL (fecha y número de radicado)", ""],
-           ["Investigación: metodología, participantes y fecha", ""],
-           ["Causas inmediatas y causas básicas", ""],
-           ["Plan de acción con responsables y plazos", ""],
-           ["Verificación de la eficacia del plan", ""]],
-          [7.0, 9.0], size=8.6,
+          [["Identificación del trabajador", "Luis Antonio Aguilar Rodríguez, C.C. 1073694256, "
+            "técnico de recarga, contrato a término indefinido"],
+           ["Fecha, hora y lugar del evento", "12 de agosto de 2026, zona de recarga de cilindros, "
+            "sede de Soacha"],
+           ["Descripción de la tarea y del proceso", "Prueba hidrostática de un extintor de agente "
+            "limpio con veinte años de servicio"],
+           ["Agente y mecanismo de la lesión", "Válvula desprendida por corrosión, proyectada contra "
+            "la mano derecha: fractura conminuta de dedos índice y medio y lesión del tendón flexor"],
+           ["Elementos de protección personal suministrados", "No se entregaron guantes antifallo; "
+            "sin registro de entrega"],
+           ["Capacitación y certificación vigente para la tarea", "Certificación vencida desde "
+            "noviembre de 2025"],
+           ["Procedimiento de trabajo aplicable y su versión", "Procedimiento de prueba hidrostática "
+            "sin actualizar; banco de prueba sin dispositivo de anclaje"],
+           ["Testigos y sus declaraciones", "Sin testigos presenciales; el evento ocurrió con un solo "
+            "operario en la zona"],
+           ["Atención inicial y remisión a la IPS", "Atención por la red de EPS Sura y remisión a "
+            "ortopedia"],
+           ["Reporte a la ARL", "17 de agosto de 2026, cinco días después del evento"],
+           ["Investigación: metodología, participantes y fecha", "Cuatro semanas después, sin "
+            "participación del trabajador ni de los representantes del SG-SST"],
+           ["Causas inmediatas y causas básicas", "Conclusión del empleador: «el trabajador actuó con "
+            "exceso de confianza»; no se identificó la causa básica (ausencia de anclaje y de "
+            "mantenimiento del banco de prueba)"],
+           ["Plan de acción con responsables y plazos", "Pendiente. Se propone en el numeral 2.7 y en "
+            "el plan de mejoramiento del capítulo 5"],
+           ["Verificación de la eficacia del plan", "No se ha practicado"]],
+          [6.2, 9.8], size=8.3,
           titulo="Formato A-4. Investigación del accidente")
 
-    # Anexo 6
-    h_sin_num(doc, 2, "Anexo 6. Formato de auditoría pensional individual")
-    tabla(doc, ["Campo", "Contenido"],
-          [["Nombre y documento del trabajador", ""],
-           ["Fecha de nacimiento y edad", ""],
-           ["Régimen actual y administradora", ""],
-           ["Fecha del traslado y de la afiliación inicial", ""],
-           ["Semanas cotizadas certificadas", ""],
-           ["Capital acumulado o ingreso base de liquidación", ""],
-           ["Soporte de doble asesoría (sí / no / no existe)", ""],
-           ["Simulación o proyección entregada anteriormente", ""],
-           ["Verificación del régimen de transición (750 / 900 semanas)", ""],
-           ["Comparación de mesadas proyectadas en ambos regímenes", ""],
-           ["Conclusión: procede o no la demanda de ineficacia", ""],
-           ["Acciones adelantadas y fechas de radicación", ""]],
-          [7.0, 9.0], size=8.6,
+    h_sin_num(doc, 2, "Anexo 6. Auditoría pensional individual")
+    rich(doc, ["El formato se diligencia con el caso P-03 y queda como modelo para los otros dos "
+               "trabajadores, cuya historia laboral está pendiente de certificación."])
+    tabla(doc, ["Campo", "WT-02 (caso P-03)", "WT-01", "WT-03"],
+          [["Nombre y documento", "Luis Antonio Aguilar Rodríguez, C.C. 1073694256",
+            "Julia Inés Buitrago García, C.C. 39626936", "Felipe Martínez, C.C. 8686834"],
+           ["Fecha de nacimiento y edad", "56 años (los 57 en 2027)", "Por certificar",
+            "Por certificar"],
+           ["Régimen actual y administradora", "Ahorro Individual, Porvenir",
+            "Prima Media, Colpensiones", "Prima Media, Colpensiones"],
+           ["Fecha del traslado y de la afiliación inicial", "Traslado al RAIS en 1997, a los 27 "
+            "años; fecha exacta por certificar con el expediente", "Sin traslado", "Sin traslado"],
+           ["Semanas cotizadas certificadas", "1.150", "Por certificar", "Por certificar"],
+           ["Capital acumulado o ingreso base de liquidación", "Capital de %s; IBL de referencia %s"
+            % (money(CAPITAL_RAIS), money(IBL_P03)), "Por certificar", "Por certificar"],
+           ["Soporte de doble asesoría", "No existe acta; se solicita constancia a la AFP",
+            "No aplica", "No aplica"],
+           ["Simulación o proyección entregada", "Ninguna que el afiliado recuerde ni que la AFP "
+            "haya aportado", "No aplica", "No aplica"],
+           ["Verificación del régimen de transición (750 / 900 semanas)", "Cumple: 1.150 semanas",
+            "Por verificar", "Por verificar"],
+           ["Comparación de mesadas proyectadas", "Prima Media %s frente a %s en el RAIS sin garantía"
+            % (money(MESADA_RPM), money(MESADA_RAIS_SIN_GARANTIA)), "Por calcular", "Por calcular"],
+           ["Conclusión", "Procede la demanda de ineficacia: déficit de información y ausencia de "
+            "soporte de asesoría", "Sin hallazgo a la fecha", "Sin hallazgo a la fecha"],
+           ["Acciones adelantadas", "Derecho de petición a Porvenir radicado en noviembre de 2026",
+            "Solicitud de historia laboral", "Solicitud de historia laboral"]],
+          [5.0, 6.4, 2.6, 2.0], size=8.0,
           titulo="Formato A-5. Auditoría pensional individual")
 
-    # Anexo 7
     h_sin_num(doc, 2, "Anexo 7. Control de términos y reclamaciones")
-    tabla(doc, ["Documento", "Entidad", "Fecha de radicación", "Término de respuesta",
-                "Fecha límite", "Estado"],
-          [["Derecho de petición de reclasificación del riesgo", "ARL", "", "15 días hábiles", "", ""],
-           ["Derecho de petición de prestaciones AT-2026-014", "ARL", "", "15 días hábiles", "", ""],
-           ["Solicitud de expediente y acta de doble asesoría", "AFP", "", "15 días hábiles", "", ""],
-           ["Solicitud de agotamiento de vía interna", "EXTINTORES SCM", "", "15 días hábiles", "", ""],
-           ["Reclamación de licencia de paternidad", "EPS", "", "15 días hábiles", "", ""],
-           ["Corrección de planilla de aportes", "PILA", "", "Según el periodo", "", ""]],
-          [5.4, 2.6, 2.3, 2.4, 1.9, 1.4], size=8.3, align_centro=[2, 3, 4, 5],
+    tabla(doc, ["Documento", "Entidad", "Radicación", "Término", "Fecha límite", "Estado"],
+          [["Derecho de petición de revisión de la clasificación del riesgo", "ARL Sura",
+            "Noviembre de 2026", "15 días hábiles", "Por definir con la radicación", "Radicado"],
+           ["Derecho de petición de prestaciones del accidente AT-2026-014", "ARL Sura",
+            "Noviembre de 2026", "15 días hábiles", "Por definir con la radicación", "Radicado"],
+           ["Solicitud de expediente y acta de doble asesoría", "Porvenir", "Noviembre de 2026",
+            "15 días hábiles", "Por definir con la radicación", "Radicado"],
+           ["Solicitud de agotamiento de vía interna", "EXTINTORES S C M",
+            "Noviembre de 2026", "15 días hábiles", "Por definir con la radicación", "Radicado"],
+           ["Reclamación de reliquidación de la licencia de paternidad", "EPS Sura",
+            "Noviembre de 2026", "15 días hábiles", "Por definir con la radicación", "Radicado"],
+           ["Corrección de planilla de aportes y reporte de semanas", "PILA / operador",
+            "Noviembre de 2026", "Según el periodo", "Siguiente ciclo de planilla", "En trámite"]],
+          [5.4, 2.6, 2.3, 2.4, 1.9, 1.4], size=8.2, align_centro=[2, 3, 4, 5],
           titulo="Formato A-6. Control de términos")
 
     # Anexo 8
@@ -592,12 +651,4 @@ def anexos(doc):
           titulo="Tabla 31. Correspondencia entre la rúbrica y el informe")
     p(doc, "")
 
-    caja(doc, "Nota final para la estudiante",
-         ["Este documento es una plantilla avanzada: la estructura, el marco normativo y el "
-          "razonamiento jurídico ya están resueltos. Para convertirlo en su trabajo definitivo debe "
-          "(i) reemplazar los datos ilustrativos por los soportes reales de EXTINTORES SCM; "
-          "(ii) diligenciar los anexos con la documentación de la empresa; (iii) actualizar la fecha "
-          "de presentación y los datos de contacto; y (iv) verificar que cada cifra citada "
-          "corresponda a un comprobante o certificado del expediente. Mientras esos pasos no se "
-          "cumplan, el documento debe presentarse como versión de trabajo, no como informe final."],
-         tipo='nota')
+
