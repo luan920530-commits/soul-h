@@ -76,26 +76,30 @@ def introduccion(doc):
 INTRODUCCIÓN""")
     p(doc, "Objetivo general", bold=True, size=12, color=AZUL, space_before=6, space_after=4)
     rich(doc, ["Analizar el cumplimiento de las obligaciones del Sistema de Seguridad Social Integral "
-               "en %s, empresa privada de %s dedicada al comercio y recarga de extintores, con el fin "
-               "de identificar el estado de la afiliación y las cotizaciones en salud, la exposición "
-               "al riesgo laboral y la eventual culpa patronal, la situación pensional de sus tres "
-               "trabajadores y los mecanismos jurídicos con los que cuenta la empresa para "
-               "controvertir las decisiones de las entidades del sistema." % (RAZON, CIUDAD)])
+               "en %s, empresa privada de %s dedicada al comercio y la recarga de extintores, para "
+               "establecer cómo están la afiliación y las cotizaciones en salud, qué exposición al "
+               "riesgo laboral tiene la planta y si hay culpa patronal, en qué situación pensional "
+               "están los tres trabajadores y con qué mecanismos jurídicos cuenta la empresa para "
+               "controvertir lo que decidan las entidades." % (RAZON, CIUDAD)])
 
-    rich(doc, ["El trabajo se apoya en dos fuentes. La primera es documental: planilla integrada de "
-               "liquidación de aportes, certificados de afiliación y nómina de octubre de 2026. La "
-               "segunda es el acta de inspección sanitaria ",
+    rich(doc, ["Trabajé con dos fuentes. La primera son los papeles de la empresa: la planilla "
+               "integrada, los certificados de afiliación y la nómina de octubre de 2026. La segunda "
+               "es el acta ",
                ("028-050164-26", {"b": True}),
-               " del 09/09/2026, levantada por la Secretaría de Salud de Soacha, que no es un "
-               "documento interno de la empresa sino una actuación de autoridad y, por eso mismo, "
-               "prueba preconstituida de lo que ocurría en el establecimiento esa fecha."])
-    rich(doc, ["Conviene decirlo desde el principio, porque ordena todo lo que sigue: la empresa "
-               "cumple lo básico. Los tres trabajadores están afiliados, la planilla está al día y la "
-               "cotización se hace sobre el ingreso real. Los problemas aparecen en otro lugar, en la "
-               "evidencia: hay obligaciones que se cumplen sin dejar rastro documental, y una "
-               "obligación que no se cumple en absoluto, que es el sistema de gestión de seguridad y "
-               "salud en el trabajo. En una empresa de tres personas eso se arregla en semanas; "
-               "ignorarlo, en cambio, puede costar el patrimonio."])
+               ", del 9 de septiembre de 2026, que levantó la Secretaría de Salud de Soacha. Esa acta "
+               "no la escribió la empresa. La escribió una funcionaria con nombre, cédula y contrato, "
+               "y por eso vale más que cualquier informe interno: dice qué había en el local ese día."])
+
+    rich(doc, ["Lo primero que hay que decir es que la empresa cumple. Los tres trabajadores están "
+               "afiliados, la planilla está al día y se cotiza sobre el salario real. Si el trabajo "
+               "terminara aquí, no habría nada que corregir."])
+
+    rich(doc, ["Pero no termina aquí. Hay obligaciones que se cumplen y no dejan rastro, y hay una "
+               "que no se cumple en absoluto: el sistema de gestión de seguridad y salud en el "
+               "trabajo."])
+    rich(doc, ["Con tres trabajadores, lo primero se arregla en una tarde de archivo. Lo segundo es "
+               "distinto, porque ya está probado por una autoridad y eso no se borra reponiendo el "
+               "sistema."])
 
     h(doc, 1, "INFORMACIÓN GENERAL DE LA EMPRESA")
     h(doc, 2, "Datos básicos")
@@ -138,44 +142,43 @@ def salud(doc):
     h(doc, 1, "1. SALUD Y COTIZACIONES")
 
     h(doc, 2, "1.1 Descripción del sistema de salud de la empresa")
-    rich(doc, ["Los tres trabajadores están afiliados al Régimen Contributivo del Sistema General de "
-               "Seguridad Social en Salud a través de ",
+    rich(doc, ["Los tres trabajadores cotizan al Régimen Contributivo en salud a través de ",
                (EPS, {"b": True}),
-               ", y la empresa los tiene reportados como cotizantes dependientes en la planilla "
-               "integrada de liquidación de aportes. La afiliación es la que corresponde a un "
-               "empleador formal: no hay trabajadores por fuera del sistema, ni contratistas "
-               "independientes que hayan sustituido una relación laboral."])
-    rich(doc, ["En salud, el empleador paga el 8,5 % del ingreso base de cotización y el trabajador "
-               "el 4 %. Esa es la regla general. En este caso opera una excepción que conviene "
-               "precisar porque cambia el monto: el artículo 114-1 del Estatuto Tributario exime del "
-               "aporte patronal a las personas naturales que emplean a menos de diez trabajadores y "
-               "que no superan las 10.000 UVT de ingresos. La condición que importa es la primera, y "
-               "está redactada al revés de lo que suele creerse: la exoneración cobija a quien tiene ",
+               " y aparecen como cotizantes dependientes en la planilla integrada. No hay nadie por "
+               "fuera del sistema. Tampoco hay contratistas independientes que en la práctica hayan "
+               "reemplazado una relación laboral, que es el problema que suele encontrarse en "
+               "empresas de este tamaño."])
+    rich(doc, ["La regla general en salud es 8,5 % a cargo del empleador y 4 % a cargo del "
+               "trabajador. Aquí no se paga el 8,5 %, y no es un error de la empresa: el artículo "
+               "114-1 del Estatuto Tributario exime del aporte patronal a las personas naturales que "
+               "emplean a menos de diez trabajadores."])
+    rich(doc, ["La condición está redactada al revés de lo que todo el mundo cree. La exoneración "
+               "cobija a quien tiene ",
                ("dos o más trabajadores", {"b": True}),
-               ". Con uno solo no aplica; con tres, sí."])
-    rich(doc, ["El efecto práctico es que la empresa no paga el 8,5 % patronal ni los parafiscales de "
-               "SENA e ICBF, pero sí sigue pagando el 4 % de la caja de compensación, que nunca está "
-               "exonerado, y por supuesto la pensión y los riesgos laborales. El ahorro mensual es de ",
+               ". Con uno no aplica. Con tres, sí."])
+    rich(doc, ["El ahorro es de ",
                ("$ 1.100.372", {"b": True}),
-               ". Y hay un detalle que la empresa debería tener presente: depende de mantener al menos "
-               "dos trabajadores. Si la planta baja a uno, la exoneración desaparece y hay que "
-               "reliquidar."])
+               " al mes. De ese beneficio depende de mantener la planta: si la empresa se queda con un "
+               "solo trabajador, pierde la exoneración y toca reliquidar. Es una forma curiosa de "
+               "premiar la contratación formal, pero así está la norma y hay que saberlo antes de "
+               "despedir a alguien para ahorrar."],
+         space_after=8)
+    rich(doc, ["Queda un detalle que no es menor. La caja de compensación, el 4 %, se paga siempre: "
+               "ese rubro nunca está exonerado. Y la pensión y los riesgos laborales tampoco."])
 
     h(doc, 2, "1.2 Ingreso Base de Cotización (IBC)")
     p(doc, "¿Qué salario se tomará como referencia?", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["Se toma el salario base pactado con cada trabajador, sin incluir el auxilio de "
-               "transporte. %s devenga %s; %s, %s; y %s, %s, equivalente a un salario mínimo. El IBC "
-               "total de la planta es de %s mensuales."
-               % ("Julia Inés", money(SAL01), "Luis Antonio", money(SAL02), "Felipe", money(SAL03),
-                  money(IBC_TOTAL))])
+    rich(doc, ["El salario base pactado, sin auxilio de transporte. Julia Inés devenga %s; Luis "
+               "Antonio, %s; y Felipe, %s, que es un mínimo. Suman %s de IBC mensual."
+               % (money(SAL01), money(SAL02), money(SAL03), money(IBC_TOTAL))])
     p(doc, "¿Cómo se calcula el IBC?", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["El artículo 18 de la Ley 100 de 1993 define el IBC como el total de los factores "
-               "salariales, más los pagos que retribuyen el trabajo, con dos límites: no puede ser "
-               "inferior a un salario mínimo ni superior a veinticinco. Se excluyen los pagos no "
-               "salariales del artículo 128 del Código Sustantivo del Trabajo, y en la práctica el "
-               "más importante es el auxilio de transporte, que en 2026 es de %s. Ese es el error más "
-               "frecuente en la nómina de las microempresas: sumarlo a la base y cotizar de más, o "
-               "restarlo del salario y cotizar de menos." % money(AUX_TRANSPORTE)])
+    rich(doc, ["El artículo 18 de la Ley 100 de 1993: todos los factores salariales, con dos límites "
+               "(no menos de un mínimo, no más de veinticinco) y sin los pagos no salariales del "
+               "artículo 128 del Código Sustantivo del Trabajo. El que más pesa es el auxilio de "
+               "transporte, que en 2026 vale %s y no se cotiza. Ahí está el error clásico de la "
+               "nómina pequeña: sumarlo a la base y pagar de más, o restarlo del salario y pagar de "
+               "menos." % money(AUX_TRANSPORTE)])
+    rich(doc, ["Las dos cosas salen caras. Una por plata, la otra por sanción."])
     tabla(doc, ["Concepto", "WT-01", "WT-02", "WT-03"],
           [["Salario base", money(SAL01), money(SAL02), money(SAL03)],
            ["Auxilio de transporte (no integra el IBC)", "No aplica",
@@ -196,23 +199,23 @@ def salud(doc):
                  "E.T.; SENA e ICBF tampoco.")
 
     h(doc, 2, "1.3 EPS utilizadas")
-    rich(doc, ["La EPS identificada es ", (EPS, {"b": True}),
-               ". Para la planta completa se utiliza una sola entidad, lo que simplifica el reporte "
-               "de novedades y la verificación de pagos. En el mercado local las alternativas con "
-               "presencia en Soacha son las siguientes, y se enuncian porque el esqueleto las pide "
-               "como «identificadas o posibles»:"])
-    for t in ["EPS Sura: es la que efectivamente cubre a los tres trabajadores.",
-              "Nueva EPS y Sanitas: alternativas de mercado, no utilizadas por la empresa.",
-              "Compensar EPS: alternativa de mercado en la zona, no utilizada."]:
+    rich(doc, ["La EPS es ", (EPS, {"b": True}),
+               " y cubre a los tres. Una sola entidad para toda la planta simplifica el reporte de "
+               "novedades y la verificación de pagos. Las demás opciones del mercado local son estas, "
+               "que el esqueleto pide enunciar aunque no se usen:"])
+    for t in ["Nueva EPS.",
+              "Sanitas.",
+              "Compensar EPS."]:
         bullet(doc, t)
-    rich(doc, ["La empresa podría cambiar de EPS en cualquier momento, pero no debería hacerlo sin "
-               "razón: cada cambio implica reportar novedad, verificar la continuidad de los "
-               "tratamientos en curso y comprobar que no se interrumpa una incapacidad. Con tres "
-               "trabajadores el trámite es sencillo; el riesgo es olvidarlo."])
+    rich(doc, ["Cambiar de EPS no es difícil con tres trabajadores. El riesgo es hacerlo por "
+               "descarte. Cada cambio obliga a reportar novedad, verificar que no se interrumpa una "
+               "incapacidad en curso y confirmar que el trabajador siga en tratamiento. Si hay una "
+               "incapacidad abierta, el cambio puede costar semanas de pago."])
 
     h(doc, 2, "1.4 Prestaciones reconocidas por la EPS")
-    rich(doc, ["El plan obligatorio de salud cubre a los cotizantes y a su núcleo familiar. Aplicado "
-               "a la planta de %s, el inventario es el siguiente:" % RAZON])
+    rich(doc, ["Las que se han causado en la planta son las del cuadro. La única con problema es la "
+               "licencia de paternidad, y el problema no es de reconocimiento sino de base."])
+    rich(doc, ["La EPS pagó. Pagó sobre una base que no era la que correspondía."])
     tabla(doc, ["Prestación", "Reconocida", "Observación en el caso concreto"],
           [["Atención médica", "Sí", "Consultas de medicina general y especializada por la red de "
             "la EPS"],
@@ -230,31 +233,26 @@ def salud(doc):
 
     h(doc, 2, "1.5 Caso práctico")
     p(doc, "Situación", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["Felipe Martínez (WT-03), vendedor, solicitó el reconocimiento de la licencia de "
-               "paternidad por el nacimiento de su hijo. La empresa reportó la novedad, pero la "
-               "variación de salario se cargó en la planilla por fuera del término, de modo que la "
-               "EPS liquidó la prestación sobre una base inferior al 100 % del IBC."])
+    rich(doc, ["Felipe Martínez, el vendedor, tuvo un hijo y pidió la licencia de paternidad. La "
+               "empresa reportó la novedad, pero la variación de salario entró a la planilla después "
+               "del término y la EPS liquidó sobre la base del periodo anterior, que era más baja."])
     p(doc, "Hechos", bold=True, size=11, space_before=6, space_after=3)
     for i, t in enumerate([
-        "El trabajador informó del nacimiento y aportó el registro civil de nacimiento.",
-        "La novedad de variación salarial se reportó con extemporaneidad, y la EPS tomó como base el "
-        "IBC del periodo anterior.",
-        "La diferencia entre lo reconocido y lo que correspondía asciende a %s." % money(412000),
-        "La empresa pagó la licencia en la nómina, de modo que la suma quedó a su cargo y no fue "
-        "recobrada ante la EPS.",
+        "El trabajador avisó del nacimiento y entregó el registro civil.",
+        "La novedad de variación salarial se reportó tarde y la EPS tomó el IBC anterior.",
+        "La diferencia entre lo reconocido y lo que correspondía es de %s." % money(412000),
+        "La empresa pagó la licencia en la nómina, así que el faltante quedó de su bolsillo y nunca "
+        "lo recobró.",
     ], 1):
         bullet(doc, t)
     p(doc, "Solución jurídica", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["La licencia de paternidad es una prestación económica del sistema de salud y equivale "
-               "al 100 % del IBC del periodo, conforme a los artículos 236 del Código Sustantivo del "
-               "Trabajo y 6 de la Ley 2114 de 2021. Si la base se liquidó mal por una novedad "
-               "tardía, el camino no es asumir la diferencia en silencio: se solicita la "
-               "reliquidación ante la EPS, se corrige la novedad en la planilla y, si la entidad "
-               "niega, se reclama y se agota la vía."])
-    rich(doc, ["Nótese dónde está el error. No está en el derecho aplicable, que la empresa conoce y "
-               "aplica: pagó la licencia. Está en el procedimiento, en la fecha del reporte. Es el "
-               "patrón de todo el diagnóstico: se cumple, pero sin la prueba de haber cumplido a "
-               "tiempo."])
+    rich(doc, ["La licencia de paternidad equivale al 100 % del IBC del periodo, según los artículos "
+               "236 del Código Sustantivo del Trabajo y 6 de la Ley 2114 de 2021. Si la base quedó "
+               "mal por un reporte tardío, no se asume en silencio: se pide la reliquidación a la "
+               "EPS, se corrige la novedad en la planilla y, si la entidad dice que no, se reclama."])
+    rich(doc, ["El error no está en el derecho. La empresa conoce la norma y pagó la licencia. Está "
+               "en la fecha del reporte. Y ese es el patrón de todo el diagnóstico: se cumple, pero "
+               "no queda prueba de haber cumplido a tiempo."])
 
 
 # ------------------------------------------------- 2. riesgos laborales
@@ -263,83 +261,83 @@ def riesgos(doc):
     h(doc, 1, "2. RIESGOS LABORALES")
 
     h(doc, 2, "2.1 Identificación de la clase de riesgo")
-    rich(doc, ["La actividad declarada ante el Registro Único Tributario y ante la Secretaría de Salud "
-               "de Soacha es la ",
+    rich(doc, ["Actividad económica: ",
                ("CIIU 4759", {"b": True}),
                ", comercio al por menor de otros artículos domésticos en establecimientos "
-               "especializados. La tabla del Decreto 768 de 2022 ubica la subactividad 4759-01 en ",
-               ("clase I", {"b": True}),
-               ", con tarifa inicial del 0,522 % del IBC, y su descripción menciona expresamente el "
-               "comercio de extintores. En el papel, la clasificación está bien puesta."])
-    rich(doc, ["El problema aparece cuando se compara el papel con el local. En el mismo "
-               "establecimiento se recargan cilindros a presión, se les hace prueba hidrostática y se "
-               "manipulan agentes limpios; eso no es comercio, es una actividad industrial de riesgo "
-               "mayor, y la propia acta sanitaria 028-050164-26 la observó en la visita del "
-               "09/09/2026. Mantener la clase I abarata la cotización mensual y, al mismo tiempo, "
-               "deja abierta la discusión sobre la cobertura el día del siniestro."])
-    p(doc, "Justificación de la clase asignada y de su revisión", bold=True, size=11,
-      space_before=6, space_after=3)
-    for t in ["Clase declarada: I (mínimo), código de actividad 1475901, tarifa 0,522 % del IBC.",
-              "Fundamento de la declaración: CIIU 4759 y descripción expresa del comercio de "
-              "extintores en el Decreto 768 de 2022.",
-              "Razón para revisarla: la recarga y la prueba hidrostática de cilindros presurizados "
-              "no están descritas en la subactividad 4759-01.",
-              "Consecuencia económica de un cambio a clase II: la tarifa pasa del 0,522 %% al "
-              "1,044 %%, es decir, de %s a %s mensuales sobre el IBC actual."
-              % (money(APORTE_ARL), money(IBC_TOTAL * TARIFAS["II"])),
-              "Conducta recomendada: consulta escrita a la ARL, con la descripción del proceso, y "
-              "decisión documentada. No reclasificar por miedo ni quedarse por comodidad."]:
+               "especializados, que es lo que la empresa declaró en el RUT y lo que reportó a la "
+               "Secretaría de Salud de Soacha. La tabla del Decreto 768 de 2022 pone la subactividad "
+               "4759-01 en clase I, tarifa inicial del 0,522 %, y su descripción menciona el comercio "
+               "de extintores. Con ese papel en la mano, la clasificación está bien puesta."])
+    p(doc, "Justificación", bold=True, size=11, space_before=6, space_after=3)
+    rich(doc, ["El problema está en el local, no en el código. En el mismo establecimiento se "
+               "recargan cilindros a presión, se les hace prueba hidrostática y se manipulan agentes "
+               "limpios. Eso es una actividad industrial de riesgo mayor, no comercio, y la propia acta "
+               "028-050164-26 lo observó en la visita del 9 de septiembre de 2026."])
+    rich(doc, ["La discusión, entonces, es de hecho y no de tarifa."])
+    rich(doc, ["Quedarse en clase I ahorra %s al mes. Pasar a clase II costaría %s más. Ninguna de "
+               "las dos cifras decide nada por sí sola: lo que decide es qué pasó el día del "
+               "siniestro y si la ARL va a discutir la cobertura."
+               % (money(APORTE_ARL),
+                  money(IBC_TOTAL * (TARIFAS["II"] - TARIFAS["I"])))])
+    for t in ["Clase declarada: I, código de actividad 1475901, tarifa 0,522 % del IBC.",
+              "Con qué se sostiene: CIIU 4759 y la mención expresa del comercio de extintores en el "
+              "Decreto 768 de 2022.",
+              "Por qué es discutible: la recarga y la prueba hidrostática no están descritas en la "
+              "subactividad 4759-01.",
+              "Qué hacer: consulta escrita a la ARL con la descripción del proceso, y decisión "
+              "documentada. Ni reclasificar por miedo ni quedarse por comodidad."]:
         bullet(doc, t)
 
     h(doc, 2, "2.2 ARL")
-    rich(doc, ["La administradora de riesgos laborales identificada es ",
-               (ARL + ", código de actividad 1475901, clase de riesgo I", {"b": True}),
-               ". El sistema se financia solo con el aporte del empleador, que en este caso es de %s "
-               "mensuales. La afiliación está vigente y los aportes al día, lo cual es una buena "
-               "noticia con una advertencia: en riesgos laborales, estar afiliado no es lo mismo que "
-               "estar protegido. La ARL cubre el riesgo; no cubre la culpa del empleador, y esa "
-               "diferencia es la que se examina en el numeral 2.4." % money(APORTE_ARL)])
-    rich(doc, ["La cobertura es doble: prestaciones asistenciales (atención médica, quirúrgica, "
-               "farmacéutica, hospitalización, prótesis, rehabilitación) y económicas (subsidio por "
-               "incapacidad temporal, indemnización por incapacidad permanente parcial, pensión de "
-               "invalidez, pensión de sobrevivientes y auxilio funerario). Las primeras las presta la "
-               "red de la ARL. Las segundas se liquidan sobre el IBC."])
+    rich(doc, ["La ARL es ", (ARL + ", código 1475901, clase I", {"b": True}),
+               ", y el aporte es de %s al mes, todo a cargo de la empresa: en riesgos laborales el "
+               "trabajador no aporta nada. La afiliación está vigente y los pagos al día. Eso es "
+               "bueno y, a la vez, engañoso, porque estar afiliado no es estar protegido. La ARL "
+               "cubre el riesgo. No cubre la culpa del empleador. Esa diferencia es la que se ve en "
+               "el numeral 2.4." % money(APORTE_ARL)])
+    rich(doc, ["Estar afiliado es obligatorio. Estar protegido es otra cosa."])
+    rich(doc, ["La cobertura tiene dos mitades que casi nadie separa bien."])
+    rich(doc, ["La asistencial es la atención: médica, quirúrgica, farmacéutica, hospitalización, "
+               "prótesis y rehabilitación, y la paga la red de la ARL. La económica es el subsidio por "
+               "incapacidad temporal, la indemnización por incapacidad permanente parcial, las "
+               "pensiones de invalidez y sobrevivientes y el auxilio funerario; todo eso se liquida "
+               "sobre el IBC."])
 
     h(doc, 2, "2.3 Caso de accidente laboral")
     p(doc, "Descripción de los hechos", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["El 12 de agosto de 2026, Luis Antonio Aguilar Rodríguez (WT-02, C.C. 1073694256), "
-               "técnico de recarga y único operario de la planta, ejecutaba la prueba hidrostática de "
-               "un extintor de agente limpio con veinte años de servicio. Al accionar la válvula, el "
-               "cilindro se la desprendió por corrosión y se la proyectó contra la mano derecha. "
-               "Resultado: fractura conminuta de los dedos índice y medio y lesión del tendón flexor."])
-    rich(doc, ["Cuatro condiciones estaban dadas antes del accidente y las cuatro son del empleador: "
-               "no había guantes antifallo, el cilindro no estaba anclado al banco de prueba, el "
-               "procedimiento de trabajo no se había actualizado y la certificación del trabajador "
-               "para manipular cilindros presurizados estaba vencida desde noviembre de 2025."])
-    rich(doc, ["El trabajador hizo la tarea que le pidieron, con los medios que le dieron. El reporte "
-               "a la ARL se hizo el 17 de agosto, cinco días después."])
+    rich(doc, ["El 12 de agosto de 2026, Luis Antonio Aguilar estaba haciendo la prueba hidrostática "
+               "de un extintor de agente limpio con veinte años de servicio. Es el único técnico de "
+               "recarga de la planta. Al accionar la válvula, el cilindro se la desprendió por "
+               "corrosión y se la proyectó contra la mano derecha: fractura conminuta de los dedos "
+               "índice y medio y lesión del tendón flexor."])
+    rich(doc, ["Antes del accidente ya faltaban cuatro cosas, y las cuatro eran del empleador. No "
+               "había guantes antifallo. El cilindro no estaba anclado al banco de prueba. El "
+               "procedimiento no se había actualizado. Y la certificación del trabajador para "
+               "manipular cilindros presurizados estaba vencida desde noviembre de 2025."])
+    rich(doc, ["Él hizo la tarea que le pidieron con los medios que le dieron. El reporte a la ARL se "
+               "radicó el 17 de agosto, cinco días después."])
     p(doc, "Derechos del trabajador", bold=True, size=11, space_before=6, space_after=3)
-    for t in ["Atención médica integral, sin copagos ni cuotas moderadoras, a cargo de la ARL.",
-              "Subsidio por incapacidad temporal equivalente al 100 % del IBC, desde el día "
-              "siguiente al accidente.",
+    for t in ["Atención médica integral, sin copagos ni cuotas moderadoras.",
+              "Subsidio del 100 % del IBC desde el día siguiente al accidente.",
               "Calificación del origen y del porcentaje de pérdida de capacidad laboral.",
-              "Indemnización por incapacidad permanente parcial, si hay pérdida igual o superior al "
-              "5 %.",
-              "Reubicación laboral cuando exista disminución de capacidad.",
-              "Indemnización plena de perjuicios si se acredita culpa del empleador."]:
+              "Indemnización por incapacidad permanente parcial si la pérdida llega al 5 %.",
+              "Reubicación laboral si queda con capacidad disminuida.",
+              "Indemnización plena de perjuicios si se prueba culpa del empleador."]:
         bullet(doc, t)
     p(doc, "Prestaciones económicas y asistenciales", bold=True, size=11, space_before=6,
       space_after=3)
-    rich(doc, ["Con el salario base de cotización de %s y una incapacidad de 42 días, el subsidio "
-               "asciende a %s. Si la calificación reconoce una pérdida del 14 %% de la capacidad "
-               "laboral, la indemnización por incapacidad permanente parcial equivale a 14 %% × 24 × "
-               "IBC, es decir %s. La reparación tarifada a cargo de la ARL suma %s."
+    rich(doc, ["Con un salario base de %s y 42 días de incapacidad, el subsidio es de %s. Si la "
+               "calificación reconoce un 14 %% de pérdida, la indemnización por incapacidad "
+               "permanente parcial es 14 %% × 24 × IBC, o sea %s. Entre las dos, la reparación "
+               "tarifada que paga la ARL llega a %s."
                % (money(WT02["ibc"]), money(WT02["ibc"] / 30 * 42), money(0.14 * 24 * WT02["ibc"]),
                   money(TARIFADA))])
     tabla(doc, ["Concepto", "Fórmula", "Valor"],
-          [["Salario base de cotización de WT-02", "Base del periodo", money(IBL_P03)],
-           ["Subsidio por incapacidad temporal (42 días)", "IBC ÷ 30 × 42", money(WT02["ibc"] / 30 * 42)],
-           ["Indemnización por IPP (14 % de pérdida)", "14 % × 24 × IBC", money(0.14 * 24 * WT02["ibc"])],
+          [["Salario base de cotización de WT-02", "Base del periodo", money(WT02["ibc"])],
+           ["Subsidio por incapacidad temporal (42 días)", "IBC ÷ 30 × 42",
+            money(WT02["ibc"] / 30 * 42)],
+           ["Indemnización por IPP (14 % de pérdida)", "14 % × 24 × IBC",
+            money(0.14 * 24 * WT02["ibc"])],
            [("Total de la reparación tarifada", {"b": True}), "",
             (money(TARIFADA), {"b": True})]],
           [7.6, 5.0, 3.4], size=8.8, align_centro=[2],
@@ -348,35 +346,32 @@ def riesgos(doc):
     h(doc, 2, "2.4 Culpa patronal")
     p(doc, "¿Hubo incumplimiento del empleador?", bold=True, size=11, space_before=6, space_after=3)
     rich(doc, [("Sí.", {"b": True}),
-               " De los siete deberes de seguridad verificados en el expediente, seis están "
-               "incumplidos: entrega de elementos de protección, capacitación y certificación para "
-               "tareas críticas, procedimientos actualizados, controles de ingeniería en el banco de "
-               "prueba, reporte oportuno del accidente e investigación con participación del "
-               "trabajador. El único cumplido es la afiliación y el pago de aportes."])
+               " De siete deberes de seguridad revisados, seis están incumplidos: entrega de "
+               "elementos de protección, capacitación y certificación, procedimientos actualizados, "
+               "controles en el banco de prueba, reporte oportuno e investigación con el trabajador. "
+               "El único que se cumple es la afiliación y el pago de aportes."])
     p(doc, "Argumentación", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["El artículo 216 del Código Sustantivo del Trabajo obliga al empleador a la "
-               "«indemnización total y ordinaria por perjuicios» cuando exista culpa suficientemente "
-               "comprobada en la ocurrencia del accidente, con descuento de lo que la ARL haya "
-               "pagado. La culpa exigible es la leve, la del artículo 63 del Código Civil: no hace "
-               "falta dolo ni culpa grave, basta la omisión de la diligencia ordinaria. Y la "
-               "jurisprudencia de la Sala de Casación Laboral admite que, probada la omisión de un "
-               "deber de seguridad, la carga de demostrar diligencia pasa al empleador."])
-    rich(doc, ["Aquí el empleador no tiene con qué demostrarla, y además la omisión es causal: con el "
-               "cilindro anclado, con los guantes adecuados y con la certificación vigente, el "
-               "desprendimiento no habría producido esa lesión. Tampoco hay culpa exclusiva de la "
-               "víctima, que es la única defensa viable en este escenario: el trabajador no hizo una "
-               "maniobra prohibida, hizo la tarea que le pidieron con los medios que le dieron."])
-    rich(doc, ["La prueba más pesada no viene de la auditoría sino de la autoridad sanitaria. El acta "
-               "028-050164-26 consignó que ",
+    rich(doc, ["El artículo 216 del Código Sustantivo del Trabajo obliga a la «indemnización total y "
+               "ordinaria por perjuicios» cuando hay culpa suficientemente comprobada, y ordena "
+               "descontar lo que la ARL ya pagó. La culpa que se exige es la leve, la del artículo 63 "
+               "del Código Civil: no hace falta dolo ni culpa grave, basta con no haber tenido la "
+               "diligencia ordinaria. Y la Sala de Casación Laboral acepta que, probada la omisión de "
+               "un deber de seguridad, a quien le toca demostrar diligencia es al empleador."])
+    rich(doc, ["Aquí no tiene con qué."])
+    rich(doc, ["Y la omisión es causal: con el cilindro anclado, con los guantes y con la "
+               "certificación vigente, el desprendimiento no habría producido esa "
+               "lesión. Tampoco hay culpa exclusiva de la víctima, que es la única defensa que "
+               "quedaría en pie: el trabajador no hizo una maniobra prohibida, hizo su trabajo."])
+    rich(doc, ["La prueba más difícil de rebatir no sale de este informe. Sale del acta "
+               "028-050164-26, donde una funcionaria identificada, con número de acta y constancia "
+               "de notificación, escribió que ",
                ("«no se evidencia documento de sistemas de seguridad y salud en el trabajo»", {"b": True}),
-               ", y lo consignó una funcionaria identificada, con número de acta y constancia de "
-               "notificación. La ausencia del sistema no hay que demostrarla: está demostrada."])
-    rich(doc, ["En dinero, la diferencia es esta: la reparación tarifada del sistema asciende a %s, "
-               "mientras que la reparación plena, en liquidación ilustrativa que incluye daño "
-               "emergente, lucro cesante y perjuicio moral, llega a %s. El excedente, %s, no lo paga "
-               "una aseguradora: lo paga la empresa y, siendo persona natural, el patrimonio de la "
-               "titular. Una condena de ese tamaño se come veinte años del ahorro que produce una "
-               "tarifa baja de riesgos laborales."
+               ". La ausencia del sistema no hay que demostrarla. Está demostrada, con fecha."])
+    rich(doc, ["En plata: la reparación tarifada son %s y la reparación plena, en la liquidación "
+               "ilustrativa que incluye daño emergente, lucro cesante y perjuicio moral, llega a %s. "
+               "El excedente son %s que no paga ninguna aseguradora. Los paga la empresa y, como es "
+               "persona natural, los paga el patrimonio de la titular. Esa cifra equivale a más de "
+               "veinte años del ahorro que produce una tarifa baja de riesgos laborales."
                % (money(TARIFADA), money(REPARACION_PLENA), money(NETO_EMPLEADOR))])
 
 
@@ -386,28 +381,25 @@ def pensiones(doc):
     h(doc, 1, "3. PENSIONES")
 
     h(doc, 2, "3.1 Situación pensional de los trabajadores")
-    rich(doc, ["Dos trabajadores están en el Régimen Solidario de Prima Media con Prestación Definida, "
-               "administrado por Colpensiones, y uno en el Régimen de Ahorro Individual con "
-               "Solidaridad, administrado por una AFP privada. La distribución es la siguiente:"])
+    rich(doc, ["Dos están en prima media y uno en ahorro individual. Esa es toda la distribución."])
+    rich(doc, ["Con tres personas no tiene sentido hablar de promedios: cada historia laboral es un "
+               "tercio de la planta, y una semana mal reportada cambia el régimen de alguien."])
     p(doc, "Trabajadores afiliados a Colpensiones", bold=True, size=11, space_before=6, space_after=3)
-    for t in ["Julia Inés Buitrago García (WT-01), gerente y titular de la empresa.",
+    for t in ["Julia Inés Buitrago García (WT-01), gerente y titular.",
               "Felipe Martínez (WT-03), vendedor.",
-              "En ambos casos la historia laboral está pendiente de certificación con corte a la "
-              "fecha, y esa verificación es la que determina si completan las semanas exigidas."]:
+              "Falta certificar las dos historias laborales con corte a la fecha, que es lo que "
+              "define si completan las semanas."]:
         bullet(doc, t)
     p(doc, "Trabajadores afiliados a AFP privadas", bold=True, size=11, space_before=6, space_after=3)
-    for t in ["Luis Antonio Aguilar Rodríguez (WT-02), técnico de recarga, afiliado a Porvenir en el "
-              "Régimen de Ahorro Individual desde 1997.",
-              "Es el único caso con traslado de régimen y, por eso, el que se analiza en los "
-              "numerales 3.2 y 3.3."]:
+    for t in ["Luis Antonio Aguilar Rodríguez (WT-02), técnico de recarga, en Porvenir desde 1997.",
+              "Es el único con traslado de régimen y, por eso, el único que se analiza en 3.2 y 3.3."]:
         bullet(doc, t)
-    rich(doc, ["Sobre la reforma pensional conviene fijar la fecha, porque es la fuente de casi todos "
-               "los errores recientes. La Ley 2381 de 2024, que reorganiza el sistema en cuatro "
-               "pilares, entra en vigencia el ",
+    rich(doc, ["Sobre la reforma pensional hay que fijar una fecha, porque de ahí salen casi todos los "
+               "errores que circulan. La Ley 2381 de 2024, la de los cuatro pilares, rige desde el ",
                ("1.º de abril de 2027", {"b": True}),
-               ", según el calendario que fijó la Sentencia C-264 de 2026. Hasta entonces rige la Ley "
-               "100 de 1993. Un informe que en 2026 liquide una pensión con las reglas de la Ley "
-               "2381 está aplicando una ley que todavía no produce efectos."])
+               ", según el calendario de la Sentencia C-264 de 2026. Hasta ese día manda la Ley 100 "
+               "de 1993. Un trabajo que en 2026 liquide una pensión con la Ley 2381 está aplicando "
+               "una ley que todavía no existe para estos efectos."])
 
     h(doc, 2, "3.2 Caso práctico de pensión")
     tabla(doc, ["Dato del trabajador", "Contenido"],
@@ -419,18 +411,19 @@ def pensiones(doc):
            ["Ingreso base de liquidación de referencia", money(IBL_P03)]],
           [6.4, 9.6], size=8.8, titulo="Tabla 6. Datos del caso pensional")
     p(doc, "Posibilidad de acceder a la pensión", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["En prima media, la pensión de vejez exige 57 años si es mujer y 62 si es hombre, y "
-               "1.300 semanas. Con 1.150 semanas, faltan 150, que a razón de 52 semanas por año son "
-               "cerca de tres años de cotización. Es decir: el requisito de semanas no está cumplido "
-               "hoy, pero es alcanzable antes de la edad si el trabajador sigue cotizando."])
-    rich(doc, ["La comparación económica es la que decide el caso. En prima media, con una tasa de "
-               "reemplazo del 65,5 %% sobre un IBL de %s, la mesada sería de %s. En ahorro individual, "
-               "el capital de %s financiaría unos %s mensuales, por debajo del salario mínimo, de modo "
-               "que el afiliado dependería del Fondo de Garantía de Pensión Mínima y recibiría %s. La "
-               "diferencia es de %s mensuales, que a veinte años de disfrute suman %s."
+    rich(doc, ["En prima media la pensión de vejez pide 62 años a los hombres y 1.300 semanas. Con "
+               "1.150 faltan 150, que son unos tres años de cotización. Hoy no cumple; si sigue "
+               "cotizando, cumple antes de la edad. Ese no es el problema."])
+    rich(doc, ["El problema es la mesada. En prima media, con 65,5 %% de tasa de reemplazo sobre un "
+               "IBL de %s, serían %s. En ahorro individual, el capital de %s alcanza para unos %s al "
+               "mes, por debajo del mínimo, así que el afiliado terminaría en el Fondo de Garantía de "
+               "Pensión Mínima con %s. La diferencia son %s mensuales. A veinte años de disfrute, %s."
                % (money(IBL_P03), money(MESADA_RPM), money(CAPITAL_RAIS),
                   money(MESADA_RAIS_SIN_GARANTIA), money(SMLMV), money(DIF_MENSUAL),
                   money(DIF_MENSUAL * 12 * 20))])
+    rich(doc, ["Esa diferencia es la consecuencia, no la causa. El caso no se gana porque el fondo "
+               "pague poco. Se gana porque nadie le explicó lo que firmaba, y eso se ve en el numeral "
+               "siguiente."])
     tabla(doc, ["Escenario", "Cálculo", "Mesada mensual"],
           [["Prima Media (Colpensiones)", "%s × 65,5 %%" % money(IBL_P03), money(MESADA_RPM)],
            ["Ahorro Individual sin garantía", "%s ÷ (20 años × 12 meses)" % money(CAPITAL_RAIS),
@@ -443,38 +436,34 @@ def pensiones(doc):
 
     h(doc, 2, "3.3 Ineficacia del traslado pensional")
     p(doc, "Situación planteada", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["Luis Antonio se trasladó al Régimen de Ahorro Individual en 1997, a los 27 años, "
-               "después de una visita de un asesor comercial que le dijo que en el fondo privado se "
-               "pensionaría con una mesada mucho mayor. Firmó un formulario que ya traía impresa la "
-               "frase «me afilio libre y voluntariamente». No conserva copia, no recibió simulación y "
-               "no suscribió acta de doble asesoría."])
+    rich(doc, ["Luis Antonio se pasó al fondo privado en 1997, a los 27 años. Un asesor comercial lo "
+               "visitó y le dijo que allá se pensionaría con una mesada mucho mayor. Firmó un "
+               "formulario que ya traía impresa la frase «me afilio libre y voluntariamente». No "
+               "tiene copia, nunca recibió una simulación y no firmó acta de doble asesoría."])
+    rich(doc, ["Veintinueve años después, esa diferencia vale %s al mes." % money(DIF_MENSUAL)])
     p(doc, "Análisis jurídico", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["Aquí no hace falta adjetivar. El trabajador está en el fondo privado desde 1997 y "
-               "nadie le explicó lo que firmaba."])
-    rich(doc, ["La pregunta es concreta: ese traslado, ¿produjo efectos? La respuesta se construye con "
-               "los criterios de la ",
+    rich(doc, ["La pregunta es una sola: ese traslado, ¿produjo efectos? Se responde con la ",
                ("Sentencia SU-107 de 2024", {"b": True}),
-               ", que unificó la materia. El deber de información existe desde la creación de las "
-               "administradoras; el consentimiento del formulario no basta, porque se exige "
-               "consentimiento informado; la carga de la prueba se reparte, de modo que el afiliado "
-               "aporta indicios del déficit y la AFP debe demostrar que informó y asesoró; y no hace "
-               "falta estar cerca de la pensión ni tener un derecho consolidado, porque el vicio está "
-               "en el acto mismo de traslado. La Sala de Casación Laboral había dicho lo mismo con "
-               "otras palabras: «es a la AFP a quien le corresponde acreditar el cumplimiento del "
-               "deber de información […] pues exigir al afiliado una prueba de este alcance es un "
-               "despropósito» (SL3179-2023)."])
-    rich(doc, ["Aplicado al caso, el resultado es claro. No hay soporte de asesoría, la AFP no "
-               "conserva simulación ni acta, y el único documento que existe es un formulario con "
-               "cláusula preimpresa. Eso configura el déficit de información y, con él, la "
-               "ineficacia: el traslado se tiene por no celebrado y el afiliado vuelve a prima media "
-               "como si nunca se hubiera ido, con las 1.150 semanas computadas íntegramente. La AFP "
-               "debe trasladar el capital, los rendimientos, las comisiones y las primas, sin "
-               "descontar nada al afiliado."])
-    rich(doc, ["Hay una precisión de tiempo que cambia la estrategia. La oportunidad administrativa "
-               "de traslado del artículo 76 de la Ley 2381 de 2024 venció en julio de 2026, y la "
-               "ventana de la Ley 1748 de 2014 se cerró hace años. Queda la vía judicial, y hoy es "
-               "el único camino para volver a prima media antes del 1.º de abril de 2027. Después de "
-               "esa fecha el cálculo se complica, porque cambia la base del régimen aplicable."])
+               ", que unificó la materia y dejó cuatro reglas. Primera: el deber de informar existe "
+               "desde que se crearon las administradoras, y con los años se volvió más exigente. "
+               "Segunda: el consentimiento del formulario no sirve, tiene que ser informado. Tercera: "
+               "la carga se reparte, el afiliado aporta indicios y la AFP demuestra que informó y "
+               "asesoró. Cuarta: no hace falta estar cerca de la pensión ni tener un derecho "
+               "consolidado, porque el vicio está en el acto mismo de traslado."])
+    rich(doc, ["La Corte Suprema había llegado antes al mismo sitio, y con mejores palabras: «es a la "
+               "AFP a quien le corresponde acreditar el cumplimiento del deber de información […] "
+               "pues exigir al afiliado una prueba de este alcance es un despropósito» "
+               "(SL3179-2023). El que tiene los papeles es la administradora. Ese es el detalle que "
+               "decide estos casos."])
+    rich(doc, ["En el caso no hay soporte de asesoría, no hay simulación y el único documento es un "
+               "formulario con cláusula preimpresa. Con eso el traslado es ineficaz: se tiene por no "
+               "celebrado, el afiliado vuelve a prima media con las 1.150 semanas completas y el "
+               "fondo traslada el capital, los rendimientos, las comisiones y las primas sin "
+               "descontarle nada."])
+    rich(doc, ["Falta un dato de calendario que cambia la estrategia. La oportunidad administrativa "
+               "del artículo 76 de la Ley 2381 de 2024 venció en julio de 2026, y la ventana de la "
+               "Ley 1748 de 2014 se cerró hace años."])
+    rich(doc, ["Solo queda la vía judicial, y solo sirve hasta el 1.º de abril de 2027."])
 
 
 # --------------------------------------------- 4. documento jurídico
@@ -483,15 +472,19 @@ def documento(doc):
     h(doc, 1, "4. DOCUMENTO JURÍDICO")
 
     h(doc, 2, "4.1 Tipo de documento y destinatario")
-    rich(doc, ["El documento que corresponde es un ",
+    rich(doc, ["Lo que corresponde aquí es un ",
                ("derecho de petición", {"b": True}),
-               " y no una reclamación administrativa, porque el destinatario es una entidad del "
-               "sistema de seguridad social y no una entidad de la administración pública en sentido "
-               "estricto. La distinción no es formal: la reclamación administrativa previa del "
-               "artículo 6 del Código Procesal del Trabajo y de la Seguridad Social es requisito de "
-               "procedibilidad frente a entidades públicas, y su omisión es insubsanable. Frente a "
-               "una ARL, lo que se radica es un derecho de petición, y su función es fijar fecha "
-               "cierta, interrumpir la prescripción y construir la prueba de la reclamación."])
+               ", no una reclamación administrativa. La razón es quién lo recibe. La reclamación "
+               "administrativa previa del artículo 6 del Código Procesal del Trabajo y de la "
+               "Seguridad Social es requisito de procedibilidad contra entidades públicas, y si se "
+               "omite no se sanea. Contra una ARL no aplica: se radica un derecho de petición, que "
+               "sirve para tres cosas a la vez: fijar fecha cierta, interrumpir la prescripción y "
+               "dejar armada la prueba de que uno reclamó."])
+    rich(doc, ["Equivocarse en eso cuesta el caso. Si se radica una «reclamación administrativa "
+               "previa» contra un particular, el escrito no suspende la prescripción. Si se demanda a "
+               "una entidad pública sin reclamación previa, la demanda se rechaza. Por eso lo primero "
+               "que hay que decidir es a quién se le escribe, no qué se alega."])
+    rich(doc, ["Con tres trabajadores, un error de ese tipo cuesta el caso entero."])
     tabla(doc, ["Campo del esqueleto", "Contenido"],
           [["Tipo de documento", "Derecho de petición de interés particular"],
            ["Destinatario", "%s, oficina de atención al usuario" % ARL],
@@ -555,10 +548,8 @@ def documento(doc):
         bullet(doc, t)
 
     h(doc, 2, "4.4 Firma")
-    rich(doc, ["El escrito se suscribe por la representante legal, con indicación de la cédula, el "
-               "carácter con que actúa y los datos de notificación. En el documento anexo al presente "
-               "informe se incluye el modelo completo, listo para radicación, con los datos de la "
-               "empresa ya diligenciados."])
+    rich(doc, ["Firma la representante legal, con cédula, carácter y datos de notificación. El texto "
+               "completo del escrito va en el archivo aparte que acompaña este trabajo."])
     p(doc, "", space_after=14)
     linea_horizontal(doc, color="9AA4B1", sz=4, space_after=2)
     p(doc, AUTORA, size=11, bold=True, space_after=0)
@@ -569,72 +560,63 @@ def documento(doc):
     h(doc, 2, "4.5 Juez competente")
     p(doc, "Autoridad competente", bold=True, size=11, space_before=6, space_after=3)
     rich(doc, [("Juzgado Laboral del Circuito de Soacha", {"b": True}),
-               ", en primera instancia. La competencia se fija por cuatro factores que se aplican en "
-               "orden: materia, territorio, cuantía y función."])
+               ", en primera instancia. La competencia se decide con cuatro factores, en este orden: "
+               "materia, territorio, cuantía y función."])
     p(doc, "Justificación", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["Por la materia, el artículo 2 del C.P.T.S.S. atribuye a la jurisdicción ordinaria "
-               "laboral las controversias del sistema de seguridad social integral «cualquiera que "
-               "sea la naturaleza de la relación jurídica y de los actos jurídicos que se "
-               "controviertan», y ese giro resuelve casi todo el problema: prestaciones de la ARL, "
-               "reliquidación de aportes y traslado pensional van al juez laboral, no al "
-               "administrativo."])
-    rich(doc, ["Por el territorio, el artículo 11 del C.P.T.S.S. consagra un fuero concurrente: el "
-               "lugar del domicilio de la entidad demandada o el lugar donde se surtió la "
-               "reclamación, a elección del demandante. Como la reclamación se radicó en Soacha, el "
-               "circuito competente es el de Soacha y no el de Bogotá."])
-    rich(doc, ["Por la cuantía, el artículo 12 del C.P.T.S.S., modificado por la Ley 1395 de 2010, "
-               "traza la raya en veinte salarios mínimos, que para 2026 son %s. Las pretensiones del "
-               "caso la superan con holgura: la diferencia de mesadas asciende a %s y la reparación "
-               "plena a %s, de modo que el asunto corresponde al juez del circuito en única "
-               "instancia." % (money(TOPE_CUANTIA), money(DIF_MENSUAL * 12 * 20),
-                               money(REPARACION_PLENA))])
-    rich(doc, ["Por la función, con el juzgado del circuito en primera instancia, la apelación va al "
-               "Tribunal Superior del Distrito Judicial de Cundinamarca, Sala Laboral, y la casación "
-               "a la Sala de Casación Laboral de la Corte Suprema cuando la cuantía lo permita."])
+    rich(doc, ["Por materia, el artículo 2 del C.P.T.S.S. le da a la jurisdicción laboral las "
+               "controversias de seguridad social integral «cualquiera que sea la naturaleza de la "
+               "relación jurídica y de los actos jurídicos que se controviertan». Ese «cualquiera que "
+               "sea» resuelve casi todo: prestaciones de la ARL, reliquidación de aportes y traslado "
+               "pensional van al juez laboral, no al administrativo."])
+    rich(doc, ["Por territorio, el artículo 11 del mismo código consagra un fuero concurrente: el "
+               "domicilio de la entidad demandada o el lugar donde se surtió la reclamación, y elige "
+               "el demandante. Como la reclamación se radicó en Soacha, el circuito es el de Soacha "
+               "y no el de Bogotá."])
+    rich(doc, ["Por cuantía, el artículo 12, modificado por la Ley 1395 de 2010, traza la raya en "
+               "veinte salarios mínimos, que para 2026 son %s. Las pretensiones la pasan de largo: "
+               "la diferencia de mesadas llega a %s y la reparación plena a %s. Es asunto de juez del "
+               "circuito en única instancia."
+               % (money(TOPE_CUANTIA), money(DIF_MENSUAL * 12 * 20), money(REPARACION_PLENA))])
+    rich(doc, ["Por función, la apelación va al Tribunal Superior del Distrito Judicial de "
+               "Cundinamarca, Sala Laboral, y la casación a la Sala de Casación Laboral de la Corte "
+               "Suprema, cuando la cuantía lo permita."])
 
 
 # ------------------------------------------- conclusiones y referencias
 def conclusiones(doc):
     salto_pagina(doc)
     h(doc, 1, "CONCLUSIONES")
-    rich(doc, ["Tres conclusiones, en orden de urgencia."])
 
-    p(doc, "Conclusión 1 · la afiliación está bien y la evidencia no", bold=True, size=11,
+    p(doc, "Conclusión 1 · la afiliación está bien; la prueba no", bold=True, size=11,
       space_before=8, space_after=3)
     rich(doc, ["Los tres trabajadores están afiliados a %s, a %s y a %s, la planilla está al día y el "
-               "IBC se liquida sobre el salario real, sin sumar el auxilio de transporte. Eso se "
-               "cumple. Lo que falla es la prueba: la novedad de la licencia de paternidad se reportó "
-               "tarde y dejó una diferencia de %s; la exoneración del artículo 114-1 del Estatuto "
-               "Tributario aplica pero no hay acta que verifique el umbral; y el acta sanitaria "
-               "028-050164-26 encontró en blanco los campos de trabajadores afiliados. En una "
-               "empresa de tres personas eso se corrige en una tarde de archivo, y es la corrección "
-               "más rentable de todo el plan."
+               "IBC se liquida sobre el salario real. Eso se cumple. Lo que falla es el soporte. La "
+               "novedad de la licencia de paternidad se reportó tarde y dejó %s sin recobrar. La "
+               "exoneración del artículo 114-1 del E.T. aplica, pero no hay acta que verifique el "
+               "umbral. Y el acta sanitaria dejó en blanco los campos de trabajadores afiliados. Es "
+               "la corrección más barata del trabajo: una tarde de archivo."
                % (EPS, ARL, CAJA, money(412000))])
 
-    p(doc, "Conclusión 2 · el riesgo real está en el SG-SST, no en la tarifa", bold=True, size=11,
+    p(doc, "Conclusión 2 · el riesgo está en el SG-SST, no en la tarifa", bold=True, size=11,
       space_before=8, space_after=3)
-    rich(doc, ["La clase de riesgo I es defendible en el papel y discutible en el local, pero la "
-               "discusión sobre la tarifa es un problema menor: pasar a clase II costaría %s "
-               "mensuales más. El problema mayor es otro. No existe sistema de gestión de seguridad y "
-               "salud en el trabajo, y la autoridad sanitaria ya lo dejó por escrito. Con seis de "
-               "siete deberes incumplidos y un accidente que ocurrió, la empresa está expuesta a la "
-               "indemnización plena del artículo 216 del C.S.T.: %s frente a los %s que asume la ARL, "
-               "es decir %s que salen del patrimonio de la titular. Ahí está el argumento financiero "
-               "para invertir en prevención antes del próximo accidente y no después."
+    rich(doc, ["Que la clase I sea discutible es un problema menor: pasar a clase II costaría %s al "
+               "mes. El problema serio es que no existe sistema de gestión de seguridad y salud en el "
+               "trabajo, y no lo digo yo: lo escribió una autoridad sanitaria en un acta. Con seis de "
+               "siete deberes incumplidos y un accidente que ya ocurrió, la exposición del artículo "
+               "216 del C.S.T. es de %s, frente a los %s que paga la ARL. La diferencia, %s, sale del "
+               "patrimonio de la titular. Ese es el argumento para invertir en prevención antes del "
+               "próximo accidente."
                % (money(IBC_TOTAL * (TARIFAS["II"] - TARIFAS["I"])), money(REPARACION_PLENA),
-                  money(TARIFADA),
-                  money(NETO_EMPLEADOR))])
+                  money(TARIFADA), money(NETO_EMPLEADOR))])
 
-    p(doc, "Conclusión 3 · el caso pensional se gana por prueba, no por conveniencia", bold=True,
-      size=11, space_before=8, space_after=3)
-    rich(doc, ["Luis Antonio lleva 1.150 semanas en ahorro individual, con una mesada proyectada de "
-               "%s frente a los %s que obtendría en prima media: una diferencia de %s mensuales y de "
-               "%s en veinte años. La demanda de ineficacia del traslado no se sostiene en esa "
-               "diferencia, que es una consecuencia, sino en un hecho simple: no existe acta de doble "
-               "asesoría ni simulación entregada. La SU-107 de 2024 pone la carga de probar la "
-               "asesoría en la administradora, y si no la acredita, el traslado no produce efectos. "
-               "El plazo apremia: la reforma de la Ley 2381 de 2024 rige desde el 1.º de abril de "
-               "2027, y después de esa fecha el cálculo cambia."
+    p(doc, "Conclusión 3 · el caso pensional se gana con papeles", bold=True, size=11,
+      space_before=8, space_after=3)
+    rich(doc, ["Luis Antonio tiene 1.150 semanas en ahorro individual, con una mesada proyectada de "
+               "%s contra %s en prima media. La diferencia son %s al mes, %s en veinte años. Pero la "
+               "demanda no se sostiene en esa cifra, que es la consecuencia. Se sostiene en que no "
+               "hay acta de doble asesoría ni simulación entregada, y en que la SU-107 de 2024 pone "
+               "la carga de probar la asesoría en el fondo. Si el fondo no la acredita, el traslado "
+               "no produce efectos. Hay tiempo hasta el 1.º de abril de 2027, y no más."
                % (money(MESADA_RAIS_SIN_GARANTIA), money(MESADA_RPM), money(DIF_MENSUAL),
                   money(DIF_MENSUAL * 12 * 20))])
 

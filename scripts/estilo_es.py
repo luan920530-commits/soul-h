@@ -299,7 +299,8 @@ def reporte(r, max_frase):
               + max(0, r["estructura_binaria_n"] - 1)
               + (1 if r["cierre_con_formula"] else 0)
               + len(r["aperturas_repetidas_consecutivas"])
-              + (0 if r["parrafo_cv"] >= 0.55 else 1))
+              # con menos de 100 párrafos de prosa el coeficiente es ruidoso: se informa, no se penaliza
+              + (0 if (r["parrafo_cv"] >= 0.55 or r["parrafos_prosa"] < 100) else 1))
     if graves:
         L.append("VEREDICTO: requiere corrección")
     elif r["guiones_largos_n"]:
