@@ -1,47 +1,36 @@
 # -*- coding: utf-8 -*-
-"""Generador del informe: PROYECTO INTEGRADOR · EXTINTORES S C M (Soacha)."""
+"""Generador del trabajo final, ajustado al esqueleto entregado por el docente."""
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from docx_engine import construir_documento, encabezado_pie, normalizar_orden
-import parte1, parte2, parte3, parte4, parte5
+import esqueleto
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SALIDA = os.path.join(RAIZ, "entrega",
-                     "Auditoria_Seguridad_Social_EXTINTORES_SCM.docx")
+                      "Auditoria_Seguridad_Social_EXTINTORES_SCM.docx")
 
 
 def main():
     os.chdir(RAIZ)
     doc = construir_documento()
     encabezado_pie(doc,
-                   "Proyecto integrador · Auditoría y diagnóstico de seguridad social",
+                   "Auditoría y diagnóstico del Sistema de Seguridad Social",
                    "EXTINTORES S C M · C.C./NIT 39626936-8 · Soacha (Cundinamarca)",
                    "Julia Inés Buitrago García · Universidad INCCA de Colombia · 2026")
 
-    parte1.portada(doc)
-    parte1.contenido(doc)
-    parte1.resumen_ejecutivo(doc)
-    parte1.metodologia(doc)
-    parte1.introduccion(doc)
-    parte1.eje_i(doc)
-    parte2.eje_ii(doc)
-    parte3.eje_iii(doc)
-    parte4.eje_iv(doc)
-    parte5.capitulo5(doc)
-    parte5.anexos(doc)
+    esqueleto.construir(doc)
 
-    # Propiedades del documento
     cp = doc.core_properties
-    cp.title = "Auditoría y diagnóstico de seguridad social organizacional: EXTINTORES S C M"
+    cp.title = "Auditoría y diagnóstico del Sistema de Seguridad Social de EXTINTORES S C M"
     cp.subject = "Derecho de la Seguridad Social · Proyecto integrador"
     cp.author = "Julia Inés Buitrago García"
     cp.keywords = ("seguridad social; riesgos laborales; pensiones; IBC; culpa patronal; "
                    "SG-SST; acta sanitaria 028-050164-26; ineficacia del traslado; "
                    "competencia judicial")
-    cp.comments = "Plantilla técnico-jurídica para el desarrollo del proyecto integrador (40 %)."
+    cp.comments = "Trabajo final elaborado sobre la estructura del esqueleto del curso."
 
     normalizar_orden(doc)
     os.makedirs(os.path.dirname(SALIDA), exist_ok=True)
