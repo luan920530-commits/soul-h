@@ -32,11 +32,10 @@ def eje_iii(doc):
                ", administrado por las sociedades administradoras de fondos de pensiones, en el que "
                "cada afiliado tiene una cuenta individual y la prestación depende del capital "
                "acumulado, de los rendimientos y del bono pensional."])
-    rich(doc, ["La libre elección entre regímenes es una manifestación del derecho a la seguridad "
-               "social (art. 48 C.P.) y solo se perfecciona cuando el afiliado ha recibido "
-               "información suficiente. De esa premisa se deriva todo el régimen de responsabilidad "
-               "de las administradoras y el remedio de la ineficacia del traslado, que se estudia en "
-               "el numeral 3.4."])
+    rich(doc, ["Elegir régimen es ejercer el derecho a la seguridad social (artículo 48 de la "
+               "Constitución), pero la elección solo vale si el afiliado estaba informado. De esa "
+               "premisa sale todo el régimen de responsabilidad de las administradoras y, con él, el "
+               "remedio de la ineficacia del traslado que se estudia en el numeral 3.4."])
 
     h(doc, 3, "Requisitos y cálculo de la prestación en cada régimen")
     tabla(doc, ["Variable", "Régimen de Prima Media (Colpensiones)", "Régimen de Ahorro Individual (AFP)"],
@@ -56,18 +55,21 @@ def eje_iii(doc):
           titulo="Tabla 15. Comparación de los dos regímenes del SGP")
 
     h(doc, 3, "La reforma pensional de la Ley 2381 de 2024 y su estado actual")
-    rich(doc, ["La Ley 2381 de 2024 transforma el sistema en un esquema de ",
+    rich(doc, ["La Ley 2381 de 2024 reorganiza el sistema en ",
                ("cuatro pilares", {"b": True}),
-               " (solidario, semicontributivo, contributivo y de ahorro voluntario) y establece que "
-               "las cotizaciones hasta 2,3 salarios mínimos se dirijan al componente administrado por "
-               "Colpensiones, mientras el excedente se canaliza al ahorro individual. Su entrada en "
-               "vigencia fue inicialmente suspendida por la Corte Constitucional, que en la ",
+               " (solidario, semicontributivo, contributivo y ahorro voluntario) y manda que las "
+               "cotizaciones hasta 2,3 salarios mínimos vayan al componente que administra "
+               "Colpensiones, con el excedente al ahorro individual. La Corte Constitucional la "
+               "suspendió primero y luego, en la ",
                ("Sentencia C-264 de 2026", {"b": True}),
-               " declaró exequible la mayor parte del articulado, devolvió varias disposiciones a la "
-               "Cámara de Representantes para subsanar vicios de trámite y fijó como fecha de "
-               "entrada en vigencia el ",
+               ", declaró exequible la mayor parte: devolvió varias disposiciones a la Cámara de "
+               "Representantes por vicios de trámite y fijó la entrada en vigencia para el ",
                ("1.º de abril de 2027", {"b": True}),
-               ". Hasta esa fecha continúan aplicándose las reglas de la Ley 100 de 1993."])
+               ". Hasta entonces se aplica la Ley 100 de 1993, tal cual."])
+    rich(doc, ["Conviene subrayarlo porque es la fuente de casi todos los errores que se ven en "
+               "informes pensionales recientes: hoy no rige la reforma. Un documento que en 2026 "
+               "liquide una pensión con las reglas de la Ley 2381 está aplicando una ley que todavía "
+               "no produce efectos."])
     tabla(doc, ["Disposición de la Ley 2381 de 2024", "Contenido", "Estado tras la C-264 de 2026"],
           [["Estructura por pilares", "Solidario, semicontributivo, contributivo y ahorro voluntario",
             "Exequible; rige desde el 1.º de abril de 2027"],
@@ -83,20 +85,20 @@ def eje_iii(doc):
           [4.2, 7.4, 4.4], size=8.3,
           titulo="Tabla 16. Impacto de la reforma pensional en la organización")
 
-    caja(doc, "Advertencia de vigencia",
-         ["Cualquier afirmación sobre «pensiones» en Colombia debe precisar la fecha a la que se "
-          "refiere. Hasta el 31 de marzo de 2027 rige la Ley 100 de 1993; desde el 1.º de abril de "
-          "2027, y siempre que se complete la subsanación ordenada, rige la Ley 2381 de 2024. La "
-          "auditoría de EXTINTORES SCM se practicó en el periodo de transición, por lo que combina "
-          "ambos marcos y señala expresamente cuál aplica en cada caso. Este detalle es el que "
-          "distingue un informe con rigor técnico de uno meramente descriptivo."],
+    caja(doc, "Sobre la vigencia",
+         ["Toda afirmación sobre pensiones en Colombia tiene que decir a qué fecha se refiere. Hasta "
+          "el 31 de marzo de 2027 rige la Ley 100 de 1993; desde el 1.º de abril de 2027, y siempre "
+          "que se complete la subsanación que ordenó la Corte, rige la Ley 2381 de 2024. Esta "
+          "auditoría se practicó en el periodo de transición, así que combina los dos marcos y va "
+          "señalando cuál aplica en cada caso. Ahí se juega la utilidad del informe: un documento "
+          "que no fija la vigencia envejece en tres meses."],
          tipo='alerta')
 
     # ---------- 3.2
     h(doc, 2, "Mapa pensional de la organización")
-    rich(doc, ["La distribución de los trabajadores entre los dos regímenes se obtuvo del certificado "
-               "de afiliación y de la planilla integrada de liquidación de aportes. El resultado "
-               "muestra una concentración en el Régimen de Prima Media (%d de %d trabajadores, "
+    rich(doc, ["Los datos salen del certificado de afiliación y de la planilla integrada de "
+               "liquidación de aportes. El mapa muestra una concentración en el Régimen de Prima "
+               "Media (%d de %d trabajadores, "
                "equivalente al %.0f %%) y una presencia minoritaria en el Régimen de Ahorro "
                "Individual (%d trabajadores, %.0f %%), lo que se explica por la antigüedad de la "
                "planta y por el perfil salarial de la empresa." % (PM, PM + RAIS, 100 * PM / (PM + RAIS),
@@ -122,25 +124,23 @@ def eje_iii(doc):
                  "para WT-01 y WT-03 deben extraerse de la historia laboral de cada afiliado con "
                  "corte a 30 de septiembre de 2026.")
 
-    rich(doc, ["Con una planta de tres personas el mapa pensional no admite promedios: cada "
-               "trabajador es una unidad de análisis y un error en su historia laboral afecta a un "
-               "tercio de la planta. De ahí se derivan tres conclusiones de gestión. Primera, solo "
-               "WT-02 se encuentra en el régimen de transición, con más de 750 semanas acreditadas, "
-               "de modo que sus condiciones pensionales dependen íntegramente de la Ley 100 de 1993 y "
-               "no del nuevo sistema de pilares. Segunda, la titular y WT-03 requieren verificación "
-               "individual: son pocas semanas las que separan a un afiliado del umbral de transición, "
-               "y una semana no reportada puede cambiar el régimen aplicable. Tercera, la "
-               "concentración en prima media (dos de tres) hace que cualquier traslado al RAIS tenga "
-               "un impacto desproporcionado en la empresa, porque el empleador responde por la "
-               "veracidad de la información que sirve de base a la decisión."])
+    rich(doc, ["Con tres personas no se puede hablar de promedio. Cada trabajador es una unidad de "
+               "análisis y un error en una historia laboral afecta a un tercio de la planta. De ahí "
+               "salen tres cosas."])
+    rich(doc, ["La primera es que solo WT-02 está en el régimen de transición, con más de 750 "
+               "semanas, así que sus condiciones pensionales dependen de la Ley 100 y no del sistema "
+               "de pilares. La segunda es que la titular y WT-03 necesitan verificación individual: "
+               "alrededor de los umbrales, una semana no reportada cambia el régimen aplicable y con "
+               "él la mesada. La tercera es que la concentración en prima media (dos de tres) hace "
+               "que cualquier traslado al RAIS tenga un peso desproporcionado, porque el empleador "
+               "responde por la veracidad de la información que sirvió de base a la decisión."])
 
     # ---------- 3.3
     h(doc, 2, "El deber de información y la doble asesoría")
-    rich(doc, ["El traslado de régimen se firma en una oficina y se paga durante treinta años. Es una "
-               "decisión jurídica de largo plazo cuyos efectos el afiliado solo advierte décadas "
-               "después, y de ahí que la jurisprudencia construyera un estándar de información que "
-               "evolucionó en tres etapas. "
-               "jurisprudencia construyó un estándar de información que evolucionó en tres etapas:"])
+    rich(doc, ["Un traslado de régimen se firma en una oficina en veinte minutos y se paga durante "
+               "treinta años. El afiliado advierte el efecto décadas después, cuando ya no puede "
+               "deshacerlo, y por eso la jurisprudencia construyó un estándar de información que fue "
+               "subiendo de exigencia en tres etapas:"])
     for t in [
         [("Deber de información (desde la creación de las AFP): ", {"b": True}),
          "la administradora debía suministrar información clara, cierta, comprensible y oportuna "
@@ -158,30 +158,28 @@ def eje_iii(doc):
 
     rich(doc, ["La ",
                ("Sentencia SU-107 de 2024", {"b": True}),
-               " de la Corte Constitucional unificó la materia y fijó reglas que hoy son el eje de "
-               "cualquier litigio pensional: (i) el deber de información es exigible desde la "
-               "creación de las administradoras y su intensidad creció con el tiempo; (ii) el "
-               "consentimiento consignado en el formulario de afiliación es insuficiente, porque se "
-               "requiere un consentimiento informado; (iii) la carga de la prueba se equilibra: el "
-               "afiliado debe aportar indicios del déficit de información y la AFP debe demostrar que "
-               "informó y asesoró; y (iv) la ineficacia del traslado no exige que el afiliado esté "
-               "próximo a pensionarse ni que tenga un derecho consolidado, porque el vicio se predica "
-               "del acto mismo de traslado."])
+               " unificó todo esto y hoy es el punto de partida de cualquier litigio pensional. Fijó "
+               "cuatro reglas. El deber de información existe desde la creación de las "
+               "administradoras y su exigencia creció con el tiempo. El consentimiento del "
+               "formulario no basta: se necesita consentimiento informado. La carga de la prueba se "
+               "reparte, porque el afiliado aporta indicios del déficit y la AFP debe demostrar que "
+               "informó y asesoró. Y la ineficacia no exige estar cerca de pensionarse ni tener un "
+               "derecho consolidado, porque el vicio está en el acto mismo de traslado."])
     cita(doc, "«El simple consentimiento vertido en el formulario de afiliación es insuficiente, por "
               "la necesidad de un consentimiento informado […] la violación del deber de información "
               "se predica frente a la validez del acto jurídico de traslado, considerado en sí "
               "mismo.»",
          "Corte Constitucional, Sentencia SU-107 de 2024 (9 de abril de 2024)")
 
-    rich(doc, ["La Sala de Casación Laboral de la Corte Suprema de Justicia había anticipado esa "
-               "regla y sostiene que es la administradora (y no el afiliado) quien debe acreditar el "
-               "cumplimiento del deber: «es a la AFP a quien le corresponde acreditar el cumplimiento "
-               "del deber de información al momento del traslado de régimen pensional, pues exigir al "
-               "afiliado una prueba de este alcance es un despropósito» (CSJ, SL3179-2023). En "
-               "materia de efectos económicos, la sentencia SL1179 de 2024 precisó que la "
-               "indemnización de perjuicios por el daño causado con ocasión del traslado es una "
-               "consecuencia resarcitoria única que se paga por una sola vez y que se causa respecto "
-               "de quien ya obtuvo la pensión."])
+    rich(doc, ["La Sala de Casación Laboral había llegado antes al mismo punto: «es a la AFP a quien "
+               "le corresponde acreditar el cumplimiento del deber de información al momento del "
+               "traslado de régimen pensional, pues exigir al afiliado una prueba de este alcance es "
+               "un despropósito» (CSJ, SL3179-2023). Ahí está el detalle que decide los casos: quien "
+               "tiene los papeles es la administradora."])
+    rich(doc, ["Sobre los efectos económicos, la sentencia SL1179 de 2024 precisó que la "
+               "indemnización de perjuicios por el traslado es una consecuencia resarcitoria única, "
+               "se paga por una sola vez y se causa respecto de quien ya obtuvo la pensión. No es "
+               "una suma acumulable ni se reconoce dos veces por el mismo vicio."])
 
     # ---------- 3.4
     h(doc, 2, "Auditoría pensional individual: caso P-03")
@@ -217,17 +215,17 @@ def eje_iii(doc):
           titulo="Tabla 18. Verificación de requisitos del caso P-03")
 
     h(doc, 3, "Comparación económica de los escenarios")
-    rich(doc, ["La comparación se hace con un ingreso base de liquidación de %s, equivalente al "
-               "promedio de los últimos diez años de cotización, y con la tasa de reemplazo del "
-               "65,5 %% que corresponde a 1.300 semanas. En el escenario de prima media la mesada "
-               "sería de %s. En el escenario de ahorro individual, el capital de %s financiaría una "
-               "mesada aproximada de %s, inferior al salario mínimo, de modo que el trabajador "
-               "dependería del Fondo de Garantía de Pensión Mínima y percibiría %s. La pérdida "
-               "patrimonial relevante (la que se reclama en el proceso) es la diferencia entre la "
-               "mesada que habría recibido en prima media y el mínimo garantizado: %s mensuales, que "
-               "proyectados a veinte años de disfrute representan %s." % (
+    rich(doc, ["La comparación usa un ingreso base de liquidación de %s, que es el promedio de los "
+               "últimos diez años de cotización, y la tasa de reemplazo del 65,5 %% de 1.300 semanas. "
+               "En prima media la mesada sería de %s. En ahorro individual, el capital de %s "
+               "financiaría unos %s mensuales, por debajo del salario mínimo, así que el trabajador "
+               "terminaría en el Fondo de Garantía de Pensión Mínima con %s. Ahí está la pérdida: %s "
+               "mensuales, que a veinte años de disfrute son %s." % (
                    money(IBL), money(MESADA_RPM), money(CAPITAL_RAIS),
                    money(MESADA_RAIS_SIN_GARANTIA), money(SMLMV), money(DIF), money(DIF * 12 * 20))])
+    rich(doc, ["Lo que se reclama es esa diferencia, ni el capital ni la mesada completa. Aquí se "
+               "equivocan muchas demandas: el daño no consiste en haber cotizado al fondo, consiste "
+               "en haber quedado con una mesada menor por un traslado que nunca se explicó."])
     tabla(doc, ["Escenario", "Cálculo", "Mesada mensual", "Diferencia frente al RAIS"],
           [["Prima Media (Colpensiones)", "%s × 65,5 %%" % money(IBL), money(MESADA_RPM),
             money(DIF)],
@@ -245,8 +243,8 @@ def eje_iii(doc):
                  "proceso real debe aportarse la simulación de la administradora.")
 
     h(doc, 3, "Procedencia de la demanda de ineficacia del traslado")
-    rich(doc, ["La pregunta jurídica es si el traslado de 1997 produjo efectos. La respuesta se "
-               "construye con los criterios de la SU-107 de 2024 aplicados al caso:"])
+    rich(doc, ["La pregunta, en concreto, es una sola: ¿el traslado de 1997 produjo efectos? Se "
+               "responde con los criterios de la SU-107 de 2024 aplicados al expediente."])
     tabla(doc, ["Criterio jurisprudencial", "Verificación en el caso", "Favorabilidad"],
           [["Información clara, cierta y comprensible sobre diferencias entre regímenes",
             "No obra soporte; la AFP no conserva simulación ni documento explicativo",
@@ -298,12 +296,12 @@ def eje_iii(doc):
          "diferencia de mesadas y por el daño consolidado (CSJ, SL1179 de 2024)."],
     ]:
         bullet(doc, t)
-    rich(doc, ["Una precisión temporal es indispensable: la oportunidad administrativa de traslado "
-               "prevista en el artículo 76 de la Ley 2381 de 2024 venció en julio de 2026 y la "
-               "ventana de la Ley 1748 de 2014 se agotó años atrás. En consecuencia, la vía judicial "
-               "de ineficacia es hoy el único mecanismo idóneo para que el trabajador regrese al "
-               "Régimen de Prima Media antes de que el nuevo sistema de pilares entre en vigencia el "
-               "1.º de abril de 2027."])
+    rich(doc, ["Hay una precisión temporal que cambia la estrategia. La oportunidad administrativa "
+               "de traslado del artículo 76 de la Ley 2381 de 2024 venció en julio de 2026, y la "
+               "ventana de la Ley 1748 de 2014 se cerró hace años. Queda la vía judicial. Hoy la "
+               "demanda de ineficacia es el único camino para que el trabajador vuelva a prima media "
+               "antes del 1.º de abril de 2027, y después de esa fecha el cálculo se complica porque "
+               "el régimen aplicable cambia de base."])
 
     h(doc, 3, "Estrategia probatoria y procesal")
     tabla(doc, ["Actuación", "Finalidad", "Fundamento"],
@@ -324,31 +322,32 @@ def eje_iii(doc):
 
     # ---------- 3.5
     h(doc, 2, "Diagnóstico del eje y recomendaciones")
-    rich(doc, ["De los tres trabajadores afiliados al Régimen de Ahorro Individual, dos no cuentan "
-               "con soporte de asesoría y uno presenta inconsistencia en el reporte de semanas. La "
-               "empresa, como empleadora, no es responsable del deber de asesoría (que recae en la administradora), pero sí lo es de la veracidad y oportunidad de las novedades y del "
-               "pago de aportes, y esos elementos son los que la jurisprudencia examina para "
-               "reconstruir la historia laboral."])
+    rich(doc, ["De los tres trabajadores, uno está en ahorro individual sin soporte de asesoría y los "
+               "otros dos tienen la historia laboral por verificar. Conviene separar responsabilidades, "
+               "porque es fácil confundirlas: el deber de asesoría recae en la administradora, no en "
+               "la empresa. Lo que sí es de la empresa es la veracidad y la oportunidad de las "
+               "novedades y el pago de aportes. Y son justamente esos dos elementos los que la "
+               "jurisprudencia examina cuando reconstruye una historia laboral."])
     tabla(doc, ["Hallazgo", "Consecuencia jurídica", "Riesgo", "Acción"],
-          [["Dos traslados sin soporte de asesoría", "Demandas de ineficacia con alta probabilidad de "
-            "éxito; contingencia patrimonial para la AFP, no para la empresa", "Alto (para la AFP)",
-            "Verificar la historia laboral de los tres afiliados, en especial del único afiliado al RAIS"],
-           ["Semanas no reportadas (WT-03)", "Afectación del derecho pensional del trabajador y "
-            "posible demanda contra la empresa por falta de cotización", "Alto",
-            "Corregir la planilla y reportar semanas omitidas"],
-           ["Trabajadores en el umbral de la transición (los demás trabajadores)", "Cambio de régimen "
-            "aplicable si no se completan las semanas al 1.º de abril de 2027", "Medio",
-            "Revisar la historia laboral y programar cotizaciones"],
-           ["Trabajador WT-02 sin decisión informada", "Pérdida de la mesada diferencial de %s "
-            "mensuales" % money(DIF), "Medio",
-            "Acompañar la solicitud de información y el trámite de ineficacia"]],
+          [["WT-02 trasladado al RAIS sin soporte de asesoría", "Demanda de ineficacia con alta "
+            "probabilidad de éxito; la contingencia patrimonial es de la AFP, no de la empresa",
+            "Alto (para la AFP)", "Acompañar la solicitud de información y el trámite de ineficacia"],
+           ["Pérdida de mesada diferencial de WT-02 (%s mensuales)" % money(DIF),
+            "Daño patrimonial que se reclama en el proceso de ineficacia", "Medio",
+            "Cuantificar con la simulación de la administradora y la historia laboral certificada"],
+           ["Historia laboral de WT-01 y WT-03 por verificar", "Riesgo de novedades mal reportadas y "
+            "de semanas no acreditadas al 1.º de abril de 2027", "Medio",
+            "Solicitar la historia laboral con corte a la fecha y cruzar con las planillas"],
+           ["Trabajadores cerca del umbral de transición (750 semanas)", "Pérdida del régimen de "
+            "transición por semanas no acreditadas", "Medio",
+            "Revisar semana por semana y programar las cotizaciones faltantes"]],
           [4.2, 6.2, 2.0, 3.6], size=8.3, align_centro=[2],
           titulo="Tabla 22. Hallazgos y acciones del Eje III")
 
-    caja(doc, "Buena práctica preventiva",
-         ["Toda decisión pensional de un trabajador debería quedar documentada en la hoja de vida: "
-          "simulación entregada, acta de doble asesoría, formulario firmado y constancia de entrega "
-          "de copia. Guardar esos papeles durante veinte años parece excesivo hasta que el litigio "
-          "llega, décadas después, y la única prueba disponible es justamente la que se conservó."],
+    caja(doc, "Una práctica que cuesta nada",
+         ["Toda decisión pensional de un trabajador debería quedar en la hoja de vida: simulación "
+          "entregada, acta de doble asesoría, formulario firmado y constancia de entrega de copia. "
+          "Guardar eso veinte años suena exagerado, hasta que el litigio llega dos décadas después y "
+          "la única prueba que queda es la que alguien conservó."],
          tipo='info')
     salto_pagina(doc)

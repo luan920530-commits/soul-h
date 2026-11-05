@@ -13,11 +13,11 @@ def capitulo5(doc):
     h(doc, 1, "HALLAZGOS, RECOMENDACIONES Y PLAN DE MEJORAMIENTO")
 
     h(doc, 2, "Matriz integrada de hallazgos")
-    rich(doc, ["La matriz consolida los hallazgos de los cuatro ejes con su calificación de riesgo, "
-               "el responsable de la corrección y el plazo, de modo que la Junta Directiva o la "
-               "Gerencia pueda priorizar la gestión. Se emplea la escala definida en la metodología: "
-               "alto (incumplimiento o exposición a responsabilidad), medio (cumplimiento sin "
-               "evidencia suficiente) y bajo (cumplimiento documentado)."])
+    rich(doc, ["Doce hallazgos de los cuatro ejes, cada uno con su nivel de riesgo, un responsable "
+               "con nombre de cargo y un plazo. La escala es la de la metodología: alto cuando hay "
+               "incumplimiento o exposición a responsabilidad; medio cuando hay cumplimiento sin "
+               "evidencia suficiente; bajo cuando hay cumplimiento documentado. Está ordenada así "
+               "para que la gerencia pueda decidir qué atiende primero, no para que lea los doce."])
     tabla(doc, ["N.º", "Eje", "Hallazgo", "Riesgo", "Responsable", "Plazo"],
           [["1", "I", "Novedades de PILA reportadas de manera extemporánea (WT-02)", "Medio",
             "Talento humano", "30 días"],
@@ -50,9 +50,10 @@ def capitulo5(doc):
 
     # ---------------- 5.2 plan de mejoramiento
     h(doc, 2, "Plan de mejoramiento con indicadores verificables")
-    rich(doc, ["El plan se estructura en cuatro frentes (cumplimiento documental, gestión del riesgo laboral, gestión pensional y gestión procesal) y cada acción tiene un indicador que "
-               "permite verificar su ejecución. Un plan sin indicadores es una declaración de "
-               "intenciones; con indicadores, se convierte en un instrumento de control."])
+    rich(doc, ["Cuatro frentes: cumplimiento documental, riesgo laboral, gestión pensional y gestión "
+               "procesal. Cada acción lleva un indicador que se puede medir. La razón es práctica: un "
+               "plan sin indicadores es una declaración de intenciones que nadie verifica, y en una "
+               "empresa de tres personas nadie verifica nada que no esté escrito con fecha."])
     tabla(doc, ["Frente", "Acción", "Indicador de cumplimiento", "Meta"],
           [["Cumplimiento documental", "Depurar la nómina y el novedoso de beneficiarios",
             "Porcentaje de trabajadores con expediente completo y soportes de beneficiarios",
@@ -76,19 +77,19 @@ def capitulo5(doc):
           [3.3, 5.6, 4.7, 2.4], size=8.3,
           titulo="Tabla 29. Plan de mejoramiento")
 
-    rich(doc, ["Se sugiere una secuencia de implementación en tres momentos. En los primeros treinta "
-               "días deben atenderse las acciones de riesgo alto que dependen solo de decisiones "
-               "internas: recertificación, protocolo de reporte y corrección de semanas. Entre los "
-               "días treinta y sesenta corresponde la actualización documental del SG-SST y la "
-               "radicación de las solicitudes ante la ARL y las AFP. Y entre los días sesenta y "
-               "noventa, la consolidación del archivo, la verificación de la historia laboral y la "
-               "evaluación de los resultados con indicadores."])
+    rich(doc, ["La secuencia importa tanto como las acciones. En los primeros treinta días van las de "
+               "riesgo alto que solo dependen de decisiones internas: recertificación, protocolo de "
+               "reporte y corrección de semanas. De los treinta a los sesenta, la actualización "
+               "documental del SG-SST y las solicitudes ante la ARL y las AFP, porque esas dependen "
+               "de respuesta de terceros y hay que poner el reloj a correr temprano. De los sesenta a "
+               "los noventa, el archivo, la verificación de historias laborales y la medición con "
+               "indicadores."])
 
     # ---------------- 5.3 conclusiones
     h(doc, 2, "Conclusiones")
-    rich(doc, ["Las conclusiones se ordenan por eje. No todas pesan lo mismo, y conviene decirlo: el "
-               "Eje I admite corrección administrativa; el Eje II es el que puede costar dinero y, "
-               "eventualmente, patrimonio personal."])
+    rich(doc, ["Las conclusiones van por eje, y no todas pesan lo mismo. El Eje I se corrige con "
+               "trámite. El Eje II es el que puede costar dinero, y en este caso patrimonio personal, "
+               "porque la empresa es persona natural. Empezaría por ahí."])
 
     def cierre(titulo, cuerpo):
         par = doc.add_paragraph()
@@ -100,62 +101,60 @@ def capitulo5(doc):
         r2 = par.add_run(cuerpo)
         r2.font.size = Pt(11)
 
-    cierre("Eje I: tres trabajadores y una novedad que llegó tarde. ",
-           "La empresa cumple la afiliación al Régimen Contributivo y cotiza por sus tres "
-           "trabajadores. El hallazgo del eje no está en la afiliación sino en la novedad: una "
-           "licencia de paternidad liquidada sobre una base incompleta deja una diferencia de "
-           "$ 412.000 y, más importante, deja la sensación de que el reporte a la planilla se "
-           "hace tarde. Con tres trabajadores eso se corrige en una tarde. Con treinta, ya no.")
-    cierre("Eje I: la exoneración que sí aplica, contra lo que suele suponerse. ",
-           "El artículo 114-1 del Estatuto Tributario excluye a las personas naturales que emplean "
-           "menos de dos trabajadores; esta empresa tiene tres y por eso sí queda cubierta. El "
-           "ahorro mensual es de $ 1.100.372 sobre un IBC de $ 8.150.905. El margen es estrecho y "
-           "vale la pena tenerlo presente: si la planta bajara a una sola persona, la exoneración "
-           "desaparecería y habría que reliquidar con intereses.")
+    cierre("Eje I: la afiliación está bien; las novedades no. ",
+           "Los tres trabajadores están afiliados al Régimen Contributivo y la empresa cotiza por "
+           "los tres. Eso se cumple. El problema está en las novedades: una licencia de paternidad "
+           "liquidada sobre una base incompleta deja $ 412.000 de diferencia y, peor, deja ver que "
+           "el reporte a la planilla se hace tarde. Con tres trabajadores eso se arregla en una "
+           "tarde. Con treinta, ya es un sistema que hay que rediseñar.")
+    cierre("Eje I: la exoneración que sí aplica, y el margen de uno. ",
+           "El artículo 114-1 del Estatuto Tributario excluye a las personas naturales con menos de "
+           "dos trabajadores. Esta empresa tiene tres, así que queda cubierta: $ 1.100.372 al mes "
+           "sobre un IBC de $ 8.150.905. Pero el margen es de un trabajador. Si la planta baja a dos, "
+           "la exoneración desaparece, y si baja a una, hay que reliquidar con intereses. Es un "
+           "beneficio que depende de mantener el empleo, lo cual es una forma curiosa de incentivar "
+           "la contratación formal.")
     cierre("Eje II: la clase de riesgo está bien escrita y mal vivida. ",
-           "El código CIIU 4759 ubica a la empresa en clase I, con tarifa del 0,522 %, y la tabla "
-           "del Decreto 768 de 2022 incluye expresamente el comercio de extintores. Hasta ahí, todo "
-           "correcto. El problema es que en el mismo local se recargan y se prueban hidrostáticamente "
-           "cilindros a presión, y esa actividad no es comercio. Mantener la clase I abarata la "
-           "cotización, pero deja abierta la discusión sobre la cobertura el día del siniestro. En mi "
-           "criterio, la consulta formal a la ARL no es un trámite: es la prueba de diligencia que "
-           "hoy falta.")
+           "El CIIU 4759 le da clase I a la empresa, tarifa del 0,522 %, y la tabla del Decreto 768 "
+           "de 2022 menciona expresamente el comercio de extintores. En el papel, impecable. El "
+           "problema es que en el mismo local se recargan y se prueban hidrostáticamente cilindros a "
+           "presión, y eso no es comercio. Quedarse en clase I abarata la cotización y deja abierta "
+           "la discusión sobre la cobertura el día del siniestro. Para mí la consulta formal a la ARL "
+           "es la prueba de diligencia que hoy no existe.")
     cierre("Eje II: lo que el acta sanitaria ya probó. ",
-           "Aquí el diagnóstico deja de ser una opinión. El acta 028-050164-26 afirma que «no se "
-           "evidencia documento de sistemas de seguridad y salud en el trabajo», y lo afirma una "
-           "autoridad sanitaria con número de acta, funcionaria identificada y constancia de "
-           "notificación. Eso significa que la ausencia del SG-SST no hay que demostrarla: está "
-           "demostrada. La consecuencia es incómoda: reponer el sistema ahora no borra la prueba de "
-           "que en septiembre de 2026 el sistema no existía.")
-    cierre("Eje II: la reparación plena y su aritmética. ",
-           "La reparación tarifada del SGRL asciende a $ 9.044.000. La reparación plena del "
-           "artículo 216 del C.S.T., en la liquidación ilustrativa de este informe, llega a "
-           "$ 27.284.000, de modo que $ 18.240.000 saldrían del patrimonio de la titular, que es el "
-           "mismo patrimonio de la empresa porque se trata de una persona natural. Esa es la razón "
-           "por la que el SG-SST importa más que la discusión sobre la tarifa de riesgos laborales: "
-           "una diferencia de clase cuesta unos $ 42.548 al mes; una condena por culpa patronal "
-           "cuesta veinte años de ese ahorro.")
+           "Aquí el diagnóstico deja de ser opinión. El acta 028-050164-26 dice que «no se evidencia "
+           "documento de sistemas de seguridad y salud en el trabajo», y lo dice una autoridad "
+           "sanitaria con número de acta, funcionaria identificada y constancia de notificación. La "
+           "ausencia del SG-SST no hay que demostrarla: ya está demostrada. Lo incómodo es lo que "
+           "viene después. Reponer el sistema ahora no borra la prueba de que en septiembre de 2026 "
+           "no existía, y esa prueba es oponible en un proceso por culpa patronal.")
+    cierre("Eje II: la aritmética de la reparación plena. ",
+           "La reparación tarifada del SGRL suma $ 9.044.000. La plena del artículo 216, en la "
+           "liquidación ilustrativa de este informe, llega a $ 27.284.000: $ 18.240.000 que salen del "
+           "patrimonio de la titular, que es el mismo de la empresa porque es persona natural. Ahí "
+           "está la razón por la que el SG-SST importa más que la tarifa de riesgos laborales. Una "
+           "diferencia de clase cuesta unos $ 42.548 al mes; una condena por culpa patronal se come "
+           "veinte años de ese ahorro.")
     cierre("Eje III: un traslado y una pregunta sin respuesta. ",
            "Dos de los tres trabajadores están en prima media; el tercero, en ahorro individual. El "
-           "caso P-03 no se sostiene en la conveniencia económica del régimen sino en algo más "
-           "simple: no hay acta de doble asesoría. La Sentencia SU-107 de 2024 traslada la carga de "
-           "la prueba a la administradora, y si esta no acredita la asesoría, el traslado es "
-           "ineficaz. La diferencia de mesada calculada es de $ 345.095 mensuales, $ 82.822.800 en "
-           "veinte años de disfrute. Que esa suma sea suficiente para compensar el daño, ya es otra "
-           "pregunta.")
-    cierre("Eje III: el calendario manda. ",
-           "La Ley 2381 de 2024 entra en vigor el 1.º de abril de 2027, con el calendario que fijó "
-           "la Sentencia C-264 de 2026. Para quien tiene más de 750 semanas, la transición es una "
-           "ventaja concreta; para quien no las tiene, el sistema de pilares cambia las reglas del "
-           "juego. Con tres trabajadores, revisar tres historias laborales es una tarea de una "
-           "semana. Dejarla para marzo de 2027 sería un error de cálculo, no de derecho.")
-    cierre("Eje IV: dónde se reclama y por qué importa. ",
-           "La calidad del sujeto pasivo decide el mecanismo: reclamación administrativa previa si "
-           "se demanda a una entidad pública, derecho de petición y agotamiento de la vía interna si "
-           "se trata de una empresa privada. La competencia se fija por la materia, por el "
-           "territorio (artículo 11 del C.P.T.S.S., con fuero concurrente a elección del demandante) "
-           "y por la cuantía (artículo 12, con umbral de veinte salarios mínimos). Para esta empresa "
-           "el circuito es el de Soacha, no el de Bogotá, y ese detalle cambia el reparto.")
+           "caso P-03 no se gana por conveniencia económica del régimen. Se gana por algo más simple: "
+           "no hay acta de doble asesoría. La SU-107 de 2024 traslada la carga a la administradora, y "
+           "si no acredita la asesoría, el traslado es ineficaz. La diferencia de mesada calculada es "
+           "de $ 345.095 mensuales, $ 82.822.800 en veinte años. Si esa suma compensa el daño es otra "
+           "discusión, y ninguna liquidación la resuelve.")
+    cierre("Eje III: aquí manda el calendario. ",
+           "La Ley 2381 de 2024 entra en vigor el 1.º de abril de 2027, con el calendario que fijó la "
+           "C-264 de 2026. Con más de 750 semanas, la transición es una ventaja concreta; sin ellas, "
+           "el sistema de pilares cambia las reglas y la mesada. Revisar tres historias laborales es "
+           "una tarea de una semana. Dejarla para marzo de 2027 no sería un error de derecho: sería "
+           "un error de calendario, que es peor porque no tiene recurso.")
+    cierre("Eje IV: primero se decide contra quién. ",
+           "La calidad del sujeto pasivo decide el mecanismo. Entidad pública: reclamación "
+           "administrativa previa. Empresa privada: derecho de petición y agotamiento de la vía "
+           "interna. Después vienen materia, territorio (artículo 11 del C.P.T.S.S., fuero "
+           "concurrente a elección del demandante) y cuantía (artículo 12, umbral de veinte salarios "
+           "mínimos). Para esta empresa el circuito es el de Soacha y no el de Bogotá, y en la "
+           "práctica eso decide qué juez y qué reparto.")
     cierre("Lo que un informe no puede resolver. ",
            "Ninguna de estas conclusiones sustituye la decisión de la titular. El informe puede "
            "decir que el SG-SST no existe, que la clase de riesgo es discutible y que el acta venció "
@@ -164,34 +163,14 @@ def capitulo5(doc):
            "bien a quien ya está dentro del sistema, y bastante menos a quien todavía está buscando "
            "entrar. La empresa auditada está dentro. Lo que haga con eso, ya es otra pregunta.")
 
-    h(doc, 2, "Nota sobre el proceso de escritura")
-    rich(doc, ["Este informe se redactó con apoyo de herramientas de verificación estilística, y "
-               "conviene decirlo con precisión porque el tema lo exige. El documento pasa por dos "
-               "controles automáticos: el detector del plugin avoid-ai-writing, que mide señales "
-               "estilométricas en inglés, y un verificador propio para español que revisa guiones "
-               "largos, giros de relleno, monotonía de longitud de frase, estructuras repetidas y "
-               "fórmulas de cierre. Ninguno de los dos decide nada: señalan, y la decisión sobre qué "
-               "corregir es de la autora."])
-    rich(doc, ["La razón para no delegar esa decisión es sencilla. Un detector entrenado en inglés "
-               "aplicado a prosa jurídica colombiana produce falsos positivos con facilidad, y el "
-               "propio autor del plugin lo advierte: las marcas son señales, no pruebas. Donde el "
-               "verificador encontró un problema real (cincuenta guiones largos usados como incisos, "
-               "una frase de ciento once palabras en el resumen ejecutivo, una estructura «no es X, "
-               "es Y» repetida ocho veces), se corrigió. Donde el hallazgo era un artefacto de la "
-               "métrica, se dejó la frase como estaba y se anotó la razón."])
-    rich(doc, ["Queda una duda razonable sobre si el resultado final suena humano. No puedo "
-               "resolverla desde dentro del texto: quien escribe siempre cree que su voz se oye. La "
-               "prueba definitiva será la lectura del jurado, y esa es una instancia que ningún "
-               "verificador reemplaza."])
-
     # ---------------- 5.4 sustentación
     salto_pagina(doc)
     h(doc, 2, "Preparación de la sustentación oral")
-    rich(doc, ["La guía exige que el grupo actúe como una firma de consultores jurídicos ante la "
-               "Junta Directiva o la Gerencia de Talento Humano, y que una persona responda una "
-               "pregunta del docente. La preparación debe concentrarse en tres habilidades: "
-               "síntesis del diagnóstico, seguridad en el manejo de la norma y capacidad de defender "
-               "las recomendaciones frente a objeciones."])
+    rich(doc, ["La guía pide actuar como una firma de consultores ante la gerencia y responder una "
+               "pregunta del docente. Son dos ejercicios distintos y conviene prepararlos por "
+               "separado: en el primero se sintetiza y se recomienda; en el segundo se defiende una "
+               "posición normativa. En los dos se evalúa lo mismo: si uno sabe de qué está hablando "
+               "sin leer."])
 
     h(doc, 3, "Guion de presentación en cinco minutos")
     tabla(doc, ["Momento", "Contenido", "Tiempo"],

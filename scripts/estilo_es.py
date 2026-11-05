@@ -200,8 +200,20 @@ def analizar(parrafos, max_frase=45):
     cierre_formula = bool(re.match(r"^(en conclusi|para (finalizar|concluir)|en definitiva|"
                                    r"a modo de|en suma|solo el tiempo)", ultimo, re.I))
 
+    # variabilidad de longitud de párrafo: el detector marca la regularidad, no las palabras
+    long_p = [len(x.split()) for x in parrafos if len(x.split()) >= 20]
+    if long_p:
+        mp = sum(long_p) / len(long_p)
+        sdp = (sum((x - mp) ** 2 for x in long_p) / len(long_p)) ** 0.5
+        cv_p = (sdp / mp) if mp else 0.0
+    else:
+        mp = sdp = cv_p = 0.0
+
     return {
         "archivo_palabras": palabras_total,
+        "parrafo_media_palabras": round(mp, 1),
+        "parrafo_desviacion": round(sdp, 1),
+        "parrafo_cv": round(cv_p, 3),
         "parrafos_prosa": total_prosa,
         "parrafos_cortos_2o_menos": cortos,
         "parrafos_largos_6o_mas": largos_p,
@@ -260,6 +272,11 @@ def reporte(r, max_frase):
     L.append("─ Ritmo de párrafo (prosa de 20+ palabras): %d párrafos, de los cuales %d tienen "
              "2 oraciones o menos y %d tienen 6 o más"
              % (r["parrafos_prosa"], r["parrafos_cortos_2o_menos"], r["parrafos_largos_6o_mas"]))
+    L.append("─ Variabilidad de longitud de párrafo: media %.1f palabras, desviación %.1f, "
+             "coeficiente %.2f %s"
+             % (r["parrafo_media_palabras"], r["parrafo_desviacion"], r["parrafo_cv"],
+                "(aceptable: por encima de 0,55)" if r["parrafo_cv"] >= 0.55
+                else "(baja: los párrafos se parecen demasiado entre sí)"))
     if r["aperturas_repetidas_consecutivas"]:
         for e in r["aperturas_repetidas_consecutivas"][:5]:
             L.append("   · párr. %d abre igual que el anterior: «%s»" % (e["parrafo"], e["conector"]))
@@ -281,9 +298,15 @@ def reporte(r, max_frase):
     graves = (r["relleno_n"] + r["latinos_fuera_parentesis_n"] + r["siglas_en_minuscula_n"]
               + max(0, r["estructura_binaria_n"] - 1)
               + (1 if r["cierre_con_formula"] else 0)
-              + len(r["aperturas_repetidas_consecutivas"]))
-    L.append("VEREDICTO: %s" % ("requiere corrección" if graves else
-                                "sin hallazgos graves (revise los guiones largos a mano)"))
+              + len(r["aperturas_repetidas_consecutivas"])
+              + (0 if r["parrafo_cv"] >= 0.55 else 1))
+    if graves:
+        L.append("VEREDICTO: requiere corrección")
+    elif r["guiones_largos_n"]:
+        L.append("VEREDICTO: sin hallazgos graves (quedan %d guiones largos: revíselos a mano)"
+                 % r["guiones_largos_n"])
+    else:
+        L.append("VEREDICTO: sin hallazgos graves")
     return "\n".join(L)
 
 

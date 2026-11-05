@@ -92,22 +92,19 @@ def eje_iv(doc):
 
     # ---------- 4.1
     h(doc, 2, "Calificación del mecanismo jurídico aplicable")
-    rich(doc, ["La guía del proyecto integrador distingue, acertadamente, entre la actuación que "
-               "corresponde a una entidad pública y la que corresponde a una empresa privada. La "
-               "distinción no es formal sino de fondo: la reclamación administrativa previa del "
-               "artículo 6 del Código Procesal del Trabajo y de la Seguridad Social es un requisito "
-               "de procedibilidad dirigido a las entidades de derecho público, y su incumplimiento "
-               "(según la jurisprudencia) es insubsanable. Aplicarla a un particular implicaría "
-               "trasladar al empleador una carga procesal que el legislador reservó para la "
-               "Administración, con el riesgo adicional de que el escrito no produzca efecto "
-               "interruptivo alguno."])
-    rich(doc, ["La estructura del artículo 6 del C.P.T.S.S. lo confirma: la norma se refiere a "
-               "«las acciones contenciosas contra la Nación, las entidades territoriales y "
-               "cualquiera otra entidad de la administración pública», y la Corte Constitucional, "
-               "al examinarla en la Sentencia C-792 de 2006, la entendió como una modalidad de "
-               "«aseguramiento de la oportunidad para la autotutela administrativa»: se otorga a la "
-               "Administración la posibilidad de revisar sus propias actuaciones antes de que sean "
-               "sometidas a la jurisdicción. Ese presupuesto no existe frente a un empleador privado."])
+    rich(doc, ["La guía del proyecto acierta al separar dos situaciones que se confunden todo el "
+               "tiempo: lo que se hace contra una entidad pública y lo que se hace contra una empresa "
+               "privada. No es una diferencia de forma. La reclamación administrativa previa del "
+               "artículo 6 del C.P.T.S.S. es requisito de procedibilidad frente a entidades de "
+               "derecho público, y su omisión no se sanea. Aplicarla a un particular es trasladarle "
+               "al empleador una carga que el legislador reservó para la Administración, y encima con "
+               "el riesgo de que el escrito no interrumpa nada."])
+    rich(doc, ["Basta leer la norma. El artículo 6 habla de «las acciones contenciosas contra la "
+               "Nación, las entidades territoriales y cualquiera otra entidad de la administración "
+               "pública», y la Corte, al examinarla en la Sentencia C-792 de 2006, la entendió como "
+               "un «aseguramiento de la oportunidad para la autotutela administrativa»: la "
+               "Administración revisa lo que hizo antes de que un juez lo revise. Ese presupuesto, "
+               "frente a un empleador privado, simplemente no existe."])
     tabla(doc, ["Naturaleza del demandado", "Mecanismo exigible", "Norma aplicable", "Efecto del escrito"],
           [["Entidad pública", "Reclamación administrativa previa", "Art. 6, C.P.T.S.S.; C-792 de 2006",
             "Requisito de procedibilidad; suspende la prescripción"],
@@ -123,29 +120,29 @@ def eje_iv(doc):
           [3.6, 4.4, 4.2, 3.8], size=8.4,
           titulo="Tabla 23. Determinación del mecanismo según la naturaleza del sujeto")
 
-    rich(doc, ["Para EXTINTORES S C M la consecuencia práctica es que la reclamación se dirige al "
-               "empleador mediante derecho de petición y solicitud de agotamiento de la vía interna, "
-               "y que las decisiones de las entidades del sistema (EPS, ARL y AFP) se controvierten "
-               "mediante derecho de petición y, agotada la respuesta, mediante demanda ante la "
-               "jurisdicción laboral. Es importante precisar que la conciliación extrajudicial solo "
-               "procede respecto de derechos inciertos y discutibles; los derechos ciertos e "
-               "indiscutibles, como las semanas efectivamente cotizadas o las prestaciones ya "
-               "reconocidas, no son conciliables."])
-    caja(doc, "Error frecuente que debe evitarse",
-         ["Radicar una «reclamación administrativa previa» ante una empresa privada no suspende la "
-          "prescripción y puede llevar a que el juez declare la demanda mal formulada. Inversamente, "
-          "demandar directamente a una entidad pública sin reclamación previa conduce al rechazo de "
-          "la demanda por falta de requisito de procedibilidad. La calificación del sujeto pasivo es, "
-          "por tanto, la primera decisión procesal del caso."],
+    rich(doc, ["Aplicado a EXTINTORES S C M, esto deja tres caminos distintos. Contra el empleador, "
+               "derecho de petición y solicitud de agotamiento de la vía interna. Contra las "
+               "decisiones de la EPS, la ARL o la AFP, derecho de petición y, agotada la respuesta, "
+               "demanda ante la jurisdicción laboral. Y la conciliación extrajudicial solo cabe donde "
+               "hay derecho incierto y discutible: las semanas efectivamente cotizadas o una "
+               "prestación ya reconocida no se concilian, porque no hay nada que negociar."])
+    caja(doc, "El error que hunde expedientes",
+         ["Radicar una «reclamación administrativa previa» contra una empresa privada no suspende la "
+          "prescripción, y el juez puede declarar la demanda mal formulada. Al revés también pasa: "
+          "demandar a una entidad pública sin reclamación previa termina en rechazo por falta de "
+          "requisito de procedibilidad. Por eso lo primero que hay que decidir en cualquier caso no "
+          "es el argumento, es quién es el demandado."],
          tipo='alerta')
 
     # ---------- 4.2 documentos
     h(doc, 2, "Insumo procesal 1: derecho de petición ante la ARL")
-    rich(doc, ["Se redacta el escrito dirigido a la administradora de riesgos laborales con dos "
-               "pretensiones conexas: la revisión de la clasificación del riesgo y el reconocimiento "
-               "de las prestaciones derivadas del accidente AT-2026-014. El modelo incluye los "
-               "elementos que la Ley 1755 de 2015 exige (designación de la autoridad, identificación del peticionario, objeto, razones y petición concreta) y añade la solicitud de copias "
-               "y la advertencia sobre el silencio administrativo."])
+    rich(doc, ["El primer escrito va a la ARL y lleva dos pretensiones conexas: que se revise la "
+               "clasificación del riesgo y que se reconozcan las prestaciones del accidente "
+               "AT-2026-014. El modelo cumple lo que pide la Ley 1755 de 2015 (autoridad "
+               "destinataria, identificación del peticionario, objeto, razones y petición concreta) y "
+               "le suma dos cosas que casi nadie incluye: la solicitud de copias y la advertencia "
+               "sobre el silencio administrativo. Lo segundo sí importa: el silencio es lo que "
+               "permite contar el término desde una fecha cierta."])
     salto_pagina(doc)
     encabezado_escrito(doc, "ADMINISTRADORA DE RIESGOS LABORALES [NOMBRE DE LA ARL]  ·  "
                             "OFICINA DE ATENCIÓN AL USUARIO", "Soacha (Cundinamarca), noviembre de 2026")
@@ -244,10 +241,11 @@ def eje_iv(doc):
     # ---- documento 2
     salto_pagina(doc)
     h(doc, 2, "Insumo procesal 2: derecho de petición ante la AFP y solicitud de agotamiento de vía")
-    rich(doc, ["El segundo escrito se dirige a la administradora de fondos de pensiones y persigue un "
-               "objetivo probatorio: obtener el expediente de afiliación y el acta de doble asesoría "
-               "del caso P-03, o la constancia de su inexistencia. Ese documento es el que permite "
-               "decidir si se demanda la ineficacia del traslado."])
+    rich(doc, ["El segundo va a la AFP y su objetivo es probatorio, no persuasivo. Se piden el "
+               "expediente de afiliación y el acta de doble asesoría del caso P-03, o la constancia "
+               "de que no existen. Cualquiera de las dos respuestas sirve: una prueba el vicio, la "
+               "otra lo confirma por ausencia. Y con ese papel en la mano se decide si se demanda la "
+               "ineficacia."])
     p(doc, "", space_after=6)
     encabezado_escrito(doc, "ADMINISTRADORA DE FONDOS DE PENSIONES [NOMBRE DE LA AFP]  ·  "
                             "OFICINA DE SERVICIO AL CLIENTE", "Soacha (Cundinamarca), noviembre de 2026")
@@ -311,10 +309,10 @@ def eje_iv(doc):
     # ---- documento 3
     salto_pagina(doc)
     h(doc, 2, "Insumo procesal 3: solicitud de agotamiento de la vía interna ante el empleador")
-    rich(doc, ["El tercer modelo se dirige al propio empleador y es el que la guía exige para las "
-               "empresas privadas. Su función es doble: permite corregir el error antes de litigar y "
-               "documentar la reclamación para efectos de la interrupción de la prescripción y de la "
-               "prueba del agotamiento de la vía interna."])
+    rich(doc, ["El tercero se dirige al propio empleador, que es lo que la guía exige cuando el "
+               "demandado es privado. Cumple dos funciones al mismo tiempo: da la oportunidad de "
+               "corregir el error sin llegar a juicio y deja documentada la reclamación para "
+               "interrumpir la prescripción y probar el agotamiento de la vía interna."])
     p(doc, "", space_after=6)
     encabezado_escrito(doc, "EXTINTORES S C M  ·  GERENCIA GENERAL", "Soacha (Cundinamarca), noviembre de 2026")
     rotulo(doc, "Referencia")
@@ -355,21 +353,22 @@ def eje_iv(doc):
     # ---------- 4.3 competencia
     salto_pagina(doc)
     h(doc, 2, "Fijación de la competencia judicial")
-    rich(doc, ["Determinar el juez competente exige aplicar, en orden, los factores que el Código "
-               "Procesal del Trabajo y de la Seguridad Social establece: el factor objetivo o por "
-               "razón de la materia, el factor territorial, el factor por razón de la cuantía y el "
-               "factor funcional. Un error en cualquiera de ellos conduce a la remisión del expediente "
-               "y a la pérdida de tiempo procesal."])
+    rich(doc, ["Competencia se decide aplicando cuatro factores en orden: materia, territorio, "
+               "cuantía y función. Fallar en cualquiera de los cuatro no anula el derecho, pero manda "
+               "el expediente a otro despacho y el caso se enfría seis meses. Con tres trabajadores y "
+               "una empresa pequeña, medio año es la diferencia entre cobrar y no cobrar."])
 
     h(doc, 3, "Competencia por razón de la materia")
-    rich(doc, ["El artículo 2 del C.P.T.S.S. atribuye a la jurisdicción ordinaria, en su especialidad "
-               "laboral, el conocimiento de «las controversias referentes al sistema de seguridad "
-               "social integral que se susciten entre los afiliados, beneficiarios o usuarios, los "
-               "empleadores y las entidades administradoras o prestadoras, cualquiera que sea la "
-               "naturaleza de la relación jurídica y de los actos jurídicos que se controviertan». "
-               "Así, tanto la demanda de ineficacia del traslado como la de reconocimiento de "
-               "prestaciones de la ARL o la de reliquidación de aportes corresponden al juez laboral, "
-               "y no al juez administrativo ni al civil."])
+    rich(doc, ["El artículo 2 del C.P.T.S.S. le da a la jurisdicción ordinaria laboral «las "
+               "controversias referentes al sistema de seguridad social integral que se susciten "
+               "entre los afiliados, beneficiarios o usuarios, los empleadores y las entidades "
+               "administradoras o prestadoras, cualquiera que sea la naturaleza de la relación "
+               "jurídica y de los actos jurídicos que se controviertan»."])
+
+    rich(doc, ["Ese «cualquiera que sea» resuelve casi todo el Eje IV. La ineficacia del traslado, el "
+               "reconocimiento de prestaciones de la ARL y la reliquidación de aportes van al juez "
+               "laboral. No al administrativo, aunque haya una entidad pública en el fondo del "
+               "asunto; no al civil, aunque se discutan mesadas."])
 
     h(doc, 3, "Competencia territorial (artículo 11 del C.P.T.S.S.)")
     rich(doc, ["El artículo 11 del C.P.T.S.S., modificado por el artículo 8 de la Ley 712 de 2001, "
@@ -378,11 +377,10 @@ def eje_iv(doc):
                ("«será competente el juez laboral del circuito del lugar del domicilio de la entidad "
                 "de seguridad social demandada o el del lugar donde se haya surtido la reclamación "
                 "del respectivo derecho, a elección del demandante»", {"i": True}), ". La norma "
-               "consagra, por tanto, un fuero concurrente con dos opciones y deja la elección en "
-               "manos del demandante, lo que constituye una garantía de acceso a la administración de "
-               "justicia. Para los procesos contra particulares rige la regla general del artículo 5 "
-               "(lugar de prestación del servicio o domicilio del demandado) y, en los procesos "
-               "contra la Nación, el artículo 7."])
+               "consagra, por tanto, un fuero concurrente: dos opciones y la elección en manos del "
+               "demandante, que en la práctica es una garantía de acceso a la justicia. Contra "
+               "particulares rige la regla general del artículo 5 (lugar de prestación del servicio o "
+               "domicilio del demandado); contra la Nación, el artículo 7."])
     tabla(doc, ["Escenario", "Demandado", "Opciones del demandante", "Juez competente"],
           [["Ineficacia del traslado (caso P-03)", "AFP con domicilio en Bogotá D.C.",
             "Lugar de prestación del servicio (Soacha) o domicilio de la AFP (Bogotá D.C.)",
@@ -395,19 +393,18 @@ def eje_iv(doc):
             "Juzgado Laboral del Circuito de Soacha"]],
           [4.2, 3.6, 4.2, 4.0], size=8.4,
           titulo="Tabla 24. Aplicación del factor territorial")
-    rich(doc, ["La reclamación cumple una función adicional relevante: el artículo 6 del C.P.T.S.S. "
-               "establece que mientras esté pendiente el agotamiento de la reclamación administrativa "
-               "se suspende el término de prescripción de la respectiva acción. Por esa razón el "
-               "escrito debe radicarse con constancia (sello, correo certificado o radicado electrónico) y conservarse junto con la respuesta."])
+    rich(doc, ["Y hay un efecto que casi nadie calcula: mientras está pendiente el agotamiento de la "
+               "reclamación administrativa, el artículo 6 del C.P.T.S.S. suspende el término de "
+               "prescripción. Eso obliga a radicar con constancia (sello, correo certificado o "
+               "radicado electrónico) y a guardar el comprobante con la respuesta. Sin constancia, la "
+               "suspensión no se puede probar y el efecto se pierde."])
 
     h(doc, 3, "Competencia por razón de la cuantía (artículo 12 del C.P.T.S.S.)")
     rich(doc, ["El artículo 12 del C.P.T.S.S., modificado por el artículo 46 de la Ley 1395 de 2010, "
-               "distribuye la competencia así: los jueces laborales del circuito conocen en única "
-               "instancia de los negocios cuya cuantía exceda el equivalente a veinte (20) salarios "
-               "mínimos legales mensuales vigentes y en primera instancia de todos los demás; y los "
-               "jueces municipales de pequeñas causas y competencia múltiple, donde existan, conocen "
-               "en única instancia de los negocios cuya cuantía no exceda ese tope. Para 2026, el "
-               "umbral es de %s." % money(TOPE_CUANTIA)])
+               "traza la raya en veinte salarios mínimos. Por encima, juez laboral del circuito en "
+               "única instancia; por debajo, primera instancia del circuito y, donde existan, jueces "
+               "municipales de pequeñas causas en única instancia. Para 2026 la raya está en %s."
+               % money(TOPE_CUANTIA)])
     tabla(doc, ["Caso", "Pretensión principal", "Cuantía estimada", "Competencia"],
           [["P-03 · Ineficacia del traslado",
             "Diferencia de mesadas: %s mensuales × 12 mesadas × 20 años" % money(345095),
@@ -425,14 +422,14 @@ def eje_iv(doc):
           titulo="Tabla 25. Aplicación del factor cuantía a los casos de la empresa")
 
     h(doc, 3, "Competencia funcional e impugnación")
-    rich(doc, ["Fijada la competencia del juzgado laboral del circuito en primera instancia, la "
-               "impugnación se rige por el factor funcional: la apelación corresponde al Tribunal "
-               "Tribunal Superior del Distrito Judicial de Cundinamarca, Sala Laboral, y el recurso "
-               "extraordinario de "
-               "casación a la Sala de Casación Laboral de la Corte Suprema de Justicia, cuando la "
-               "cuantía y la naturaleza del asunto lo permitan. El proceso se tramita por el "
-               "procedimiento ordinario laboral de la Ley 1149 de 2007, con audiencias orales y "
-               "públicas."])
+    rich(doc, ["Con el juzgado del circuito en primera instancia, la apelación va al Tribunal "
+               "Superior del Distrito Judicial de Cundinamarca, Sala Laboral, y la casación a la Sala "
+               "de Casación Laboral de la Corte Suprema, cuando la cuantía y la naturaleza del asunto "
+               "lo permitan. El trámite es el ordinario laboral de la Ley 1149 de 2007, con "
+               "audiencias orales y públicas."])
+    rich(doc, ["La oralidad tiene una consecuencia práctica que conviene anticipar: el caso se gana o "
+               "se pierde en la audiencia, y en la audiencia solo existe lo que está en el "
+               "expediente. De ahí que el Eje IV termine donde empieza el Eje I: en los documentos."])
     tabla(doc, ["Etapa", "Actuación", "Plazo o término"],
           [["1", "Radicación de la reclamación o del derecho de petición", "Antes de demandar; "
             "suspende la prescripción"],
@@ -469,11 +466,10 @@ def eje_iv(doc):
           [3.8, 7.6, 4.6], size=8.4,
           titulo="Tabla 27. Lista de verificación del escrito de demanda")
 
-    caja(doc, "Cierre del eje procesal",
-         ["El insumo procesal es el punto en que el diagnóstico se convierte en actuación jurídica, "
-          "y ahí un formato sirve de poco. Un escrito bien construido (con hechos verificables, "
-          "fundamentos precisos, pretensiones congruentes y competencia correctamente fijada) multiplica las "
-          "posibilidades de éxito y reduce el riesgo de que el proceso se pierda por razones ajenas "
-          "al derecho sustancial."],
+    caja(doc, "Lo que deja el Eje IV",
+         ["Aquí el diagnóstico se vuelve actuación, y en ese paso un formato sirve de poco. Un escrito "
+          "con hechos verificables, fundamentos precisos, pretensiones congruentes y competencia bien "
+          "fijada no garantiza ganar, pero evita perder por razones que no tienen nada que ver con el "
+          "derecho sustancial. En una empresa de tres personas, perder por eso es imperdonable."],
          tipo='info')
     salto_pagina(doc)

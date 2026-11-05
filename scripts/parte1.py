@@ -96,9 +96,9 @@ def contenido(doc):
           "conclusiones, con la norma y la jurisprudencia citadas en cada punto. El segundo son "
           "los ",
           ("campos por diligenciar", {"b": True}),
-          ": los anexos del capítulo final y los espacios marcados con líneas de puntos, que debe "
-          "llenar con los soportes reales de EXTINTORES S C M (planillas PILA, comprobantes de "
-          "nómina, certificados de afiliación, historia laboral y documentos del SG-SST).",
+          ": los anexos del capítulo final y los espacios marcados con líneas de puntos. Ahí van "
+          "los soportes reales de EXTINTORES S C M: planillas PILA, comprobantes de nómina, "
+          "certificados de afiliación, historia laboral y documentos del SG-SST.",
           "Al abrir el archivo, actualice la tabla de contenido: clic derecho sobre el texto azul → "
           "«Actualizar campo» → «Actualizar toda la tabla». Los recuadros de color son ayudas de "
           "estudio: los azules orientan la lectura, los rojos señalan riesgos jurídicos y los ámbar "
@@ -111,65 +111,81 @@ def contenido(doc):
 def resumen_ejecutivo(doc):
     h_sin_num(doc, 1, "RESUMEN EJECUTIVO")
     rich(doc, [
-        "El presente informe expone los hallazgos de la auditoría jurídica en seguridad social "
-        "practicada a ", (RAZON, {"b": True}), ", empresa privada identificada con NIT ",
+        "Auditar la seguridad social de una empresa de tres personas tiene algo de trampa. Uno "
+        "espera encontrar el incumplimiento grande, el que sale en los periódicos, y termina "
+        "encontrando otra cosa: tres trabajadores afiliados, la planilla al día y, al mismo tiempo, "
+        "un requerimiento del año 2024 que nadie respondió. ",
+        (RAZON, {"b": True}),
+        " es una empresa unipersonal de ",
+        (AUTOR, {"b": True}),
+        ", con cédula/NIT ",
         (NIT, {"b": True}),
-        ", cuya actividad principal es el comercio, la recarga y el mantenimiento de extintores, "
-        "equipos y sistemas de protección contra incendio, con domicilio en el municipio de Soacha "
-        "(Cundinamarca). La auditoría "
-        "se estructura en los cuatro ejes exigidos por la guía del proyecto integrador. El marco "
-        "normativo lo integran la Ley 100 de 1993, la Ley 1562 de 2012, la Ley Estatutaria 1751 de "
-        "2015, el Código Sustantivo del Trabajo y el Código Procesal del Trabajo y de la Seguridad "
-        "Social. Se apoyan en la jurisprudencia de la Corte Suprema de Justicia y de la Corte "
-        "Constitucional. Las normas de 2026 inciden de manera directa en la organización: la "
-        "Ley 2381 de 2024, cuyo calendario de entrada en vigencia fue fijado por la Sentencia C-264 "
-        "de 2026, y los Decretos 1469 y 1470 de 2025 sobre salario mínimo y auxilio de transporte.", ])
+        ", domiciliada en Soacha y dedicada al comercio, la recarga y el mantenimiento de extintores. "
+        "La auditoría siguió los cuatro ejes de la guía del curso y se apoyó en lo que había: el "
+        "Registro Único Tributario, las planillas, los comprobantes de nómina y un documento que "
+        "cambió el trabajo, el acta 028-050164-26 del 9 de septiembre de 2026.", ])
 
-    rich(doc, ["Vale decir desde el principio qué encontró la auditoría y qué no. No hubo aquí una "
-               "empresa en crisis ni un trabajador desprotegido: los tres están afiliados, cotizan y "
-               "reciben atención. Lo que hay es un patrón más difícil de corregir, el de una "
-               "obligación que se sabe exigible y se posterga. El acta sanitaria del 9 de septiembre "
-               "de 2026 lo dejó por escrito con una frase que conviene leer dos veces: «no se "
-               "evidencia documento de sistemas de seguridad y salud en el trabajo»."])
-    rich(doc, ["Ese diagnóstico tiene una consecuencia concreta en dinero. La reparación tarifada de "
-               "un accidente de trabajo asciende a $ 9.044.000; la reparación plena del artículo 216 "
-               "del C.S.T., en la liquidación ilustrativa que se presenta en el capítulo 2, llega a "
-               "$ 27.284.000. La diferencia, $ 18.240.000, sale del patrimonio de la titular, porque "
-               "en una empresa unipersonal el patrimonio de la empresa y el de la persona son el "
-               "mismo. En mi criterio, esa cifra explica el informe mejor que cualquier advertencia "
-               "sobre el deber de diligencia."])
+    rich(doc, ["Esa acta es la que manda. No la pedí yo: la levantó la Secretaría de Salud de Soacha "
+               "en una visita de inspección y quedó firmada por una ingeniera química y por el "
+               "vendedor de la empresa. En la revisión documental escribieron, con esas palabras, "
+               "que «no se evidencia documento de sistemas de seguridad y salud en el trabajo». "
+               "Uno puede discutir una auditoría interna; contra eso no hay mucho que alegar."])
 
-    p(doc, "Principales hallazgos", size=11.5, bold=True, color=AZUL, space_before=8, space_after=4)
+    rich(doc, ["La consecuencia está en plata. Reparar un accidente de trabajo por la vía tarifada "
+               "del sistema cuesta $ 9.044.000. Repararlo por la vía plena del artículo 216 del "
+               "C.S.T., con la liquidación que armo en el capítulo 2, cuesta $ 27.284.000. Los "
+               "$ 18.240.000 de diferencia salen del bolsillo de la titular, y aquí conviene "
+               "detenerse: en una empresa unipersonal el patrimonio de la empresa y el de la persona "
+               "son la misma cosa. No hay sociedad que separe el riesgo."])
+
+    rich(doc, ["Y sin embargo, de eso no se sigue que la empresa esté en crisis. Hay tres cosas que "
+               "están bien y conviene decirlas: la afiliación al régimen contributivo está completa, "
+               "la cotización a pensión no tiene mora y la clasificación de riesgo coincide con el "
+               "CIIU registrado. El problema es más aburrido y más difícil de arreglar, porque no se "
+               "resuelve pagando: es la costumbre de dejar para después lo que ya se sabe exigible."])
+
+    p(doc, "Lo que encontré, eje por eje", size=11.5, bold=True, color=AZUL, space_before=8,
+      space_after=4)
     for titulo, texto in [
         ("Eje I · Afiliación y cotizaciones (riesgo medio). ",
-         "La planta es de tres trabajadores dependientes. La condición de persona natural "
-         "empleadora de dos o más trabajadores permite aplicar la exoneración del artículo 114-1 "
-         "del Estatuto Tributario sobre el 8,5 % de salud patronal, el SENA y el ICBF, con un "
-         "efecto mensual de $ 1.100.372 frente al escenario sin exoneración. Se detectaron "
-         "novedades reportadas por fuera del plazo y una diferencia de $ 412.000 en el pago de una "
-         "licencia de paternidad."),
+         "Tres trabajadores, todos afiliados. Aquí aparece algo que suele leerse al revés: el "
+         "artículo 114-1 del Estatuto Tributario excluye de la exoneración a las personas naturales "
+         "que emplean menos de dos trabajadores, y esta empresa tiene tres. Por eso sí aplica, y el "
+         "ahorro es de $ 1.100.372 al mes entre salud patronal, SENA e ICBF. El margen es de uno: si "
+         "la planta bajara a una sola persona, habría que reliquidar con intereses. El otro hallazgo "
+         "es una licencia de paternidad liquidada sobre una base incompleta: $ 412.000 de diferencia "
+         "que se corrigen en una tarde y que, sin corregir, se convierten en una demanda pequeña."),
         ("Eje II · Riesgos laborales (riesgo alto). ",
-         "El código CIIU 4759 ubica a la empresa en clase de riesgo I, con tarifa inicial de "
-         "0,522 % del IBC (Decreto 768 de 2022 y artículo 13 del Decreto 1772 de 1994), y el acta "
-         "sanitaria confirma ese registro. El problema es otro: la recarga y la prueba hidrostática "
-         "de cilindros que se ejecutan en el mismo local desbordan esa clase, y la empresa no ha "
-         "consultado el punto a la ARL. El caso AT-2026-014 revela el "
-         "incumplimiento de seis de siete deberes de seguridad verificables, lo que configura culpa "
-         "patronal del artículo 216 del C.S.T., con una exposición estimada de $ 27,3 millones de "
-         "reparación plena, de los cuales $ 18,2 millones quedarían a cargo del empleador después de "
-         "descontar las prestaciones de la ARL."),
+         "El CIIU 4759 ubica a la empresa en clase I, tarifa del 0,522 %, y la tabla del Decreto 768 "
+         "de 2022 incluye expresamente el comercio de extintores. O sea que la clasificación está "
+         "bien puesta. El problema empieza cuando uno entra al local y ve que allí también se "
+         "recargan y se prueban cilindros a presión, que no es comercio sino servicio técnico sobre "
+         "equipos a presión. Esa discusión no se ha planteado a la ARL, y mientras no se plantee, la "
+         "empresa cotiza por un riesgo que no es el suyo. Sumado a la ausencia del SG-SST, el caso "
+         "AT-2026-014 deja al descubierto seis de siete deberes incumplidos: ahí ya no se discute "
+         "tarifa, se discute culpa patronal."),
         ("Eje III · Pensiones (riesgo alto). ",
-         "Dos de los tres trabajadores están en el Régimen de Prima Media y uno en el Régimen de "
-         "Ahorro Individual. El caso P-03 presenta un traslado de régimen sin soporte documental de doble "
-         "asesoría: la demanda de ineficacia es viable y los efectos restitutorios comprenden el "
-         "traslado íntegro del ahorro y una diferencia de mesada de $ 345.095 mensuales frente al "
-         "escenario de ahorro individual, equivalente a $ 82,8 millones en veinte años de disfrute."),
+         "Dos de los tres trabajadores están en prima media; el tercero, en ahorro individual. El "
+         "caso P-03 no se sostiene en la conveniencia de un régimen sobre otro, sino en algo más "
+         "simple y más grave: no hay acta de doble asesoría. Con la SU-107 de 2024 la carga de la "
+         "prueba se traslada a la administradora, y si no la acredita, el traslado es ineficaz. La "
+         "diferencia de mesada que calculo es de $ 345.095 mensuales, $ 82.822.800 en veinte años. "
+         "Que esa cifra sea suficiente para compensar el daño, ya es otra pregunta."),
         ("Eje IV · Insumo procesal (riesgo bajo). ",
-         "Se redactan tres documentos modelo (derecho de petición ante la ARL, derecho de petición ante la AFP y solicitud de agotamiento de la vía interna ante el empleador) y se fija la "
-         "competencia del juez laboral del circuito de Soacha por los factores de materia, territorio "
-         "(artículo 11 del C.P.T.S.S.) y cuantía (artículo 12)."),
+         "La calidad del demandado decide el camino: reclamación administrativa previa si es entidad "
+         "pública, derecho de petición y agotamiento de vía interna si es empresa privada. La "
+         "competencia se fija por materia, territorio y cuantía, y aquí el detalle importa: con "
+         "domicilio en Soacha, el circuito competente es el de Soacha, no el de Bogotá. Van tres "
+         "documentos modelo con los espacios en blanco para radicar."),
     ]:
-        bullet(doc, [(titulo, {"b": True}), texto])
+        par = doc.add_paragraph()
+        par.paragraph_format.space_after = Pt(7)
+        par.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        r1 = par.add_run(titulo)
+        r1.bold = True
+        r1.font.size = Pt(11)
+        r2 = par.add_run(texto)
+        r2.font.size = Pt(11)
 
     caja(doc, "Conclusión general",
          ["El cumplimiento formal es aceptable, pero existen tres brechas materiales: (i) la clase "
@@ -188,20 +204,26 @@ def resumen_ejecutivo(doc):
 def metodologia(doc):
     h_sin_num(doc, 1, "ASPECTOS METODOLÓGICOS")
     h_sin_num(doc, 2, "Tipo y método de investigación")
-    rich(doc, ["La investigación es de tipo ",
-               ("jurídico-dogmático con componentes descriptivo y propositivo", {"i": True}),
-               ", complementada con un estudio de caso organizacional. El enfoque es cualitativo y la "
-               "técnica principal es la revisión documental: se examinan fuentes formales del derecho "
-               "(Constitución, leyes, decretos y jurisprudencia) y fuentes materiales de la empresa "
-               "(contratos, comprobantes de nómina, planillas integradas de liquidación de aportes, "
-               "certificados de afiliación, historia laboral y documentos del SG-SST). El método "
-               "combina la subsunción normativa (contrastar el hecho con la hipótesis legal) con el "
-               "razonamiento jurisprudencial, en especial la ",
-               ("ratio decidendi", {"i": True}), " de las providencias citadas."])
-    rich(doc, ["El informe no agota el estudio de todas las obligaciones del sistema: delimita el "
-               "objeto a los cuatro ejes fijados por la guía académica, de modo que los hallazgos son "
-               "válidos para esos contornos y no para la totalidad del cumplimiento normativo de la "
-               "empresa."])
+    rich(doc, ["Esto es un estudio de caso con método jurídico-dogmático. Dicho sin adorno: se toma "
+               "una empresa concreta, se mira qué normas le aplican y se compara lo que la norma "
+               "exige con lo que la empresa efectivamente hizo. Hay una parte descriptiva, que es "
+               "la mayor, y una parte propositiva, que aparece al final de cada eje y en el plan de "
+               "mejoramiento."])
+    rich(doc, ["La técnica principal fue revisión documental. Por el lado del derecho, la "
+               "Constitución, las leyes, los decretos y la jurisprudencia. Por el lado de la "
+               "empresa, lo que existía: el Registro Único Tributario, las planillas integradas, los "
+               "comprobantes de nómina, los certificados de afiliación, el acta de inspección "
+               "sanitaria y lo poco que había de SG-SST. El método es el de siempre en esta "
+               "materia: se contrasta el hecho con la hipótesis legal y, cuando la norma no resuelve, "
+               "se acude a la ",
+               ("ratio decidendi", {"i": True}),
+               " de las providencias citadas."])
+    rich(doc, ["Una precisión sobre el alcance, porque es la objeción que un jurado haría primero. "
+               "El informe no revisa todas las obligaciones del sistema: se limita a los cuatro ejes "
+               "de la guía. Los hallazgos valen para esos contornos y no para afirmar que la empresa "
+               "esté incumpliendo en todo lo demás. Hay materias que quedaron por fuera y que "
+               "merecerían su propio trabajo: cesantías, prima de servicios, vacaciones y el "
+               "cumplimiento pleno de la Resolución 0312 de 2019, por ejemplo."])
 
     h_sin_num(doc, 2, "Técnicas e instrumentos")
     tabla(doc, ["Instrumento", "Contenido", "Eje"],
@@ -228,64 +250,76 @@ def metodologia(doc):
           titulo="Tabla 1. Instrumentos de auditoría aplicados")
 
     h_sin_num(doc, 2, "Fuentes y criterios de valoración")
-    rich(doc, ["Se emplean fuentes primarias (normas y jurisprudencia) y secundarias (doctrina y "
-               "documentos de la empresa). Los hallazgos se valoran con una escala de tres niveles, "
-               "explicitada en cada eje: ", ("riesgo bajo", {"b": True}),
-               " (la obligación se cumple y está documentada), ", ("riesgo medio", {"b": True}),
-               " (se cumple, pero sin evidencia suficiente o con errores de liquidación) y ",
-               ("riesgo alto", {"b": True}),
-               " (existe incumplimiento o exposición a responsabilidad patronal). Con ese criterio "
-               "las conclusiones se pueden verificar y no dependen de apreciaciones subjetivas."])
-    rich(doc, ["Una advertencia sobre el alcance. La escala califica evidencia, no intenciones: una "
+    rich(doc, ["Los hallazgos se clasifican en tres niveles y el criterio es de evidencia, no de "
+               "gravedad. ",
+               ("Riesgo bajo", {"b": True}),
+               ": la obligación se cumple y está documentada. ",
+               ("Riesgo medio", {"b": True}),
+               ": se cumple, pero sin soporte suficiente o con errores de liquidación. ",
+               ("Riesgo alto", {"b": True}),
+               ": hay incumplimiento o exposición a responsabilidad patronal. La escala se explica "
+               "en cada eje para que el lector pueda discutirla."])
+    rich(doc, ["Conviene advertir una cosa sobre esa escala. Califica evidencia, no intenciones. Una "
                "empresa puede incumplir por descuido y otra por cálculo, y el riesgo jurídico es el "
-               "mismo en ambos casos. Ahora bien, la diferencia importa cuando se discute la culpa, "
-               "porque el artículo 216 del C.S.T. no exige mala fe sino falta de diligencia. En el "
-               "expediente de EXTINTORES S C M hay un dato que inclina la balanza: el acta "
-               "028-050164-26 del 09/09/2026 consigna que la visita anterior, del 18 de octubre de "
-               "2024, ya había dejado requerimientos, con un cumplimiento del 57,50 %."])
-    rich(doc, ["Dicho de otro modo, lo que en 2024 era un hallazgo, en 2026 seguía siendo un "
-               "hallazgo. Eso no convierte a la titular en una empleadora temeraria, pero sí "
-               "desplaza la discusión desde el desconocimiento hacia la persistencia, que es el "
-               "terreno donde la culpa se presume con más facilidad."])
-    rich(doc, ["Advertencia metodológica: las cifras de nómina y los casos señalados como "
-               "ilustrativos se construyeron con el salario mínimo de 2026 y las tarifas vigentes, "
-               "para que los cálculos sean reproducibles. En la aplicación real deben sustituirse por "
-               "los comprobantes y planillas de EXTINTORES SCM."])
+               "mismo en los dos casos. La diferencia solo importa cuando se discute la culpa, porque "
+               "el artículo 216 del C.S.T. no pide mala fe: pide diligencia."])
+    rich(doc, ["Y ahí el expediente de EXTINTORES S C M tiene un dato incómodo. El acta "
+               "028-050164-26 consigna que la visita anterior, del 18 de octubre de 2024, había "
+               "calificado el establecimiento con 57,50 % de cumplimiento y concepto «favorable con "
+               "requerimientos». Es decir: lo que en 2024 era un hallazgo, en 2026 seguía siendo un "
+               "hallazgo. Eso no convierte a la titular en una empleadora temeraria, pero mueve la "
+               "discusión del terreno del desconocimiento al de la persistencia, que es donde la "
+               "culpa se prueba con más facilidad."])
+    rich(doc, ["Queda una advertencia sobre las cifras, y prefiero decirla aquí y no en una nota al "
+               "pie. Las bases de cotización marcadas con asterisco son valores de referencia: la "
+               "empresa todavía no aportó los comprobantes de cada trabajador. Los parámetros de los "
+               "casos AT-2026-014 y P-03 (edad, semanas, capital acumulado, días de incapacidad) "
+               "también son de trabajo. Todo lo demás viene de documentos: el acta, el RUT, la "
+               "planilla y los decretos citados. Donde hay un supuesto, el documento lo dice."])
     salto_pagina(doc)
 
 
 # ---------------------------------------------------------------- Introducción
 def introduccion(doc):
     h_sin_num(doc, 1, "INTRODUCCIÓN Y PLANTEAMIENTO DEL PROBLEMA")
-    rich(doc, ["El Sistema de Seguridad Social Integral colombiano, diseñado por la Ley 100 de 1993 y "
-               "desarrollado por un cuerpo normativo profuso, impone a los empleadores obligaciones "
-               "que no se agotan en el pago de aportes: exige afiliar, reportar novedades con "
-               "veracidad, gestionar prestaciones económicas, administrar el riesgo laboral y "
-               "garantizar información comprensible en materia pensional. El incumplimiento de esos "
-               "deberes produce consecuencias que van desde la sanción moratoria y las acciones de "
-               "cobro de las administradoras (artículos 23 y 24 de la Ley 100 de 1993) hasta la "
-               "responsabilidad patrimonial plena del artículo 216 del Código Sustantivo del Trabajo, "
-               "pasando por la ineficacia de actos jurídicos."])
-    rich(doc, ["En ese contexto, la microempresa es el escenario donde las brechas se manifiestan con "
-               "mayor crudeza: la gestión de la seguridad social suele concentrarse en una sola "
-               "persona, se confunde la afiliación con el pago y se descuida la prueba. ",
-               RAZON, " no es ajena a ese patrón. La actividad que desarrolla (manipulación de cilindros presurizados, recarga con agentes extintores, pruebas hidrostáticas y transporte de equipo) introduce riesgos específicos que exigen una gestión del Sistema "
-               "General de Riesgos Laborales técnicamente informada, mientras que su condición de "
-               "persona natural empleadora plantea problemas particulares en materia de exoneración "
-               "de aportes y de responsabilidad patrimonial."])
-    rich(doc, ["El problema jurídico que orienta la auditoría puede formularse así: ",
+    rich(doc, ["La Ley 100 de 1993 no se conformó con obligar a los empleadores a pagar aportes. Les "
+               "pidió además afiliar, reportar novedades con veracidad, tramitar prestaciones, "
+               "administrar el riesgo laboral y explicar la decisión pensional de cada trabajador. "
+               "Son deberes distintos, con sanciones distintas, y el error más común consiste en "
+               "creer que cumplir el primero cubre los otros cuatro."])
+    rich(doc, ["Las consecuencias de incumplirlos van de menor a mayor. En el extremo bajo están la "
+               "sanción moratoria y el cobro de las administradoras (artículos 23 y 24 de la Ley 100 "
+               "de 1993). En el medio, la ineficacia de actos jurídicos, que es lo que ocurre con un "
+               "traslado de régimen sin asesoría. En el extremo alto está la responsabilidad "
+               "patrimonial plena del artículo 216 del Código Sustantivo del Trabajo, que no tiene "
+               "tope y que en una empresa unipersonal se cobra contra el patrimonio personal del "
+               "dueño."])
+    rich(doc, ["En la microempresa esas brechas se ven con más claridad porque no hay dónde "
+               "esconderlas. La gestión de la seguridad social suele quedar en una sola persona, que "
+               "además es la dueña, la que vende y la que firma; se confunde afiliación con pago; y "
+               "la prueba documental se construye después, cuando ya hay un problema. ",
+               RAZON, " responde a ese patrón y le agrega dos particularidades. La primera es el "
+               "riesgo: manipular cilindros presurizados, recargar con agentes extintores y hacer "
+               "pruebas hidrostáticas no es una actividad de mostrador. La segunda es la forma "
+               "jurídica: al ser persona natural empleadora, el patrimonio de la empresa y el de la "
+               "titular son el mismo, y eso cambia el cálculo de cualquier indemnización."])
+    rich(doc, ["El problema que orienta el trabajo se puede formular en una pregunta: ",
                ("¿en qué medida el cumplimiento de las obligaciones de seguridad social de "
-                "EXTINTORES SCM satisface el estándar normativo vigente y qué consecuencias "
-                "jurídicas se derivan de las brechas identificadas en materia de salud, riesgos "
-                "laborales, pensiones y acceso a la administración de justicia?", {"i": True})])
-    rich(doc, ["Para responderlo, el informe se divide en cinco capítulos: el primero caracteriza la "
-               "organización y analiza la afiliación, el IBC, la cobertura y las prestaciones "
-               "económicas; el segundo aborda el Sistema General de Riesgos Laborales con el estudio "
-               "de un caso de accidente de trabajo y el análisis de la culpa patronal; el tercero "
-               "examina el diagnóstico pensional y la ineficacia del traslado; el cuarto contiene los "
-               "insumos procesales y la fijación de competencia; y el quinto sintetiza los hallazgos, "
-               "las recomendaciones y el plan de mejoramiento, con las conclusiones y la preparación "
-               "de la sustentación oral."])
+                "EXTINTORES S C M satisface el estándar normativo vigente, y qué consecuencias "
+                "jurídicas se derivan de las brechas identificadas en salud, riesgos laborales, "
+                "pensiones y acceso a la administración de justicia?", {"i": True})])
+    rich(doc, ["La pregunta se responde en cinco capítulos. El primero caracteriza la organización y "
+               "revisa afiliación, IBC, cobertura y prestaciones. El segundo entra al Sistema General "
+               "de Riesgos Laborales con un caso de accidente de trabajo y el análisis de la culpa "
+               "patronal. El tercero hace el diagnóstico pensional y examina la ineficacia del "
+               "traslado. El cuarto reúne los insumos procesales y fija la competencia. El quinto "
+               "ordena los hallazgos, propone el plan de mejoramiento y prepara la sustentación "
+               "oral."])
+    rich(doc, ["Una última advertencia sobre el método, que vale más que cualquier nota al pie. En "
+               "una empresa de tres trabajadores cada expediente es un tercio de la planta. Un error "
+               "en una historia laboral son un trabajador y su pensión comprometida. Por eso el "
+               "informe se detiene en detalles que en una empresa grande "
+               "pasarían inadvertidos, y por eso las recomendaciones son concretas y con fecha."])
     salto_pagina(doc)
 
 
@@ -296,11 +330,11 @@ def eje_i(doc):
 
     # ---------- 1.1
     h(doc, 2, "Ficha técnica de la organización")
-    rich(doc, ["La caracterización es el punto de partida de toda auditoría: sin identificar con "
-               "precisión la naturaleza jurídica del empleador, su actividad económica y su planta de "
-               "personal no es posible determinar cuáles obligaciones le son exigibles ni en qué "
-               "cuantía. La siguiente ficha se construyó con los datos de la organización y el "
-               "contraste con el Registro Único Tributario."])
+    rich(doc, ["Antes de auditar hay que saber a quién se audita. De la naturaleza jurídica del "
+               "empleador, de su actividad y de su planta depende qué obligaciones le son exigibles y "
+               "por cuánto. La ficha que sigue no la armé con lo que la empresa dice de sí misma: sale "
+               "del Registro Único Tributario y del acta de inspección sanitaria, que son documentos "
+               "de terceros y por eso valen más."])
     tabla(doc, ["Variable", "Dato", "Relevancia jurídica"],
           [["Razón social", EMPRESA["razon_social"],
             "Identifica al empleador como sujeto de obligaciones (art. 22, Ley 100 de 1993). El acta "
@@ -341,33 +375,38 @@ def eje_i(doc):
                  "028-050164-26 del 09/09/2026 (Secretaría de Salud de Soacha) y el Registro Único "
                  "Tributario.")
 
-    caja(doc, "Advertencia sobre la naturaleza jurídica",
-         ["La actividad se ejerce bajo la forma de empresa unipersonal de persona natural. Ello tiene "
-          "dos consecuencias que suelen pasarse por alto: (i) el patrimonio personal del titular "
-          "responde por las obligaciones sociales, sin la separación patrimonial que ofrece una "
-          "sociedad comercial; y (ii) la exoneración de aportes del artículo 114-1 del Estatuto "
-          "Tributario exige, para las personas naturales, emplear dos o más trabajadores. Con tres "
-          "trabajadores la empresa cumple el umbral, pero el cómputo debe hacerse sobre trabajadores "
-          "reales y activos en cada periodo, no sobre cargos presupuestados."],
+    caja(doc, "La forma jurídica importa más de lo que parece",
+         ["Trabajar bajo la forma de empresa unipersonal de persona natural tiene dos efectos que "
+          "rara vez se tienen presentes. El primero: el patrimonio del titular responde por las "
+          "obligaciones de la empresa, porque no existe la separación que sí da una sociedad "
+          "comercial. El segundo: la exoneración del artículo 114-1 del Estatuto Tributario exige, "
+          "tratándose de personas naturales, emplear dos o más trabajadores. Con tres, la empresa "
+          "cumple el umbral, pero el cómputo se hace sobre trabajadores reales y activos en cada "
+          "periodo, no sobre cargos que figuran en un papel."],
          tipo='alerta')
 
     # ---------- 1.2
     h(doc, 2, "Marco normativo de la afiliación y la cotización en salud")
-    rich(doc, ["El Sistema General de Seguridad Social en Salud (SGSSS) se organiza en dos regímenes: "
-               "el contributivo, financiado con cotizaciones de los afiliados y sus empleadores, y el "
-               "subsidiado, financiado con recursos fiscales y del Fondo de Solidaridad y Garantía. La "
-               "afiliación al primero es obligatoria para los trabajadores dependientes e "
-               "independientes con capacidad de pago, y el empleador debe inscribir a sus trabajadores "
-               "en la EPS que estos elijan, sin que la afiliación colectiva pueda coartar esa libertad "
-               "(numeral 1 del artículo 161 de la Ley 100 de 1993)."])
-    rich(doc, ["La Ley Estatutaria 1751 de 2015 elevó la salud a derecho fundamental autónomo e "
-               "irrenunciable y fijó sus elementos esenciales (disponibilidad, aceptabilidad, accesibilidad, calidad e idoneidad profesional), además de los principios de "
-               "progresividad, integralidad y equidad. Esa ley prohíbe a las entidades administradoras "
-               "y a los empleadores negar, retardar o condicionar la afiliación o el acceso a los "
+    rich(doc, ["El sistema de salud tiene dos regímenes y solo uno de ellos es el que aquí interesa: "
+               "el contributivo, que se paga con cotizaciones de trabajadores y empleadores. El "
+               "subsidiado se financia con recursos fiscales y con el Fondo de Solidaridad y "
+               "Garantía. Para los trabajadores dependientes la afiliación al contributivo es "
+               "obligatoria, y el empleador debe inscribirlos en la EPS que ellos elijan. El numeral "
+               "1 del artículo 161 de la Ley 100 de 1993 protege justamente eso: que la afiliación "
+               "colectiva no sirva para decidir por el trabajador."])
+    rich(doc, ["La Ley Estatutaria 1751 de 2015 cambió el estatus de la salud, que pasó de servicio "
+               "público a derecho fundamental autónomo e irrenunciable, y fijó sus elementos "
+               "esenciales (disponibilidad, aceptabilidad, accesibilidad, calidad e idoneidad). De "
+               "ahí salen los principios de progresividad, integralidad y equidad. Esa ley prohíbe a "
+               "las administradoras y a los empleadores negar, retardar o condicionar la afiliación "
+               "o el acceso a los "
                "servicios, lo que refuerza el deber patronal de reportar novedades de manera oportuna "
                "y veraz."])
 
     h(doc, 3, "Obligaciones del empleador en materia de salud")
+    rich(doc, ["Son cinco y conviene tenerlas separadas, porque se cumplen en momentos distintos y "
+               "se prueban con documentos distintos. Pagar la planilla no acredita haber reportado "
+               "la novedad a tiempo, y ese es el error que después cuesta."])
     for t in [
         [("Afiliar", {"b": True}), " a todos los trabajadores con vinculación laboral, verbal o "
          "escrita, temporal o permanente, y reportar el ingreso en la planilla integrada (art. 161, "
@@ -385,35 +424,42 @@ def eje_i(doc):
         bullet(doc, t)
 
     h(doc, 3, "Monto y distribución de la cotización")
-    rich(doc, ["La cotización al Régimen Contributivo equivale al ",
-               ("12,5 % del ingreso o salario base de cotización", {"b": True}),
-               " (art. 204 de la Ley 100 de 1993, modificado por la Ley 1122 de 2007). De ese "
-               "porcentaje, dos terceras partes (8,5 %%) están a cargo del empleador y una tercera "
-               "parte (4 %%) a cargo del trabajador. Para 2026, el aporte patronal sobre un salario "
-               "mínimo asciende a %s y el del trabajador a %s." % (
+    rich(doc, ["La cotización equivale al ",
+               ("12,5 % del ingreso base de cotización", {"b": True}),
+               ", conforme al artículo 204 de la Ley 100 de 1993 modificado por la Ley 1122 de 2007. "
+               "De ese total, 8,5 %% lo pone el empleador y 4 %% el trabajador. Sobre un salario "
+               "mínimo de 2026 eso significa %s del empleador y %s del trabajador, todos los meses, "
+               "con o sin utilidad de la empresa." % (
                    money(SMLMV * 0.085), money(SMLMV * 0.04))])
+    rich(doc, ["Hay una regla que suele olvidarse y que el artículo 22 de la Ley 100 de 1993 deja "
+               "clara: el empleador responde por la totalidad del aporte aunque no haya descontado la "
+               "parte del trabajador. Si el descuento no se hizo, el problema es del empleador, no del "
+               "afiliado. Y si la planilla se paga tarde, el sistema cobra mora con independencia de "
+               "quién tenga la culpa."])
     imagen(doc, "assets/f2_aportes.png", 15.4,
            "Figura 1. Distribución de la cotización mensual al SGSSS para un trabajador dependiente. "
            "Fuente: elaboración propia con base en el artículo 204 de la Ley 100 de 1993 y el "
            "artículo 114-1 del Estatuto Tributario.")
 
     h(doc, 3, "La exoneración del artículo 114-1 del Estatuto Tributario")
-    rich(doc, ["El artículo 114-1 del Estatuto Tributario exonera del pago de aportes parafiscales al "
-               "SENA y al ICBF y de la cotización al Régimen Contributivo de Salud a las sociedades y "
-               "personas jurídicas contribuyentes del impuesto de renta, respecto de los trabajadores "
-               "que devengan individualmente menos de diez (10) salarios mínimos. El inciso segundo "
-               "extiende el beneficio a las personas naturales empleadoras, ",
-               ("pero excluye expresamente a quienes empleen menos de dos trabajadores", {"b": True}),
-               ". La exoneración nunca cubre los aportes a pensión ni los de riesgos laborales, y el "
-               "aporte del 4 % a cargo del trabajador se mantiene intacto."])
-    rich(doc, ["Para EXTINTORES S C M la conclusión es concreta: con tres trabajadores dependientes "
-               "la empresa ", ("puede aplicar la exoneración", {"b": True}),
-               " respecto de los tres, porque ninguno alcanza los diez salarios mínimos (%s en 2026), "
-               "siempre que sea contribuyente declarante del impuesto sobre la renta y que la novedad "
-               "se reporte correctamente en la planilla. El margen es estrecho: si la planta se "
-               "redujera a un solo trabajador, la exoneración desaparecería y habría que reliquidar "
-               "los aportes con intereses moratorios por todo el periodo en que se aplicó sin derecho."
-               % money(TOPE_EXO)])
+    rich(doc, ["El artículo 114-1 del Estatuto Tributario exime del pago de SENA, ICBF y salud "
+               "patronal a las sociedades contribuyentes de renta, por los trabajadores que devenguen "
+               "menos de diez salarios mínimos. El inciso segundo hace lo mismo con las personas "
+               "naturales empleadoras, ",
+               ("pero saca del beneficio a quienes empleen menos de dos trabajadores", {"b": True}),
+               ". La exoneración no toca pensión ni riesgos laborales, y el 4 % del trabajador se "
+               "descuenta igual."])
+    rich(doc, ["La regla parece sencilla hasta que se aplica. Una persona natural que contrata a "
+               "alguien para que le ayude en el mostrador paga el 8,5 % completo. Si contrata a un "
+               "segundo, deja de pagarlo. No hay razón jurídica para el umbral, pero así está "
+               "redactada la norma, y el umbral es lo que decide si una microempresa es viable o no."])
+    rich(doc, ["En EXTINTORES S C M la empresa ",
+               ("puede aplicar la exoneración", {"b": True}),
+               " por los tres trabajadores, porque ninguno llega a los diez salarios mínimos (%s en "
+               "2026), siempre que sea contribuyente declarante de renta y que la novedad se reporte "
+               "bien en la planilla. El margen, insisto, es de uno: si la planta bajara a una sola "
+               "persona, la exoneración desaparece y toca reliquidar con intereses todo el periodo en "
+               "que se aplicó sin derecho." % money(TOPE_EXO)])
     rich(doc, ["El efecto económico se puede medir sobre el IBC total de %s. La exoneración ahorra "
                "el 8,5 %% de salud patronal (%s), el 2 %% de SENA (%s) y el 3 %% de ICBF (%s): en "
                "conjunto, %s mensuales frente al escenario sin exoneración. Lo que no se exonera "
@@ -444,33 +490,33 @@ def eje_i(doc):
           fuente="Fuente: elaboración propia sobre un IBC total de %s. El aporte a pensión del "
                  "empleador y el 4 %% de salud del trabajador no se ven afectados por la "
                  "exoneración." % money(IBC_TOTAL))
-    caja(doc, "Punto de verificación en la planilla",
-         ["La exoneración se declara en la planilla con el código correspondiente. Aplicarla sin "
-          "derecho genera un faltante de aportes que la ADRES o la EPS pueden cobrar con intereses "
-          "(art. 23, Ley 100 de 1993) y que, en un proceso judicial, se traduce en tiempo no cotizado "
-          "para el trabajador. Verifique además que el beneficio se aplique solo sobre la base "
-          "salarial y no sobre los pagos no constitutivos de salario."],
+    caja(doc, "Dónde se cae esto en la práctica",
+         ["La exoneración se declara en la planilla con un código. Aplicarla sin derecho deja un "
+          "faltante que la ADRES o la EPS cobran con intereses (artículo 23 de la Ley 100 de 1993), y "
+          "en un proceso eso aparece como tiempo no cotizado del trabajador, no como un error "
+          "contable. Dos cosas para revisar: que el beneficio se aplique solo sobre la base salarial, "
+          "nunca sobre pagos no constitutivos de salario, y que el número de trabajadores se cuente "
+          "bien en cada periodo."],
          tipo='nota')
 
     # ---------- 1.3
     h(doc, 2, "Liquidación del Ingreso Base de Cotización (IBC)")
-    rich(doc, ["El IBC es la magnitud económica sobre la cual se calculan los aportes a salud, "
-               "pensiones y riesgos laborales. No equivale al salario bruto ni al valor pagado al "
-               "trabajador: es una construcción jurídica que resulta de depurar el salario de los "
-               "pagos que la ley excluye y de aplicar los topes legales. Su liquidación incorrecta "
-               "produce dos tipos de daño: al sistema (faltantes de aportes) y al trabajador "
-               "(disminución de su mesada pensional o de sus prestaciones económicas)."])
+    rich(doc, ["El IBC no es el salario. Es lo que queda del salario después de quitarle lo que la "
+               "ley excluye y de aplicarle topes, y sobre esa cifra se calculan salud, pensión y "
+               "riesgos laborales. Cuando se liquida mal, el daño va en dos direcciones: al sistema le "
+               "falta plata y al trabajador le baja la mesada. Lo segundo casi nunca se nota hasta "
+               "que la persona se pensiona, y entonces ya es tarde para corregir sin demanda."])
 
     h(doc, 3, "Regla general para trabajadores dependientes")
-    rich(doc, ["El artículo 127 del Código Sustantivo del Trabajo define el salario como todo lo que "
-               "recibe el trabajador en dinero o en especie como contraprestación directa del "
-               "servicio, sin que importe la denominación del pago. Integran el IBC, por tanto, el "
-               "salario básico, las horas extras y recargos, las comisiones, los porcentajes sobre "
-               "ventas, los viáticos permanentes y las primas habituales. El artículo 128 excluye los "
-               "pagos no salariales: el auxilio de transporte, los viáticos accidentales, la dotación, "
-               "las propinas y las primas extralegales. El auxilio de transporte no integra el IBC, "
-               "pero sí se suma a la base de cesantías y prima de servicios, distinción que suele "
-               "confundirse en la práctica."])
+    rich(doc, ["El artículo 127 del Código Sustantivo del Trabajo define el salario por lo que es, no "
+               "por cómo se le llame: todo lo que recibe el trabajador en dinero o en especie como "
+               "contraprestación directa del servicio. Entran entonces el básico, las horas extras y "
+               "recargos, las comisiones, los porcentajes sobre ventas, los viáticos permanentes y las "
+               "primas habituales. El artículo 128 deja por fuera el auxilio de transporte, los "
+               "viáticos accidentales, la dotación, las propinas y las primas extralegales."])
+    rich(doc, ["Ahí hay una trampa frecuente. El auxilio de transporte no integra el IBC, pero sí se "
+               "suma para cesantías y prima de servicios. Son dos bases distintas y en la "
+               "microempresa se confunden todo el tiempo, casi siempre en perjuicio del trabajador."])
     rich(doc, ["Sobre la base así depurada operan dos límites: el ",
                ("piso de un salario mínimo legal mensual vigente", {"b": True}), " y el ",
                ("techo de veinticinco salarios mínimos", {"b": True}),
@@ -483,29 +529,30 @@ def eje_i(doc):
            "de la Ley 100 de 1993 y los Decretos 1772 de 1994 y 1703 de 2002.")
 
     h(doc, 3, "Regla especial para contratistas independientes")
-    rich(doc, ["El contratista de prestación de servicios personales no cotiza sobre lo que recibe, "
-               "sino sobre el ",
+    rich(doc, ["El contratista de prestación de servicios no cotiza sobre lo que le pagan. Cotiza "
+               "sobre el ",
                ("40 % del valor mensualizado del contrato, sin incluir el IVA", {"b": True}),
-               " (art. 89 de la Ley 100 de 1993 y art. 23 del Decreto 1703 de 2002). El 60 % "
-               "restante se entiende destinado a cubrir los costos de la actividad. Cuando el 40 % "
-               "resulta inferior a un salario mínimo, la base se ajusta al mínimo; el retardo en el "
-               "pago de los honorarios no altera la base; y el contratista asume la totalidad de la "
-               "cotización: 12,5 % de salud, 16 % de pensión y el porcentaje de riesgos laborales "
-               "según la clase de riesgo de la actividad."])
-    rich(doc, ["Para el contrato de prestación de servicios del contador público, con honorarios de "
-               "%s mensuales, el 40 %% equivale a %s, cifra superior a un salario mínimo; ese es su "
-               "IBC y su aporte mensual a salud y pensión asciende a %s." % (
+               " (artículo 89 de la Ley 100 de 1993 y artículo 23 del Decreto 1703 de 2002). El otro "
+               "60 % se entiende destinado a cubrir los costos de la actividad, aunque en la realidad "
+               "no siempre alcance. Si el 40 % queda por debajo de un salario mínimo, la base se sube "
+               "al mínimo. Y el contratista paga todo: 12,5 % de salud, 16 % de pensión y el "
+               "porcentaje de riesgos laborales que corresponda a la actividad."])
+    rich(doc, ["Aplicado al contador, que factura %s al mes, el 40 %% son %s. Ese es su IBC, y sobre "
+               "él paga %s mensuales entre salud y pensión. Aquí hay un punto que conviene dejar "
+               "anotado: si ese contrato encubre una relación laboral, la discusión no es de base de "
+               "cotización sino de primacía de la realidad, y entonces la empresa responde por "
+               "prestaciones sociales y por aportes completos." % (
                    money(CONTRATISTA['honorarios']), money(CONTRATISTA['honorarios'] * 0.4),
                    money(CONTRATISTA['honorarios'] * 0.4 * 0.285))])
 
     h(doc, 3, "Aplicación a la nómina de EXTINTORES S C M")
-    rich(doc, ["La planta se identifica con los datos que constan en el acta 028-050164-26 y en los "
-               "soportes de la organización. El acta reporta el establecimiento como comercializador "
-               "con ", ("un solo trabajador operativo", {"b": True}),
-               ", dato que coincide con la estructura real de la empresa: la titular, un técnico de "
-               "recarga y un vendedor de mostrador. Las bases de cotización señaladas con un "
-               "asterisco son valores de referencia mientras se incorporan los comprobantes de "
-               "nómina; el resto de la información proviene de documentos verificados."])
+    rich(doc, ["La planta son tres personas y el acta lo confirma: el formato registra ",
+               ("un solo trabajador operativo", {"b": True}),
+               ", que es el técnico de recarga. Los otros dos son la titular, que administra y "
+               "representa, y el vendedor de mostrador. Con esa estructura, cada trabajador pesa un "
+               "tercio de la nómina y no hay manera de diluir un error entre muchos."])
+    rich(doc, ["Las bases marcadas con asterisco son valores de referencia: los comprobantes de cada "
+               "trabajador todavía no están en el expediente. Lo demás sí está verificado."])
     filas = []
     for t in TRABAJADORES:
         marca = " *" if t["por_confirmar"] else ""
@@ -525,15 +572,13 @@ def eje_i(doc):
                  "Tributario y los datos aportados por la titular. (*) Base de referencia sujeta a "
                  "confirmación con los comprobantes de nómina. La salud patronal del 8,5 %% no "
                  "aparece porque está exonerada (art. 114-1 del E.T.).")
-    rich(doc, ["El IBC total de la planta asciende a %s mensuales. Los aportes que la empresa debe "
-               "trasladar suman %s al mes, así: %s de pensión, %s de riesgos laborales, %s de salud "
-               "a cargo de los trabajadores (que se descuentan de su salario y no son costo "
-               "patronal) y %s de caja de compensación. Con la exoneración vigente, el costo "
-               "parafiscal directo del empleador se reduce a pensión, riesgos laborales y caja: %s. "
-               "De la proyección se advierte que:"
-               % (money(IBC_TOTAL), money(APORTE_PENSION + APORTE_ARL + APORTE_CAJA),
-                  money(APORTE_PENSION), money(APORTE_ARL), money(APORTE_SALUD_TRABAJADOR),
-                  money(APORTE_CAJA), money(APORTE_PENSION + APORTE_ARL + APORTE_CAJA))])
+    rich(doc, ["El IBC sumado de la planta es %s mensuales, y de ahí sale todo lo demás: %s de "
+               "pensión, %s de riesgos laborales y %s de caja de compensación. Los %s de salud que "
+               "aparecen en la tabla son del trabajador, se descuentan de su salario y no son costo "
+               "de la empresa. Con la exoneración, el costo parafiscal real del empleador es %s al "
+               "mes. Tres observaciones sobre esa cifra:"
+               % (money(IBC_TOTAL), money(APORTE_PENSION), money(APORTE_ARL), money(APORTE_CAJA),
+                  money(APORTE_SALUD_TRABAJADOR), money(APORTE_PENSION + APORTE_ARL + APORTE_CAJA))])
     bullet(doc, ["%d de los %d trabajadores devengan un salario igual o inferior a dos salarios "
                  "mínimos (%s) y, por tanto, reciben auxilio de transporte por %s, que no integra el "
                  "IBC. La titular, por su nivel salarial, no lo recibe."
@@ -545,9 +590,6 @@ def eje_i(doc):
                  "que es la que corresponde al código CIIU 4759 registrado en el RUT según el "
                  "Decreto 768 de 2022. La actividad de recarga que se ejecuta en el mismo "
                  "establecimiento es el punto que puede discutirse ante la ARL (ver Eje II)."])
-    bullet(doc, ["El aporte a riesgos laborales se calculó con la tarifa de la clase I (0,522 %), que "
-                 "es la que corresponde a la actividad según el Decreto 768 de 2022, y no con la "
-                 "clase II que la empresa venía aplicando (ver Eje II)."])
 
     # ---------- 1.4
     h(doc, 2, "Sistema de salud: afiliación, cobertura familiar y prestaciones económicas")
@@ -562,33 +604,36 @@ def eje_i(doc):
            ["Pago dentro de los plazos", "Arts. 22 y 23, Ley 100 de 1993",
             "Cumple: no se registran moras en el periodo auditado"],
            ["Cobertura del grupo familiar", "Art. 163, Ley 100 de 1993",
-            "Cumple parcialmente: 1 beneficiario mayor de 25 años sin acreditar condición"],
+            "Cumple: sin beneficiarios por fuera del núcleo legal; falta el soporte documental de cada uno"],
            ["Afiliación del contratista independiente", "Art. 89, Ley 100 de 1993",
             "Cumple: aporta sobre el 40 % de los honorarios"]],
           [4.3, 4.7, 7.0], size=8.6,
           titulo="Tabla 5. Matriz de verificación de la afiliación en salud")
 
     h(doc, 3, "Cobertura del grupo familiar")
-    rich(doc, ["El artículo 163 de la Ley 100 de 1993, modificado por el artículo 218 de la Ley 1753 "
-               "de 2015, define el núcleo familiar del cotizante así: (i) el cónyuge o, a falta de "
-               "este, el compañero o compañera permanente; (ii) los hijos hasta que cumplan "
-               "veinticinco años que dependan económicamente del afiliado; y (iii) los hijos con "
-               "incapacidad permanente. La cobertura familiar es una manifestación del principio de "
-               "solidaridad y su denegación injustificada vulnera el derecho fundamental a la salud "
-               "(art. 49 C.P. y Ley Estatutaria 1751 de 2015)."])
-    rich(doc, ["En la planta auditada no se identificó ningún beneficiario mayor de veinticinco años "
-               "sin soporte de dependencia, pero la verificación debe repetirse en cada periodo: la "
-               "pérdida de la calidad de beneficiario no opera de forma automática, y la EPS puede "
-               "cobrar retroactivamente la Unidad de Pago por Capitación cuando detecta la inclusión "
-               "indebida. El control consiste en conservar, por cada beneficiario, el registro civil, "
-               "el certificado de estudios o la prueba de la dependencia económica, y reportar la "
-               "novedad de retiro en el mes en que se cumple la mayoría de edad extendida."])
+    rich(doc, ["El artículo 163 de la Ley 100 de 1993, con la modificación del artículo 218 de la Ley "
+               "1753 de 2015, define el núcleo familiar en tres grupos: el cónyuge o el compañero "
+               "permanente; los hijos hasta los veinticinco años que dependan económicamente; y los "
+               "hijos con incapacidad permanente. Negar esa cobertura sin razón vulnera el derecho "
+               "fundamental a la salud (artículo 49 de la Constitución y Ley Estatutaria 1751 de "
+               "2015)."])
+    rich(doc, ["En la planta auditada no apareció ningún beneficiario por fuera del núcleo legal, y "
+               "eso es una buena noticia modesta: la empresa no arrastra el problema clásico del hijo "
+               "de veintiocho años que sigue en la EPS del papá. Pero la verificación hay que "
+               "repetirla cada periodo, porque el paso a la mayoría de edad extendida no opera solo. "
+               "La EPS puede cobrar retroactivamente la UPC cuando detecta la inclusión indebida, y "
+               "entonces el empleador termina pagando un error que nadie revisó."])
+    rich(doc, ["El control es de papelería, no de sistema: por cada beneficiario, el registro civil, "
+               "el certificado de estudios o la prueba de la dependencia económica, y la novedad de "
+               "retiro reportada en el mes en que corresponde. Con tres trabajadores eso cabe en una "
+               "carpeta."])
 
     h(doc, 3, "Gestión de las prestaciones económicas")
-    rich(doc, ["Las prestaciones económicas del sistema de salud son los pagos en dinero que "
-               "sustituyen el ingreso del trabajador cuando no puede trabajar por maternidad, "
-               "paternidad o enfermedad general. Su reconocimiento corresponde a la EPS, pero el "
-               "empleador cumple un papel esencial: verifica el derecho, adelanta el pago y recobra."])
+    rich(doc, ["Las prestaciones económicas son los pagos que reemplazan el salario cuando el "
+               "trabajador no puede trabajar: maternidad, paternidad o enfermedad general. La EPS "
+               "reconoce, pero el empleador hace el trabajo sucio: verifica el derecho, paga primero "
+               "y después recobra. Cuando esa cadena se rompe, el que queda sin plata es el "
+               "trabajador."])
     tabla(doc, ["Prestación", "Duración", "Valor", "Quién paga", "Norma"],
           [["Licencia de maternidad", "18 semanas (126 días calendario)", "100 % del IBC",
             "EPS (la empresa adelanta y recobra)", "Art. 236 C.S.T., mod. Ley 2114 de 2021"],
@@ -608,28 +653,24 @@ def eje_i(doc):
 
     h(doc, 4, "Trámite práctico de una licencia de paternidad")
     for t in [
-        "El trabajador informa el nacimiento o la adopción y aporta el registro civil de nacimiento. "
-        "La empresa verifica que la cotización se haya surtido durante todo el periodo de gestación "
-        "como cotizante activo y no como beneficiario.",
-        "Al producirse el parto se aporta el registro civil de nacimiento y el certificado de "
-        "licencia; la empresa reporta la novedad en la planilla integrada y liquida la prestación "
-        "sobre el IBC del periodo.",
-        "La empresa paga la licencia en la nómina y presenta la solicitud de recobro ante la EPS "
-        "dentro de los términos reglamentarios, conservando el soporte de radicación.",
-        "Si la EPS niega el reconocimiento, el trabajador conserva la vía de la reclamación ante la "
-        "entidad y, agotada esta, la acción judicial. La negativa no puede traducirse en pérdida del "
-        "pago: el empleador que adelantó la suma puede repetir contra la administradora.",
+        "El trabajador avisa y aporta el registro civil de nacimiento. La empresa revisa que haya "
+        "cotizado como cotizante activo durante todo el periodo de gestación y no como beneficiario.",
+        "Con el registro civil y el certificado de licencia, la empresa reporta la novedad en la "
+        "planilla y liquida la prestación sobre el IBC del periodo.",
+        "La empresa paga la licencia en la nómina y radica el recobro ante la EPS dentro del término. "
+        "Guarda el soporte de la radicación, que es lo que después prueba que hizo la gestión.",
+        "Si la EPS niega, el trabajador reclama y, agotada esa vía, demanda. La negativa no puede "
+        "convertirse en pérdida del pago: quien adelantó la suma repite contra la administradora.",
     ]:
         bullet(doc, t, nivel=1)
-    caja(doc, "Hallazgo del Eje I",
-         ["Dos hallazgos concretos. Primero: la licencia de paternidad de WT-03 (Felipe Martínez) fue "
-          "reconocida por la EPS sobre una base inferior al 100 % del IBC, por haberse reportado con "
-          "extemporaneidad la variación de salario; la diferencia asciende a $ 412.000. Segundo: el "
-          "acta sanitaria 028-050164-26 no registra el número de empleados afiliados al Sistema "
-          "General de Riesgos Laborales ni al Sistema de Seguridad Social, campos que quedaron en "
-          "blanco en el formato. La corrección del primer punto exige solicitud de reliquidación ante "
-          "la EPS y ajuste de la novedad; la del segundo, remitir la información a la Secretaría de "
-          "Salud dentro del plazo de respuesta.",
+    caja(doc, "Los dos hallazgos del Eje I",
+         ["El primero tiene nombre y cédula: la licencia de paternidad de Felipe Martínez se liquidó "
+          "sobre una base inferior al 100 % del IBC porque la variación de salario se reportó tarde. "
+          "Son $ 412.000, que se corrigen pidiendo reliquidación a la EPS y ajustando la novedad. El "
+          "segundo es más incómodo porque no se arregla con una solicitud: el acta 028-050164-26 "
+          "dejó en blanco los campos de empleados afiliados a riesgos laborales y al sistema de "
+          "seguridad social. La autoridad sanitaria preguntó y no obtuvo respuesta. Eso hay que "
+          "remitirlo a la Secretaría de Salud dentro del plazo.",
           [("Nivel de riesgo: medio. Responsable: talento humano. Plazo: 30 días.", {"b": True})]],
          tipo='alerta')
     salto_pagina(doc)

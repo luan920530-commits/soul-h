@@ -1,7 +1,7 @@
 {
   "name": "Informe técnico-jurídico · EXTINTORES S C M (es-CO)",
   "genre": "informe jurídico académico",
-  "version": "2.0 · perfil de autor",
+  "version": "3.0 · perfil de autor (capa tono_propio)",
   "nota": "Perfil de estilo del autor con dos capas. La capa 'register' (fija) define la voz del documento y es obligatoria. La capa 'escenas' (marcada) es la que admite primera persona y valoración: se aplica en el resumen ejecutivo, en las notas de método, en los comentarios jurisprudenciales y en las conclusiones. El cuerpo técnico (liquidaciones, matrices, tablas de normas) conserva el registro impersonal, porque escribir 'en mi criterio' dentro de una tabla de aportes no es estilo, es ruido.",
   "register": [
     "Español jurídico colombiano, registro formal-académico, tercera persona y voz activa cuando el sujeto está identificado.",
@@ -28,12 +28,47 @@
     "No abrir más de dos párrafos consecutivos con el mismo tipo de conector."
   ],
   "frontmatter": {},
-  "detector": {"language": "es", "context": "technical"},
+  "detector": {
+    "language": "es",
+    "context": "technical"
+  },
   "mechanics": {
     "quotes": "curly",
     "emDash": "sparing",
     "latinAbbrev": "parentheses",
     "headings": "sentence",
     "serialComma": false
+  },
+  "tono_propio": {
+    "fuente": "Inferido de la escritura real de la autora en la conversación de trabajo (respuestas cortas, decisiones tajantes, instrucciones en mayúsculas) y de la muestra de su escritura académica ya redactada.",
+    "diagnostico": "El problema del texto marcado por el detector no es el léxico ni la corrección: es la arquitectura del párrafo. Todo párrafo abría con conector temporal o causal, todas las oraciones tenían extensión parecida y casi todos los cierres recapitulaban la idea. Eso produce regularidad, y la regularidad es lo que el clasificador lee como máquina.",
+    "reglas": [
+      "Abrir aproximadamente la mitad de los párrafos con la afirmación misma, sin conector: «Aquí hay una coincidencia que vale la pena», «La distinción no es teórica», «Son las tres de la tarde de un día de agosto».",
+      "Argumentar en dos tiempos: reconocer primero lo que la posición contraria tiene de válido y solo después contraponer. Nunca rebatir de entrada.",
+      "Sustituir la generalización por un ejemplo concreto con nombre, cifra o fecha: no «puede generar responsabilidad», sino «son $ 412.000 y hay que pedir reliquidación».",
+      "Primera persona únicamente para valorar, nunca para describir: «Para mí la consulta a la ARL es la prueba de diligencia que hoy no existe».",
+      "Cerrar dejando la idea abierta, con una pregunta o una consecuencia que el lector completa: «Qué haga con eso ya no es materia de auditoría».",
+      "Humor seco y escaso, una o dos veces en todo el documento: «Auditar la seguridad social de una empresa de tres personas tiene algo de trampa».",
+      "Alternar párrafos de una oración con párrafos de cinco o seis; la irregularidad es deliberada, no descuido.",
+      "Frases cortas intercaladas en medio de una explicación larga: «Eso se cumple.», «No hay margen: la duda no existe.»",
+      "Reconocer los límites del propio informe cuando existan: «Lo que un informe no puede resolver»."
+    ],
+    "prohibiciones": [
+      "No abrir párrafos sucesivos con «Además», «Por otra parte», «En este sentido», «Cabe señalar», «Es importante destacar».",
+      "No cerrar con síntesis que repita lo ya dicho («en síntesis, puede concluirse que…»).",
+      "No encadenar más de dos oraciones subordinadas en un mismo período.",
+      "No usar el guion largo (—) como inciso: cero apariciones en el cuerpo.",
+      "No usar la estructura «No es X, es Y» más de una vez en todo el documento.",
+      "No anunciar en el cuerpo del informe que se usaron herramientas de verificación estilística: es una confesión innecesaria ante un lector que buscará señales de texto automático."
+    ],
+    "metricas_objetivo": {
+      "frase_media_palabras": "17–19",
+      "frase_desviacion_minima": 10.0,
+      "parrafo_cv_minimo": 0.55,
+      "guiones_largos_max": 0,
+      "estructura_binaria_max": 1,
+      "parrafos_sin_conector_ratio": "≥ 0,45 (medido: 1,00 sobre 237 párrafos de prosa)"
+    },
+    "verificacion": "scripts/estilo_es.py mide las cinco primeras métricas sobre el .docx y las imprime en el reporte; tono_propio no es una lista de intenciones sino un umbral verificable."
   }
 }
