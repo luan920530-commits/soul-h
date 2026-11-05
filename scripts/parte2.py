@@ -66,36 +66,70 @@ def eje_ii(doc):
            ["IV", "Alto", "4,350 %", money(SMLMV * 0.04350)],
            ["V", "Máximo", "6,960 %", money(SMLMV * 0.06960)]],
           [1.8, 4.0, 4.4, 5.8], size=9,
-          titulo="Tabla 6. Clases de riesgo y tarifas de cotización al SGRL",
+          titulo="Tabla 7. Clases de riesgo y tarifas de cotización al SGRL",
           align_centro=[0, 2, 3],
           fuente="Fuente: artículo 13 del Decreto 1772 de 1994 y artículo 18 del Decreto 1295 de 1994. "
                  "Dentro de cada clase la ARL puede fijar la tarifa entre un mínimo y un máximo, según "
                  "el índice de lesiones incapacitantes y el cumplimiento del SG-SST.")
 
-    h(doc, 3, "Clasificación de EXTINTORES SCM")
-    rich(doc, ["La actividad principal registrada corresponde al código CIIU 4752 (comercio al por menor de artículos de ferretería, pinturas y productos de vidrio en establecimientos especializados), que la tabla del Decreto 768 de 2022 ubica en la ",
-               ("clase de riesgo I, subactividades 4752-01 y 4752-02", {"b": True}),
-               ", con una tarifa inicial del 0,522 %% del IBC. La verificación arroja una "
-               "discrepancia relevante: la empresa venía cotizando sobre una base asimilada a la "
-               "clase II, lo que generó un sobrecosto mensual de aproximadamente %s." % money(
-                   IBC_TOTAL * (TARIFAS['II'] - TARIFAS['I']))])
-    rich(doc, ["Sin embargo, la auditoría no puede cerrarse con la sola lectura del código. La "
-               "empresa desarrolla actividades conexas de recarga, mantenimiento y prueba "
-               "hidrostática de extintores que introducen riesgos (presión, proyección de partes, manejo de agentes químicos y esfuerzo físico) que podrían justificar una "
-               "reclasificación si la ARL considera que la actividad real difiere de la declarada. "
-               "El artículo 3 del Decreto 768 de 2022 permite clasificar por la actividad más afín "
-               "cuando la principal no refleja el riesgo, y el artículo 4 obliga a cotizar por el "
-               "valor inicial de la nueva clase cuando la clasificación se modifica. Por ello se "
-               "recomienda una consulta formal a la ARL, con la descripción del proceso productivo, "
-               "antes de solicitar la reliquidación."])
-    caja(doc, "Escenarios de clasificación y efecto económico",
-         [[("Escenario A (actividad principal 4752): ", {"b": True}),
-           "clase I, tarifa 0,522 %% (aporte mensual sobre la nómina de %s: %s." % ( money(IBC_TOTAL), money(IBC_TOTAL * TARIFAS['I']))], [("Escenario B (reclasificación por actividad conexa a clase II): ", {"b": True}), "tarifa 1,044 %%) aporte mensual: %s. La diferencia anual asciende a %s." % (
-               money(IBC_TOTAL * TARIFAS['II']), money(IBC_TOTAL * TARIFAS['II'] * 12))],
-          "La decisión debe sustentarse en el proceso real y no en la conveniencia económica: una "
-          "clasificación subdeclarada expone a la empresa al cobro retroactivo y, en caso de "
-          "siniestro, a que la ARL discuta la cobertura."],
-         tipo='nota')
+    h(doc, 3, "Clasificación de EXTINTORES S C M")
+    rich(doc, ["El acta de inspección sanitaria 028-050164-26 del 09/09/2026 registra el código CIIU ",
+               ("4759", {"b": True}),
+               " (comercio al por menor de otros artículos domésticos en establecimientos "
+               "especializados), que es el mismo que aparece en el Registro Único Tributario. Ese "
+               "código no es neutro para el sistema de riesgos laborales: la tabla del Decreto 768 de "
+               "2022 ubica la subactividad 4759-01 en ",
+               ("clase de riesgo I (riesgo mínimo), código ARL 1475901", {"b": True}),
+               ", con tarifa inicial del 0,522 % del IBC, y su descripción incluye expresamente el "
+               "«comercio de extintores». La clasificación de la empresa está, por tanto, bien "
+               "asignada en el papel."])
+    rich(doc, ["El problema jurídico aparece cuando se contrasta ese código con lo que ocurre en el "
+               "establecimiento. La actividad de recarga, mantenimiento y prueba hidrostática de "
+               "cilindros presurizados desborda el comercio y entra en el terreno del servicio "
+               "técnico sobre equipos a presión, con riesgo de proyección de partes, contacto con agentes "
+               "extinguentes y esfuerzo físico. La subactividad 4759-01 no la describe, y dentro del "
+               "mismo CIIU 4759 las subactividades 4759-01 y 4759-02 corresponden a otras clases. El "
+               "artículo 4 del Decreto 768 de 2022 permite clasificar por la actividad más afín "
+               "cuando la principal no refleja el riesgo real, atendiendo al peligro, las materias "
+               "primas, los medios de producción y los procesos; el artículo 5 obliga a cotizar por "
+               "el valor inicial de la nueva clase cuando la clasificación se modifica. La "
+               "consecuencia práctica es doble: si la ARL reclasifica, hay cobro retroactivo; y si "
+               "ocurre un accidente en la recarga, la ARL puede discutir la cobertura por "
+               "subdeclaración del riesgo."])
+    rich(doc, ["La recomendación no es reclasificar a ciegas, porque el sobrecosto es real. Es "
+               "documentar el proceso, consultar formalmente a la ARL y decidir con respaldo técnico. "
+               "El siguiente cuadro compara los tres escenarios posibles sobre el IBC actual de %s."
+               % money(IBC_TOTAL)])
+    tabla(doc, ["Escenario", "Fundamento", "Tarifa", "Aporte mensual", "Aporte anual", "Diferencia "
+                "anual frente al escenario vigente"],
+          [["A. Vigente: CIIU 4759-01, clase I", "Lo registrado en el RUT y en el acta sanitaria",
+            "0,522 %", money(IBC_TOTAL * TARIFAS["I"]), money(IBC_TOTAL * TARIFAS["I"] * 12),
+            "$ 0"],
+           ["B. Reclasificación a clase II", "Si la ARL considera que la actividad real es de riesgo "
+            "bajo y no mínimo", "1,044 %", money(IBC_TOTAL * TARIFAS["II"]),
+            money(IBC_TOTAL * TARIFAS["II"] * 12),
+            "+ " + money((IBC_TOTAL * (TARIFAS["II"] - TARIFAS["I"])) * 12)],
+           ["C. Clase III por actividad afín de mantenimiento", "Art. 4 del Decreto 768 de 2022: "
+            "talleres de mantenimiento de maquinaria y equipo (CIIU 3312-01)", "2,436 %",
+            money(IBC_TOTAL * TARIFAS["III"]), money(IBC_TOTAL * TARIFAS["III"] * 12),
+            "+ " + money((IBC_TOTAL * (TARIFAS["III"] - TARIFAS["I"])) * 12)]],
+          [3.4, 4.4, 1.4, 2.0, 2.0, 2.6], size=7.6, align_centro=[2, 3, 4, 5],
+          titulo="Tabla 8. Escenarios de clasificación del riesgo y efecto económico sobre el IBC "
+                 "actual",
+          fuente="Fuente: elaboración propia con base en el anexo técnico del Decreto 768 de 2022 y "
+                 "las tarifas del artículo 13 del Decreto 1772 de 1994. El escenario A es el que "
+                 "corresponde al código registrado; los escenarios B y C son hipótesis de "
+                 "reclasificación, no una recomendación de subdeclarar el riesgo.")
+    caja(doc, "Cómo se decide",
+         ["La decisión debe sustentarse en el proceso real y no en la conveniencia económica. "
+          "Reclasificar hacia arriba encarece la operación pero blinda la cobertura; mantener la "
+          "clase I abarata el costo pero deja abierta la discusión sobre el origen del siniestro. "
+          "El camino intermedio, y el que se recomienda en el plan de mejoramiento, es radicar una "
+          "consulta escrita ante la ARL con la descripción del proceso de recarga, la ficha técnica "
+          "de los equipos y el protocolo de prueba hidrostática, y conservar la respuesta: ese "
+          "documento es la prueba de la diligencia del empleador si después se discute la culpa.",
+          [("Nivel de riesgo: alto. Responsable: gerencia. Plazo: 60 días.", {"b": True})]],
+         tipo='alerta')
 
     # ---------- 2.3 SG-SST
     h(doc, 2, "Obligaciones del empleador en materia de seguridad y salud en el trabajo")
@@ -110,33 +144,64 @@ def eje_ii(doc):
     rich(doc, ["La Resolución 0312 de 2019 graduó la exigencia según el número de trabajadores. Para "
                "empresas de uno a diez trabajadores se exigen ",
                ("siete (7) estándares mínimos", {"b": True}),
-               ", lo que en principio facilita el cumplimiento de EXTINTORES SCM; sin embargo, la "
+               ", lo que en principio facilita el cumplimiento de EXTINTORES S C M; sin embargo, la "
                "sencillez del estándar no reduce el deber de diligencia, porque la responsabilidad "
                "del artículo 216 del C.S.T. se mide por el resultado y no por el tamaño de la "
-               "empresa."])
-    tabla(doc, ["Estándar mínimo (Res. 0312 de 2019, Anexo III)", "Evidencia exigible en la empresa", "Estado"],
-          [["Responsable de diseñar e implementar el SG-SST", "Designación escrita y acta de "
-            "asignación de funciones con recursos", "Cumple parcialmente: designación verbal"],
+               "empresa. La empresa tiene tres trabajadores y, por tanto, está en el grupo más "
+               "pequeño de exigencia: no puede alegar que el estándar le resulta desproporcionado."])
+    rich(doc, ["Aquí la auditoría deja de ser teórica, porque existe una prueba documental externa. "
+               "El acta 028-050164-26, levantada el 09/09/2026 por la Secretaría de Salud de Soacha, "
+               "consignó en la revisión documental que ",
+               ("«no se evidencia documento de sistemas de seguridad y salud en el trabajo»", {"b": True}),
+               ", con la anotación expresa de que, en caso de no contar con él, debe notificarse a la "
+               "Dirección Territorial del Ministerio del Trabajo. Esa frase no proviene de la "
+               "auditoría: la escribió una autoridad sanitaria en una visita con número de acta, "
+               "funcionaria identificada y constancia de notificación. Su valor probatorio en "
+               "un eventual proceso por culpa patronal es alto, porque acredita que el empleador "
+               "conocía el déficit y no lo corrigió."])
+    tabla(doc, ["Estándar mínimo (Res. 0312 de 2019, Anexo III)",
+                "Evidencia exigible", "Lo que encontró el acta 028-050164-26", "Valoración"],
+          [["Responsable de diseñar e implementar el SG-SST", "Designación escrita con asignación "
+            "de funciones y recursos", "No se evidencia documento del sistema de gestión", "No cumple"],
            ["Afiliación al SGSSS y al SGRL", "Certificados de afiliación y planilla PILA",
-            "Cumple"],
+            "Los campos «N.° de empleados afiliados a riesgos profesionales» y «N.° de empleados "
+            "afiliados al Sistema de Seguridad Social» quedaron en blanco", "Sin verificar"],
            ["Capacitación en SST e inducción", "Registros de asistencia y contenido temático",
-            "No cumple: no hay evidencia de capacitación en manejo de cilindros presurizados"],
-           ["Plan anual de trabajo en SST", "Documento con actividades, responsables, plazos y "
-            "presupuesto", "No cumple: el plan no se actualizó en 2026"],
-           ["Identificación de peligros y evaluación de riesgos", "Matriz de peligros actualizada "
-            "y valorada", "Cumple parcialmente: matriz desactualizada frente a la recarga"],
-           ["Plan de prevención, preparación y respuesta ante emergencias", "Plan de emergencias, "
-            "brigada y simulacros", "Cumple parcialmente: sin simulacro documentado"],
+            "«No se evidencia programa de capacitación» en prácticas higiénicas, identificación y "
+            "reducción del riesgo, almacenamiento seguro de sustancias químicas y uso de EPP "
+            "(arts. 12 a 17 de la Ley 55 de 1993)", "No cumple"],
+           ["Elementos de protección personal", "Dotación entregada y registrada",
+            "El ítem 4.8 se calificó como cumple, pero sin soporte documental de entrega", "Cumple "
+            "parcialmente"],
+           ["Identificación de peligros y evaluación de riesgos", "Matriz de peligros actualizada",
+            "No se evidencia listado de inventario de insumos químicos ni hojas de seguridad "
+            "(ítem 4.11)", "No cumple"],
+           ["Plan de prevención y respuesta ante emergencias", "Plan de emergencias, brigada y "
+            "simulacros", "No se evidencia plan de gestión del riesgo de desastres (art. 2.3.1.5.2.1 "
+            "del Decreto 2157 de 2017); sin alarma de emergencia (ítem 4.6) ni señalización de "
+            "evacuación (ítem 1.5)", "No cumple"],
            ["Reporte e investigación de incidentes y accidentes", "FURAT y planilla de reporte",
-            "No cumple: el caso AT-2026-014 se reportó con 5 días de retardo"]],
-          [5.4, 6.3, 4.3], size=8.4,
-          titulo="Tabla 7. Verificación de los estándares mínimos del SG-SST")
+            "El acta no verificó este punto; el caso AT-2026-014 documenta un reporte con cinco días "
+            "de retardo", "No cumple"]],
+          [3.9, 3.4, 6.4, 2.2], size=7.5, header_size=7.2, align_centro=[3],
+          titulo="Tabla 9. Estándares mínimos del SG-SST contrastados con el acta sanitaria",
+          fuente="Fuente: elaboración propia con base en la Resolución 0312 de 2019 y el acta "
+                 "028-050164-26 del 09/09/2026 (Secretaría de Salud de Soacha).")
+    rich(doc, ["El acta añade un dato que las auditorías internas suelen pasar por alto: la "
+               "calificación de la visita anterior, del 18/10/2024, fue de ",
+               ("57,50 % de cumplimiento", {"b": True}),
+               ", con concepto «favorable con requerimientos». Dos años después, los mismos "
+               "requerimientos siguen sin resolverse y el acta nueva fija un plazo de 22 días "
+               "hábiles que vencía el 09/10/2026. La reincidencia no es un detalle: convierte una "
+               "observación administrativa en prueba de un patrón de incumplimiento, que es "
+               "exactamente lo que el artículo 216 del C.S.T. exige valorar como culpa."])
 
     # ---------- 2.4 caso práctico
     h(doc, 2, "Caso práctico: accidente de trabajo AT-2026-014")
     h(doc, 3, "Hechos relevantes")
-    rich(doc, ["El trabajador EXT-005, técnico de recarga con contrato a término indefinido, "
-               "devengando un salario base de cotización de %s, se encontraba el 12 de agosto de 2026 "
+    rich(doc, ["El trabajador WT-02, Luis Antonio Aguilar Rodríguez (C.C. 1073694256), técnico de "
+               "recarga con contrato a término indefinido y único operativo de la planta, devengando "
+               "un salario base de cotización de %s, se encontraba el 12 de agosto de 2026 "
                "en la zona de recarga de cilindros efectuando la prueba hidrostática de un extintor "
                "de agente limpio con veinte años de servicio. Al accionar la válvula del cilindro, "
                "esta se desprendió por corrosión y la proyectó contra su mano derecha, causándole "
@@ -197,8 +262,8 @@ def eje_ii(doc):
                "2002), lo que lo diferencia del subsidio por enfermedad general, que es del 66,67 % "
                "a cargo de la EPS a partir del tercer día."])
     tabla(doc, ["Concepto", "Fórmula aplicada", "Valor"],
-          [["Salario base de cotización (SBC)", "Base de cotización de los seis meses anteriores",
-            "$ 1.900.000"],
+          [["Salario base de cotización (SBC)", "Base de cotización de los seis meses anteriores "
+            "(WT-02)", money(IBC_CASO)],
            ["Incapacidad temporal (42 días)", "SBC ÷ 30 × 42 días",
             money(IBC_CASO / 30 * 42)],
            ["Indemnización por IPP (14 % de pérdida)", "14 % × 24 × SBC",
@@ -206,7 +271,7 @@ def eje_ii(doc):
            [("Total reparación tarifada a cargo de la ARL", {"b": True}), "",
             (money(IBC_CASO / 30 * 42 + 0.14 * 24 * IBC_CASO), {"b": True})]],
           [6.2, 6.0, 3.8], size=9, align_centro=[2],
-          titulo="Tabla 8. Liquidación de las prestaciones económicas del SGRL",
+          titulo="Tabla 10. Liquidación de las prestaciones económicas del SGRL",
           fuente="Fuente: elaboración propia con base en el artículo 1 de la Ley 776 de 2002 (subsidio "
                  "por incapacidad temporal) y su artículo 5 (indemnización por incapacidad permanente "
                  "parcial, entre 1 y 24 salarios base de liquidación). El porcentaje de pérdida de "
@@ -247,8 +312,8 @@ def eje_ii(doc):
 
     h(doc, 3, "Carga de la prueba y dinámica procesal")
     rich(doc, ["La regla general es que la carga de probar la culpa corresponde a quien la alega: el "
-               "trabajador o sus causahabientes (art. 167 del Código General del Proceso). No "
-               "obstante, la Corte Suprema ha admitido una dinámica probatoria: acreditada la "
+               "trabajador o sus causahabientes (art. 167 del Código General del Proceso). La Corte "
+               "Suprema ha admitido, sin embargo, una dinámica probatoria: acreditada la "
                "ocurrencia del accidente y la omisión de un deber de seguridad, la carga se traslada "
                "al empleador, que debe demostrar diligencia y cuidado (suministro de elementos de protección, capacitación, instrucciones, mantenimiento y supervisión) para exonerarse. "
                "En palabras de la Corporación, «el empleador puede desligarse de ella demostrando "
@@ -278,7 +343,7 @@ def eje_ii(doc):
            ["Afiliación y pago de aportes al SGRL", "Arts. 2 y 18, Decreto 1295 de 1994",
             "Afiliación vigente y aportes al día", "Cumplido"]],
           [4.4, 4.4, 4.2, 3.0], size=8.3,
-          titulo="Tabla 9. Matriz de valoración de los deberes de seguridad")
+          titulo="Tabla 11. Matriz de valoración de los deberes de seguridad")
 
     rich(doc, ["La conclusión es desfavorable para la empresa. De los siete deberes verificados, seis "
                "están incumplidos y la omisión es directamente causal: si el cilindro hubiera estado "
@@ -322,7 +387,7 @@ def eje_ii(doc):
            [("Neto a cargo del empleador", {"b": True}), "",
             (money(plena - tarifada), {"b": True})]],
           [5.4, 6.6, 4.0], size=8.8, align_centro=[2],
-          titulo="Tabla 10. Liquidación ilustrativa de la reparación plena (art. 216 C.S.T.)")
+          titulo="Tabla 12. Liquidación ilustrativa de la reparación plena (art. 216 C.S.T.)")
     imagen(doc, "assets/f5_reparacion.png", 14.6,
            "Figura 4. Comparación entre la reparación tarifada del SGRL y la reparación plena del "
            "artículo 216 del C.S.T. Fuente: elaboración propia.")
@@ -333,7 +398,73 @@ def eje_ii(doc):
                "desde la calificación de la pérdida de capacidad laboral, conforme al artículo 151 del "
                "C.P.T.S.S."])
 
-    # ---------- 2.6 diagnóstico
+    # ---------- 2.6 el acta sanitaria como prueba externa
+    h(doc, 2, "El acta sanitaria 028-050164-26 como prueba del estado del SG-SST")
+    rich(doc, ["Una auditoría interna puede ser discutida; una actuación administrativa no. El 09 de "
+               "septiembre de 2026 la Secretaría de Salud de Soacha practicó al establecimiento una "
+               "inspección, vigilancia y control sanitario que quedó consignada en el acta ",
+               ("028-050164-26", {"b": True}),
+               ", formato SL-FR-028 versión 1, suscrita por una ingeniera química con contrato "
+               "3136-2026 y notificada al vendedor Felipe Martínez. Esa acta es el documento más "
+               "valioso del expediente, porque reúne, en un solo instrumento público, la fecha, la "
+               "autoridad, el hallazgo y el plazo."])
+    rich(doc, ["El acta no evalúa seguridad social, pero evalúa las mismas condiciones materiales que "
+               "el SG-SST está llamado a controlar. Por eso sus hallazgos se trasladan al análisis de "
+               "culpa del artículo 216 del C.S.T.: allí donde el acta dice «no se evidencia», el "
+               "empleador no puede sostener después que cumplió, salvo que aporte la prueba en "
+               "contrario, que es precisamente la que no tiene."])
+    tabla(doc, ["Hallazgo del acta", "Ítem del formato", "Norma incumplida",
+                "Efecto en el SG-SST y en el Eje II"],
+          [["«No se evidencia documento de sistemas de seguridad y salud en el trabajo»",
+            "Revisión documental", "Art. 13 de la Ley 1562 de 2012; Res. 0312 de 2019",
+            "Acredita la ausencia total del SG-SST, no un simple defecto documental"],
+           ["«No se evidencia programa de capacitación» en prácticas higiénicas, identificación y "
+            "reducción del riesgo, almacenamiento seguro de sustancias químicas y uso de EPP",
+            "Revisión documental", "Arts. 12 a 17 de la Ley 55 de 1993",
+            "Sustenta la falta de capacitación que el caso AT-2026-014 identifica como causa del daño"],
+           ["«No se evidencia hojas de seguridad de sustancias químicas» y no hay inventario de "
+            "insumos", "ítems 4.11 y revisión documental", "Art. 102 de la Ley 9 de 1979",
+            "Impide demostrar que el trabajador conocía el riesgo del cilindro que manipulaba"],
+           ["Toma corriente sin recubrimiento", "ítem 1.8",
+            "Art. 117 de la Ley 9 de 1979", "Riesgo eléctrico no controlado en zona de trabajo"],
+           ["No se evidencia extintor con carga vigente", "ítem 4.7",
+            "Art. 52 de la Resolución 14861 de 1985",
+            "Paradoja probatoria: la empresa comercializa extintores y no tenía uno cargado"],
+           ["No se evidencia alarma de emergencia ni señalización de evacuación", "ítems 4.6, 1.5 y 4.3",
+            "Art. 52 de la Resolución 14861 de 1985",
+            "Sin plan de respuesta ante emergencias verificable"],
+           ["No se evidencia botiquín completo de primeros auxilios", "ítem 4.9",
+            "Art. 240 de la Ley 9 de 1979",
+            "Refuerza la falta de preparación para atender el accidente que efectivamente ocurrió"]],
+          [5.2, 2.4, 3.4, 4.9], size=7.6, header_size=7.2,
+          titulo="Tabla 13. Hallazgos del acta sanitaria y su proyección sobre el SG-SST",
+          fuente="Fuente: elaboración propia con base en el acta 028-050164-26 del 09/09/2026 "
+                 "(Secretaría de Salud de Soacha) y las normas citadas en cada ítem.")
+    rich(doc, ["El acta añade tres datos que cambian la estrategia de defensa. Primero, la visita "
+               "anterior, del 18 de octubre de 2024, había calificado el establecimiento con ",
+               ("57,50 % de cumplimiento", {"b": True}),
+               " y concepto «favorable con requerimientos»: los mismos incumplimientos persisten dos "
+               "años después. Segundo, el acta concede ",
+               ("22 días hábiles", {"b": True}),
+               " contados desde el 09/09/2026, de modo que el plazo venció el ",
+               ("09/10/2026", {"b": True}),
+               ". Tercero, el documento advierte que no constituye permiso de funcionamiento y remite "
+               "a los requisitos del artículo 87 de la Ley 1801 de 2016. Un requerimiento vencido y no "
+               "atendido deja de ser un hallazgo y pasa a ser una prueba de desatención."])
+    caja(doc, "Lectura jurídica del acta",
+         ["El acta 028-050164-26 no impone sanciones por sí misma, pero produce tres efectos. "
+          "(i) Es prueba documental preconstituida del estado del SG-SST a una fecha cierta, "
+          "oponible al empleador en un proceso por culpa patronal. (ii) Activa el deber de "
+          "notificación a la Dirección Territorial del Ministerio del Trabajo cuando no existe "
+          "documento del sistema de gestión, según la propia anotación del formato. (iii) Si el "
+          "requerimiento se incumple, habilita las medidas sanitarias de seguridad y las sanciones "
+          "de la Ley 9 de 1979 y de la Ley 1801 de 2016. La recomendación es responder dentro del "
+          "término, con un plan de acción fechado y firmado, y conservar la radicación: ese documento "
+          "es la única prueba de diligencia posterior al 09/09/2026.",
+          [("Nivel de riesgo: alto. Responsable: gerencia. Plazo: inmediato.", {"b": True})]],
+         tipo='alerta')
+
+    # ---------- 2.7 diagnóstico
     h(doc, 2, "Diagnóstico del eje y recomendaciones")
     tabla(doc, ["Hallazgo", "Consecuencia jurídica", "Riesgo", "Acción correctiva"],
           [["Clasificación del riesgo inconsistente con la actividad", "Cobro retroactivo de "
@@ -348,5 +479,5 @@ def eje_ii(doc):
            ["Investigación del accidente deficiente", "Presunción en contra del empleador",
             "Alto", "Aplicar metodología de investigación con participación del trabajador"]],
           [4.4, 5.2, 1.7, 4.7], size=8.4, align_centro=[2],
-          titulo="Tabla 11. Hallazgos y acciones del Eje II")
+          titulo="Tabla 14. Hallazgos y acciones del Eje II")
     salto_pagina(doc)

@@ -144,7 +144,8 @@ def fig_aportes(ruta):
     fig, ax = plt.subplots(figsize=(7.0, 3.05))
     fig.subplots_adjust(left=0.285, right=0.985, top=0.86, bottom=0.20)
     conceptos = ["Salud", "Pensión", "ARL (clase I)", "Caja de\ncompensación", "SENA", "ICBF"]
-    empleador = [8.5, 8.25, 0.522, 4.0, 2.0, 3.0]
+    # Caso EXTINTORES S C M: persona natural con 3 trabajadores → exoneración del art. 114-1 E.T.
+    empleador = [0.0, 12.0, 0.522, 4.0, 0.0, 0.0]
     empleado = [4.0, 4.0, 0.0, 0.0, 0.0, 0.0]
     y = np.arange(len(conceptos))[::-1]
 
@@ -153,7 +154,12 @@ def fig_aportes(ruta):
     ax.axvline(0, color=GRIS, lw=0.9)
 
     for yi, v in zip(y, empleador):
-        txt = "0,522%" if v == 0.522 else ("%.2f%%" % v).replace(".", ",")
+        if not v:
+            ax.text(-0.18, yi, "exonerado", ha="right", va="center", fontsize=6.8,
+                    color=VINO, style="italic")
+            continue
+        txt = "0,522%" if v == 0.522 else (("%.2f%%" % v).replace(".", ",") if v != int(v)
+                                           else "%d,00%%" % v)
         ax.text(-v - 0.18, yi, txt, ha="right", va="center", fontsize=7.2,
                 color=AZUL, fontweight="bold")
     for yi, v in zip(y, empleado):
@@ -164,10 +170,10 @@ def fig_aportes(ruta):
 
     ax.set_yticks(y)
     ax.set_yticklabels(conceptos, fontsize=7.6)
-    ax.set_xlim(-9.9, 5.4)
+    ax.set_xlim(-16.2, 5.6)
     ax.set_xlabel("% del IBC", fontsize=7.2, labelpad=2)
-    ax.set_xticks([-9, -6, -3, 0, 3])
-    ax.set_xticklabels(["9", "6", "3", "0", "3"], fontsize=7)
+    ax.set_xticks([-15, -12, -9, -6, -3, 0, 3])
+    ax.set_xticklabels(["15", "12", "9", "6", "3", "0", "3"], fontsize=7)
     ax.set_ylim(-0.62, 5.55)
     ax.tick_params(axis="y", length=0)
     for s in ("top", "right", "left"):
@@ -176,12 +182,13 @@ def fig_aportes(ruta):
     ax.set_axisbelow(True)
     ax.legend(loc="lower right", fontsize=6.6, frameon=False, ncol=2,
               bbox_to_anchor=(1.0, -0.30))
-    ax.set_title("Distribución de la cotización mensual al SGSSS (trabajador dependiente)",
+    ax.set_title("Cotización mensual al SGSSS en EXTINTORES S C M con la exoneración del art. 114-1 E.T.",
                  fontsize=8.2, color=AZUL, fontweight="bold", loc="left", pad=8)
 
     fig.text(0.005, -0.035,
              "Nota: la exoneración del art. 114-1 del E.T. (SENA, ICBF y salud) no aplica a personas naturales que "
-             "empleen menos de dos trabajadores; los aportes a pensión y a ARL nunca están exonerados.",
+             "empleen menos de dos trabajadores; EXTINTORES S C M tiene tres y sí le aplica. Los aportes a pensión "
+             "y a ARL nunca están exonerados.",
              fontsize=6.0, color=VINO, style="italic")
 
     fig.savefig(ruta, dpi=230, facecolor="white", bbox_inches="tight")
@@ -189,7 +196,7 @@ def fig_aportes(ruta):
 
 
 # ---------------------------------------------------------------- Figura 3
-def fig_mapa_pensional(ruta, pm=7, rais=3):
+def fig_mapa_pensional(ruta, pm=2, rais=1):
     fig = plt.figure(figsize=(7.0, 2.85))
     ax1 = fig.add_axes([0.015, 0.05, 0.30, 0.82])
     ax2 = fig.add_axes([0.515, 0.12, 0.47, 0.70])

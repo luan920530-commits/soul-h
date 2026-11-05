@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Generador del informe: PROYECTO INTEGRADOR · EXTINTORES SCM."""
+"""Generador del informe: PROYECTO INTEGRADOR · EXTINTORES S C M (Soacha)."""
 import os
 import sys
 
@@ -18,7 +18,7 @@ def main():
     doc = construir_documento()
     encabezado_pie(doc,
                    "Proyecto integrador · Auditoría y diagnóstico de seguridad social",
-                   "EXTINTORES SCM · NIT 39626936-8",
+                   "EXTINTORES S C M · C.C./NIT 39626936-8 · Soacha (Cundinamarca)",
                    "Julia Inés Buitrago García · Universidad INCCA de Colombia · 2026")
 
     parte1.portada(doc)
@@ -35,11 +35,12 @@ def main():
 
     # Propiedades del documento
     cp = doc.core_properties
-    cp.title = "Auditoría y diagnóstico de seguridad social organizacional: EXTINTORES SCM"
+    cp.title = "Auditoría y diagnóstico de seguridad social organizacional: EXTINTORES S C M"
     cp.subject = "Derecho de la Seguridad Social · Proyecto integrador"
     cp.author = "Julia Inés Buitrago García"
     cp.keywords = ("seguridad social; riesgos laborales; pensiones; IBC; culpa patronal; "
-                   "ineficacia del traslado; competencia judicial")
+                   "SG-SST; acta sanitaria 028-050164-26; ineficacia del traslado; "
+                   "competencia judicial")
     cp.comments = "Plantilla técnico-jurídica para el desarrollo del proyecto integrador (40 %)."
 
     normalizar_orden(doc)

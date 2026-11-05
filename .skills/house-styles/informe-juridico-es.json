@@ -1,6 +1,8 @@
 {
-  "name": "Informe técnico-jurídico · EXTINTORES SCM (es-CO)",
+  "name": "Informe técnico-jurídico · EXTINTORES S C M (es-CO)",
   "genre": "informe jurídico académico",
+  "version": "2.0 · perfil de autor",
+  "nota": "Perfil de estilo del autor con dos capas. La capa 'register' (fija) define la voz del documento y es obligatoria. La capa 'escenas' (marcada) es la que admite primera persona y valoración: se aplica en el resumen ejecutivo, en las notas de método, en los comentarios jurisprudenciales y en las conclusiones. El cuerpo técnico (liquidaciones, matrices, tablas de normas) conserva el registro impersonal, porque escribir 'en mi criterio' dentro de una tabla de aportes no es estilo, es ruido.",
   "register": [
     "Español jurídico colombiano, registro formal-académico, tercera persona y voz activa cuando el sujeto está identificado.",
     "Precisión normativa: cada afirmación jurídica va anclada a la norma o a la providencia que la sustenta; no se afirma la vigencia de una norma sin verificar su fecha.",
@@ -9,13 +11,24 @@
     "Mantener las citas textuales, los artículos, los radicados y las cifras exactamente como están; no parafrasear lo que va entre comillas.",
     "Términos técnicos protegidos: IBC, SMLMV, ATEP, IPP, SG-SST, C.P.T.S.S., C.S.T., EPS, ARL, AFP, PILA, RAIS, RPM.",
     "Español neutro colombiano: «usted» o tercera persona; nunca «tú» ni «vosotros»; moneda en formato «$ 1.750.905».",
-    "No cerrar párrafos con frases-resumen vacías («en resumen, podemos decir que…»); el párrafo jurídico termina en la consecuencia o en la conclusión, no en un eco."
+    "No cerrar párrafos con frases-resumen vacías («en resumen, podemos decir que…»); el párrafo jurídico termina en la consecuencia o en la conclusión, no en un eco.",
+    "Prohibidas las aperturas genéricas de época: «en el mundo actual», «hoy en día», «vivimos en una era en la que».",
+    "Adjetivación escasa y funcional: se valora con matiz («equilibrio sensato», «protección escalonada») y no con comodines («fundamental», «clave», «crucial») sin justificación empírica.",
+    "Sin adverbios de énfasis huecos: «claramente», «evidentemente», «indudablemente», «profundamente» solo si añaden información."
+  ],
+  "escenas": [
+    "Primera persona del singular con moderación, únicamente al valorar una decisión judicial o una consecuencia social: «en mi criterio», «esa es la lectura que uno se permite», «me parece que».",
+    "Subjetividad explícita y controlada, sin fórmulas de reacción vacías: se admite «lo que sorprende del expediente», no «me fascinó descubrir».",
+    "Longitud irregular de párrafo: al menos un párrafo de dos oraciones y al menos uno de seis o más en cada sección valorativa. No todos empiezan con conector.",
+    "Conectores de matiz conversacional: «Ahora bien», «Dicho de otro modo», «En fin», «O esa es la lectura que uno se permite». Cada uno, máximo una vez por sección.",
+    "Preguntas que abren un problema en lugar de cerrarlo: «Que sea suficiente, ya es otra pregunta».",
+    "Preferir la afirmación matizada a la estructura binaria «No es X, es Y», que se admite una sola vez en todo el documento.",
+    "Cierre con idea propia y específica que tensiona el argumento; nunca «en conclusión», «para finalizar», «el futuro dirá» ni «a modo de cierre».",
+    "Cada sección valorativa ancla la abstracción en un dato o en una escena laboral concreta (número de semanas, fecha de un acta, días de plazo, monto de una diferencia).",
+    "No abrir más de dos párrafos consecutivos con el mismo tipo de conector."
   ],
   "frontmatter": {},
-  "detector": {
-    "language": "es",
-    "context": "technical"
-  },
+  "detector": {"language": "es", "context": "technical"},
   "mechanics": {
     "quotes": "curly",
     "emDash": "sparing",

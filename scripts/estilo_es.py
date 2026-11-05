@@ -85,7 +85,26 @@ RELLENO = [
     (r"de cara a", "de cara a"),
     (r"(a fin de|con el objetivo de) (poder )?", "a fin de"),
     (r"lo que (nos )?lleva a (reflexionar|preguntarnos)", "retórica vacía"),
+    (r"\bAsimismo\b", "conector mecánico (Asimismo)"),
+    (r"\bNo obstante\b", "conector mecánico (No obstante)"),
+    (r"\bPor otro lado\b", "conector mecánico (Por otro lado)"),
+    (r"\bEn (suma|síntesis)\b", "cierre vacío"),
+    (r"\bPara (resumir|finalizar|concluir)\b", "cierre vacío"),
+    (r"todo lo anterior (nos )?(lleva|conduce)", "cierre vacío"),
+    (r"vale la pena (mencionar|señalar|destacar)", "muletilla de énfasis"),
+    (r"sin duda alguna", "muletilla de énfasis"),
+    (r"\b(claramente|evidentemente|indudablemente)\b", "adverbio de énfasis"),
+    (r"vivimos en una (era|época)", "apertura genérica de época"),
+    (r"(game.?changer|revolucionari[oa]|sin precedentes|de vanguardia)", "lenguaje promocional"),
+    (r"como (te|se) imaginarás|seguramente (te )?estarás preguntando", "tono de asistente"),
+    (r"si bien es cierto que", "concesión vacía"),
 ]
+
+# Estructura binaria "No es X, es Y" — el perfil la admite una sola vez en todo el documento
+RE_BINARIA = re.compile(r"\b[Nn]o (?:es|se trata de)\b[^.;]{3,70}(?:,|:)\s*(?:sino|es)\b", re.I)
+RE_APERTURA = re.compile(r"^(Ahora bien|Dicho de otro modo|En fin|En este sentido|Así las cosas|"
+                         r"Por su parte|No obstante|Asimismo|En consecuencia|Por consiguiente)\b",
+                         re.I)
 
 PROTEGIDOS = ["IBC", "SMLMV", "ATEP", "SG-SST", "C.P.T.S.S.", "C.S.T.", "EPS", "ARL", "AFP",
               "PILA", "RAIS", "RPM", "IPP", "SGP", "SGSSS", "SGRL", "SU-107", "SL2480"]
@@ -151,8 +170,47 @@ def analizar(parrafos, max_frase=45):
             if re.search(r"\b%s\b" % re.escape(base.lower()), p) and base.lower() != base:
                 siglas_min.append({"parrafo": i + 1, "sigla": base})
 
+    # estructura de párrafo (perfil del autor: longitudes irregulares)
+    def n_oraciones(texto):
+        return len(dividir_frases(texto))
+
+    # solo prosa: se excluyen celdas de tabla y rótulos (menos de 20 palabras)
+    prosa = [p for p in parrafos if len(p.split()) >= 20]
+    oraciones_por_parrafo = [n_oraciones(p) for p in prosa]
+    cortos = sum(1 for n in oraciones_por_parrafo if 1 <= n <= 2)
+    largos_p = sum(1 for n in oraciones_por_parrafo if n >= 6)
+    total_prosa = len(prosa)
+
+    # aperturas de párrafo: no más de dos consecutivas con el mismo tipo de conector
+    aperturas = [RE_APERTURA.match(p).group(1).lower() if RE_APERTURA.match(p) else None
+                 for p in parrafos]
+    rachas = []
+    for i in range(1, len(aperturas)):
+        if aperturas[i] and aperturas[i] == aperturas[i - 1]:
+            rachas.append({"parrafo": i + 1, "conector": aperturas[i]})
+    conector_repetido = {}
+    for a in aperturas:
+        if a:
+            conector_repetido[a] = conector_repetido.get(a, 0) + 1
+    excedidos = {k: v for k, v in conector_repetido.items() if v > 1}
+
+    binarias = [m.group(0) for m in RE_BINARIA.finditer(texto)]
+
+    ultimo = parrafos[-1] if parrafos else ""
+    cierre_formula = bool(re.match(r"^(en conclusi|para (finalizar|concluir)|en definitiva|"
+                                   r"a modo de|en suma|solo el tiempo)", ultimo, re.I))
+
     return {
         "archivo_palabras": palabras_total,
+        "parrafos_prosa": total_prosa,
+        "parrafos_cortos_2o_menos": cortos,
+        "parrafos_largos_6o_mas": largos_p,
+        "aperturas_repetidas_consecutivas": rachas,
+        "conectores_excedidos": excedidos,
+        "estructura_binaria_n": len(binarias),
+        "estructura_binaria": binarias[:5],
+        "cierre_con_formula": cierre_formula,
+        "ultimo_parrafo": ultimo[:220],
         "parrafos": len(parrafos),
         "frases": len(frases),
         "frase_media_palabras": round(media, 1),
@@ -199,6 +257,20 @@ def reporte(r, max_frase):
     for f in r["frases_largas"][:5]:
         L.append("   · %d palabras: %s…" % (f["palabras"], f["texto"][:140]))
     L.append("")
+    L.append("─ Ritmo de párrafo (prosa de 20+ palabras): %d párrafos, de los cuales %d tienen "
+             "2 oraciones o menos y %d tienen 6 o más"
+             % (r["parrafos_prosa"], r["parrafos_cortos_2o_menos"], r["parrafos_largos_6o_mas"]))
+    if r["aperturas_repetidas_consecutivas"]:
+        for e in r["aperturas_repetidas_consecutivas"][:5]:
+            L.append("   · párr. %d abre igual que el anterior: «%s»" % (e["parrafo"], e["conector"]))
+    if r["conectores_excedidos"]:
+        L.append("   · conectores de apertura repetidos: %s"
+                 % ", ".join("%s (%d)" % (k, v) for k, v in r["conectores_excedidos"].items()))
+    L.append("─ Estructura binaria «No es X, es Y»: %d (el perfil admite 1)"
+             % r["estructura_binaria_n"])
+    for b in r["estructura_binaria"]:
+        L.append("   · «%s»" % b[:110])
+    L.append("─ Cierre con fórmula prohibida: %s" % ("SÍ" if r["cierre_con_formula"] else "no"))
     L.append("─ Latinos fuera de paréntesis (e.g./i.e./etc.): %d"
              % r["latinos_fuera_parentesis_n"])
     L.append("─ Siglas escritas en minúscula: %d" % r["siglas_en_minuscula_n"])
@@ -206,7 +278,10 @@ def reporte(r, max_frase):
         L.append("─ Párrafos de más de 180 palabras: párr. %s"
                  % ", ".join(map(str, r["parrafos_mayores_180p"][:12])))
     L.append("─" * 74)
-    graves = r["relleno_n"] + r["latinos_fuera_parentesis_n"] + r["siglas_en_minuscula_n"]
+    graves = (r["relleno_n"] + r["latinos_fuera_parentesis_n"] + r["siglas_en_minuscula_n"]
+              + max(0, r["estructura_binaria_n"] - 1)
+              + (1 if r["cierre_con_formula"] else 0)
+              + len(r["aperturas_repetidas_consecutivas"]))
     L.append("VEREDICTO: %s" % ("requiere corrección" if graves else
                                 "sin hallazgos graves (revise los guiones largos a mano)"))
     return "\n".join(L)

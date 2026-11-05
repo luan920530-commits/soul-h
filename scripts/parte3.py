@@ -53,7 +53,7 @@ def eje_iii(doc):
             "Mínima (arts. 65 y ss., Ley 100 de 1993)"],
            ["Riesgo asumido", "El sistema (reparto)", "El afiliado (mercado y longevidad)"]],
           [2.8, 6.6, 6.6], size=8.4,
-          titulo="Tabla 12. Comparación de los dos regímenes del SGP")
+          titulo="Tabla 15. Comparación de los dos regímenes del SGP")
 
     h(doc, 3, "La reforma pensional de la Ley 2381 de 2024 y su estado actual")
     rich(doc, ["La Ley 2381 de 2024 transforma el sistema en un esquema de ",
@@ -81,7 +81,7 @@ def eje_iii(doc):
            ["Oportunidad de traslado (art. 76)", "Dos años para trasladarse, previa doble asesoría",
             "Vencida en julio de 2026"]],
           [4.2, 7.4, 4.4], size=8.3,
-          titulo="Tabla 13. Impacto de la reforma pensional en la organización")
+          titulo="Tabla 16. Impacto de la reforma pensional en la organización")
 
     caja(doc, "Advertencia de vigencia",
          ["Cualquier afirmación sobre «pensiones» en Colombia debe precisar la fecha a la que se "
@@ -105,41 +105,41 @@ def eje_iii(doc):
            "Figura 5. Mapa pensional de EXTINTORES SCM. Fuente: elaboración propia con base en los "
            "certificados de afiliación y la planilla PILA del periodo auditado.")
 
-    tabla(doc, ["Cód.", "Edad / sexo", "Régimen", "Semanas", "Situación frente a la reforma",
-                "Alerta"],
-          [["EXT-001", "48 / M", "Prima Media", "980", "Régimen de transición (más de 900 semanas)",
-            "Baja"],
-           ["EXT-002", "44 / M", "Prima Media", "870", "Entra al nuevo sistema: le faltan 30 semanas "
-            "para la transición", "Media"],
-           ["EXT-003", "56 / F", "Ahorro Individual", "1.150", "Régimen de transición (más de 750 "
-            "semanas) · caso auditado P-03", "Alta"],
-           ["EXT-004", "33 / F", "Prima Media", "410", "Sistema de pilares", "Baja"],
-           ["EXT-005", "38 / M", "Prima Media", "520", "Sistema de pilares", "Baja"],
-           ["EXT-006", "51 / M", "Prima Media", "1.290", "Transición (más de 900 semanas); a 10 "
-            "semanas de la pensión", "Media"],
-           ["EXT-007", "27 / F", "Ahorro Individual", "230", "Sistema de pilares", "Baja"],
-           ["EXT-008", "41 / F", "Prima Media", "760", "Transición (más de 750 semanas)", "Baja"],
-           ["EXT-009", "36 / M", "Prima Media", "480", "Sistema de pilares", "Baja"],
-           ["EXT-010", "29 / M", "Ahorro Individual", "95", "Sistema de pilares", "Media"]],
-          [1.7, 2.0, 3.0, 1.7, 5.2, 1.4], size=8.3, align_centro=[0, 1, 3, 5],
-          titulo="Tabla 14. Distribución de los trabajadores por régimen y situación pensional",
-          fuente="Fuente: elaboración propia con base en la historia laboral y los certificados de "
-                 "afiliación. Las semanas se reportan con corte a 30 de septiembre de 2026.")
+    tabla(doc, ["Cód.", "Trabajador", "Edad *", "Régimen", "Semanas *",
+                "Situación frente a la reforma", "Alerta"],
+          [["WT-01", "Julia Inés Buitrago García", "Por verificar", "Prima Media", "Por verificar",
+            "Por verificar en la historia laboral", "Media"],
+           ["WT-02", "Luis Antonio Aguilar Rodríguez", "56", "Ahorro Individual", "1.150",
+            "Régimen de transición (más de 750 semanas) · caso auditado P-03", "Alta"],
+           ["WT-03", "Felipe Martínez", "Por verificar", "Prima Media", "Por verificar",
+            "Por verificar en la historia laboral", "Media"]],
+          [1.4, 4.4, 1.2, 2.6, 1.5, 4.4, 1.3], size=8.2, header_size=7.6,
+          align_centro=[0, 2, 4, 6],
+          titulo="Tabla 17. Distribución de los trabajadores por régimen y situación pensional",
+          fuente="Fuente: elaboración propia con base en los certificados de afiliación y los datos "
+                 "aportados por la titular. (*) La edad y las semanas de WT-02 corresponden al "
+                 "expediente del caso P-03 y están sujetas a confirmación con la historia laboral; "
+                 "para WT-01 y WT-03 deben extraerse de la historia laboral de cada afiliado con "
+                 "corte a 30 de septiembre de 2026.")
 
-    rich(doc, ["Del mapa se derivan tres conclusiones de gestión. Primera, la empresa tiene cuatro "
-               "trabajadores en el régimen de transición, cuyas condiciones pensionales dependen "
-               "íntegramente de la Ley 100 de 1993 y que, por tanto, no se verán afectados por el "
-               "cambio de modelo. Segunda, dos trabajadores están a muy pocas semanas del umbral "
-               "(EXT-002 y EXT-006), de modo que la verificación de la historia laboral y el pago "
-               "oportuno de aportes adquieren una relevancia extraordinaria: una semana no reportada "
-               "puede cambiar el régimen aplicable. Tercera, el trabajador EXT-010 presenta "
-               "desviaciones en el reporte de semanas que sugieren periodos sin cotización, lo que "
-               "debe corregirse antes de abril de 2027."])
+    rich(doc, ["Con una planta de tres personas el mapa pensional no admite promedios: cada "
+               "trabajador es una unidad de análisis y un error en su historia laboral afecta a un "
+               "tercio de la planta. De ahí se derivan tres conclusiones de gestión. Primera, solo "
+               "WT-02 se encuentra en el régimen de transición, con más de 750 semanas acreditadas, "
+               "de modo que sus condiciones pensionales dependen íntegramente de la Ley 100 de 1993 y "
+               "no del nuevo sistema de pilares. Segunda, la titular y WT-03 requieren verificación "
+               "individual: son pocas semanas las que separan a un afiliado del umbral de transición, "
+               "y una semana no reportada puede cambiar el régimen aplicable. Tercera, la "
+               "concentración en prima media (dos de tres) hace que cualquier traslado al RAIS tenga "
+               "un impacto desproporcionado en la empresa, porque el empleador responde por la "
+               "veracidad de la información que sirve de base a la decisión."])
 
     # ---------- 3.3
     h(doc, 2, "El deber de información y la doble asesoría")
-    rich(doc, ["El acto de traslado de régimen no es un acto de adhesión: es una decisión jurídica de "
-               "largo plazo cuyos efectos el afiliado solo advierte décadas después. Por esa razón la "
+    rich(doc, ["El traslado de régimen se firma en una oficina y se paga durante treinta años. Es una "
+               "decisión jurídica de largo plazo cuyos efectos el afiliado solo advierte décadas "
+               "después, y de ahí que la jurisprudencia construyera un estándar de información que "
+               "evolucionó en tres etapas. "
                "jurisprudencia construyó un estándar de información que evolucionó en tres etapas:"])
     for t in [
         [("Deber de información (desde la creación de las AFP): ", {"b": True}),
@@ -186,22 +186,25 @@ def eje_iii(doc):
     # ---------- 3.4
     h(doc, 2, "Auditoría pensional individual: caso P-03")
     h(doc, 3, "Identificación y hechos relevantes")
-    rich(doc, ["Se seleccionó a la trabajadora EXT-003, asesora comercial, mujer de 56 años, "
-               "vinculada desde 1999 y afiliada al Régimen de Ahorro Individual desde 1997, cuando "
-               "tenía 27 años. Cuenta con 1.150 semanas cotizadas y un capital acumulado de %s. "
+    rich(doc, ["Se seleccionó al trabajador WT-02, Luis Antonio Aguilar Rodríguez (C.C. 1073694256), "
+               "técnico de recarga, hombre de 56 años, vinculado desde 1999 y afiliado al Régimen de "
+               "Ahorro Individual desde 1997, cuando tenía 27 años. Cuenta con 1.150 semanas "
+               "cotizadas y un capital acumulado de %s. "
                "Manifiesta que un asesor comercial de la AFP la visitó en su lugar de trabajo, le "
                "indicó que «en el fondo privado se pensionaría con una mesada mucho mayor» y le hizo "
                "firmar un formulario en el que ya venía impresa la frase «me afilio libre y "
                "voluntariamente». No conserva copia del formulario, no recuerda haber recibido "
                "simulación alguna y no suscribió acta de doble asesoría." % money(CAPITAL_RAIS)])
     caja(doc, "Nota metodológica sobre los casos",
-         ["Los casos P-03, AT-2026-014 y las cifras de nómina son hipotéticos y se construyeron con "
-          "parámetros reales (edades, semanas, capitales y tarifas de 2026) para que el razonamiento "
-          "sea replicable. En la aplicación real deben sustituirse por la historia laboral y los "
-          "documentos del expediente de cada trabajador."], tipo='nota')
+         ["Los casos P-03 y AT-2026-014 se atribuyen a trabajadores reales de la planta, pero los "
+          "hechos, edades, semanas y capitales son parámetros de trabajo construidos con las tarifas "
+          "de 2026 para que el razonamiento sea replicable. Antes de la presentación definitiva deben "
+          "sustituirse por la historia laboral y los documentos del expediente de cada trabajador; el "
+          "documento marca con asterisco toda cifra que aún no está respaldada por un soporte."],
+         tipo='nota')
 
     h(doc, 3, "Verificación del cumplimiento de requisitos")
-    tabla(doc, ["Requisito", "Estándar aplicable", "Situación de la trabajadora", "Resultado"],
+    tabla(doc, ["Requisito", "Estándar aplicable", "Situación del trabajador", "Resultado"],
           [["Edad", "57 años (mujer)", "56 años; los cumple en 2027", "Cumple próximamente"],
            ["Semanas", "1.300 semanas (Ley 100 de 1993)", "1.150 semanas", "No cumple: faltan 150 semanas"],
            ["Semanas para garantía de pensión mínima", "1.150 semanas (art. 65, Ley 100 de 1993)",
@@ -211,14 +214,14 @@ def eje_iii(doc):
            ["Régimen de transición (Ley 2381 de 2024)", "750 semanas o más a abril de 2027",
             "1.150 semanas", "Cumple: conserva la Ley 100 de 1993"]],
           [3.8, 4.6, 4.2, 3.4], size=8.4,
-          titulo="Tabla 15. Verificación de requisitos del caso P-03")
+          titulo="Tabla 18. Verificación de requisitos del caso P-03")
 
     h(doc, 3, "Comparación económica de los escenarios")
     rich(doc, ["La comparación se hace con un ingreso base de liquidación de %s, equivalente al "
                "promedio de los últimos diez años de cotización, y con la tasa de reemplazo del "
                "65,5 %% que corresponde a 1.300 semanas. En el escenario de prima media la mesada "
                "sería de %s. En el escenario de ahorro individual, el capital de %s financiaría una "
-               "mesada aproximada de %s, inferior al salario mínimo, de modo que la trabajadora "
+               "mesada aproximada de %s, inferior al salario mínimo, de modo que el trabajador "
                "dependería del Fondo de Garantía de Pensión Mínima y percibiría %s. La pérdida "
                "patrimonial relevante (la que se reclama en el proceso) es la diferencia entre la "
                "mesada que habría recibido en prima media y el mínimo garantizado: %s mensuales, que "
@@ -236,7 +239,7 @@ def eje_iii(doc):
             "Mesada de prima media menos pensión mínima garantizada",
             ("− " + money(DIF), {"b": True}), ""]],
           [4.8, 5.3, 3.0, 2.9], size=8.6, align_centro=[2, 3],
-          titulo="Tabla 16. Comparación de mesadas proyectadas del caso P-03",
+          titulo="Tabla 19. Comparación de mesadas proyectadas del caso P-03",
           fuente="Fuente: elaboración propia. La proyección del RAIS es ilustrativa y depende de la "
                  "tasa de reemplazo ofrecida por la aseguradora y de la esperanza de vida; en un "
                  "proceso real debe aportarse la simulación de la administradora.")
@@ -255,14 +258,14 @@ def eje_iii(doc):
             "A favor de la ineficacia"],
            ["Valor probatorio del formulario", "Solo contiene la cláusula preimpresa de afiliación "
             "«libre y voluntaria»", "Insuficiente por sí solo"],
-           ["Carga de la prueba", "La AFP deberá acreditar la información; la trabajadora aporta "
+           ["Carga de la prueba", "La AFP deberá acreditar la información; el trabajador aporta "
             "indicios (testimonio, ausencia de soportes)", "A favor de la ineficacia"],
            ["Proximidad a la pensión o derecho consolidado", "No se exige (SU-107 de 2024)",
             "Indiferente"],
            ["Barrera de los diez años (multivinculación)", "El traslado se produjo a los 27 años; no "
             "se configura", "No aplica"]],
           [4.6, 7.0, 4.4], size=8.3,
-          titulo="Tabla 17. Aplicación de los criterios de la SU-107 de 2024 al caso P-03")
+          titulo="Tabla 20. Aplicación de los criterios de la SU-107 de 2024 al caso P-03")
 
     caja(doc, "Conclusión sobre la procedencia",
          [[("La demanda de ineficacia del traslado es viable y altamente probable de éxito. ",
@@ -270,7 +273,7 @@ def eje_iii(doc):
            "El traslado se produjo sin evidencia documental de información suficiente, en un "
            "contexto de asesoría comercial que privilegió la captación del afiliado, y la "
            "administradora no podrá demostrar lo contrario porque no conserva soportes. La "
-           "circunstancia de que la trabajadora tenga hoy 1.150 semanas y esté próxima a la edad "
+           "circunstancia de que el trabajador tenga hoy 1.150 semanas y esté próximo a la edad "
            "refuerza (pero no determina) la procedencia, pues el vicio se predica del acto mismo."]],
          tipo='exito')
 
@@ -278,7 +281,7 @@ def eje_iii(doc):
     for t in [
         [("Ineficacia del acto: ", {"b": True}), "la afiliación al Régimen de Ahorro Individual no "
          "produce efectos jurídicos y se tiene por no celebrada (arts. 271 y 272 de la Ley 100 de 1993)."],
-        [("Restablecimiento sin solución de continuidad: ", {"b": True}), "la trabajadora queda "
+        [("Restablecimiento sin solución de continuidad: ", {"b": True}), "el trabajador queda "
          "afiliada al Régimen de Prima Media como si nunca se hubiera trasladado, de modo que las "
          "1.150 semanas se computan íntegramente para la pensión de vejez."],
         [("Traslado de la totalidad del ahorro: ", {"b": True}), "la AFP debe trasladar a Colpensiones "
@@ -290,7 +293,7 @@ def eje_iii(doc):
         [("Improcedencia de repetir contra el afiliado: ", {"b": True}), "la administradora no puede "
          "cobrar al afiliado el mayor valor de las mesadas que haya pagado, porque la ineficacia "
          "declarada no le es imputable a este."],
-        [("Reparación adicional: ", {"b": True}), "si la trabajadora ya se hubiera pensionado en el "
+        [("Reparación adicional: ", {"b": True}), "si el trabajador ya se hubiera pensionado en el "
          "RAIS, la declaratoria de ineficacia habilita la indemnización de perjuicios por la "
          "diferencia de mesadas y por el daño consolidado (CSJ, SL1179 de 2024)."],
     ]:
@@ -298,7 +301,7 @@ def eje_iii(doc):
     rich(doc, ["Una precisión temporal es indispensable: la oportunidad administrativa de traslado "
                "prevista en el artículo 76 de la Ley 2381 de 2024 venció en julio de 2026 y la "
                "ventana de la Ley 1748 de 2014 se agotó años atrás. En consecuencia, la vía judicial "
-               "de ineficacia es hoy el único mecanismo idóneo para que la trabajadora regrese al "
+               "de ineficacia es hoy el único mecanismo idóneo para que el trabajador regrese al "
                "Régimen de Prima Media antes de que el nuevo sistema de pilares entre en vigencia el "
                "1.º de abril de 2027."])
 
@@ -317,7 +320,7 @@ def eje_iii(doc):
            ["Demanda ordinaria laboral de ineficacia", "Obtener la declaratoria y el traslado del "
             "ahorro", "Arts. 271 y 272, Ley 100 de 1993"]],
           [5.4, 6.0, 4.6], size=8.4,
-          titulo="Tabla 18. Plan probatorio del caso P-03")
+          titulo="Tabla 21. Plan probatorio del caso P-03")
 
     # ---------- 3.5
     h(doc, 2, "Diagnóstico del eje y recomendaciones")
@@ -329,23 +332,23 @@ def eje_iii(doc):
     tabla(doc, ["Hallazgo", "Consecuencia jurídica", "Riesgo", "Acción"],
           [["Dos traslados sin soporte de asesoría", "Demandas de ineficacia con alta probabilidad de "
             "éxito; contingencia patrimonial para la AFP, no para la empresa", "Alto (para la AFP)",
-            "Verificar la historia laboral de todos los afiliados al RAIS"],
-           ["Semanas no reportadas (EXT-010)", "Afectación del derecho pensional del trabajador y "
+            "Verificar la historia laboral de los tres afiliados, en especial del único afiliado al RAIS"],
+           ["Semanas no reportadas (WT-03)", "Afectación del derecho pensional del trabajador y "
             "posible demanda contra la empresa por falta de cotización", "Alto",
             "Corregir la planilla y reportar semanas omitidas"],
-           ["Trabajadores en el umbral de la transición (EXT-002 y EXT-006)", "Cambio de régimen "
+           ["Trabajadores en el umbral de la transición (los demás trabajadores)", "Cambio de régimen "
             "aplicable si no se completan las semanas al 1.º de abril de 2027", "Medio",
             "Revisar la historia laboral y programar cotizaciones"],
-           ["Trabajadora EXT-003 sin decisión informada", "Pérdida de la mesada diferencial de %s "
+           ["Trabajador WT-02 sin decisión informada", "Pérdida de la mesada diferencial de %s "
             "mensuales" % money(DIF), "Medio",
             "Acompañar la solicitud de información y el trámite de ineficacia"]],
           [4.2, 6.2, 2.0, 3.6], size=8.3, align_centro=[2],
-          titulo="Tabla 19. Hallazgos y acciones del Eje III")
+          titulo="Tabla 22. Hallazgos y acciones del Eje III")
 
     caja(doc, "Buena práctica preventiva",
          ["Toda decisión pensional de un trabajador debería quedar documentada en la hoja de vida: "
           "simulación entregada, acta de doble asesoría, formulario firmado y constancia de entrega "
-          "de copia. Conservar esos documentos durante al menos veinte años no es una carga "
-          "burocrática: es la única prueba posible cuando el litigio se presenta décadas después."],
+          "de copia. Guardar esos papeles durante veinte años parece excesivo hasta que el litigio "
+          "llega, décadas después, y la única prueba disponible es justamente la que se conservó."],
          tipo='info')
     salto_pagina(doc)

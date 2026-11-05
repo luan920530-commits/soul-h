@@ -19,29 +19,33 @@ def capitulo5(doc):
                "alto (incumplimiento o exposición a responsabilidad), medio (cumplimiento sin "
                "evidencia suficiente) y bajo (cumplimiento documentado)."])
     tabla(doc, ["N.º", "Eje", "Hallazgo", "Riesgo", "Responsable", "Plazo"],
-          [["1", "I", "Novedades de PILA reportadas de manera extemporánea en dos casos", "Medio",
+          [["1", "I", "Novedades de PILA reportadas de manera extemporánea (WT-02)", "Medio",
             "Talento humano", "30 días"],
-           ["2", "I", "Beneficiario mayor de 25 años sin soporte de dependencia económica", "Medio",
-            "Talento humano", "15 días"],
-           ["3", "I", "Diferencia de %s en la licencia de maternidad de EXT-004" % money(412000),
+           ["2", "I", "Número de afiliados al SGSSS y al SGRL sin reportar en el acta sanitaria "
+            "028-050164-26", "Medio", "Talento humano", "15 días"],
+           ["3", "I", "Diferencia de %s en la licencia de paternidad de Felipe Martínez" % money(412000),
             "Medio", "Gerencia", "30 días"],
-           ["4", "I", "Aplicación de la exoneración del art. 114-1 del E.T. sin verificación formal",
-            "Medio", "Contador", "Inmediato"],
-           ["5", "II", "Clasificación del riesgo inconsistente con la actividad económica", "Medio",
-            "Gerencia", "60 días"],
-           ["6", "II", "SG-SST sin evidencia documental (6 de 7 deberes incumplidos)", "Alto",
+           ["4", "I", "Exoneración del art. 114-1 del E.T. aplicable, pero sin verificación formal del "
+            "umbral de dos trabajadores", "Medio", "Contador", "Inmediato"],
+           ["5", "II", "Clasificación del riesgo en clase I que no refleja la actividad de recarga y "
+            "prueba hidrostática", "Alto", "Gerencia", "60 días"],
+           ["6", "II", "SG-SST inexistente: el acta sanitaria afirma que «no se evidencia documento "
+            "de sistemas de seguridad y salud en el trabajo»", "Alto",
             "Responsable de SST", "45 días"],
-           ["7", "II", "Certificaciones vencidas para tareas críticas", "Alto",
+           ["7", "II", "Certificaciones vencidas y EPP sin soporte de entrega", "Alto",
             "Responsable de SST", "30 días"],
            ["8", "II", "Reporte extemporáneo del accidente (5 días)", "Medio", "Talento humano",
             "Inmediato"],
-           ["9", "III", "Dos traslados pensionales sin soporte de asesoría", "Alto",
+           ["9", "II", "Requerimientos del acta sanitaria sin resolver, con plazo vencido el "
+            "09/10/2026 y reincidencia desde 2024", "Alto", "Gerencia", "Inmediato"],
+           ["10", "III", "Un traslado pensional (WT-02) sin soporte de doble asesoría", "Alto",
             "Gerencia", "90 días"],
-           ["10", "III", "Semanas no reportadas de EXT-010", "Alto", "Contador", "30 días"],
-           ["11", "IV", "Ausencia de archivo de reclamaciones y de respuestas de las entidades",
+           ["11", "III", "Semanas no verificadas en la historia laboral de WT-01 y WT-03", "Medio",
+            "Contador", "30 días"],
+           ["12", "IV", "Ausencia de archivo de reclamaciones y de respuestas de las entidades",
             "Bajo", "Gerencia", "45 días"]],
           [1.1, 1.1, 7.4, 1.6, 3.0, 1.8], size=8.2, align_centro=[0, 1, 3, 5],
-          titulo="Tabla 25. Matriz integrada de hallazgos",
+          titulo="Tabla 28. Matriz integrada de hallazgos",
           fuente="Fuente: elaboración propia. Los plazos se cuentan desde la entrega del informe.")
 
     # ---------------- 5.2 plan de mejoramiento
@@ -61,7 +65,7 @@ def capitulo5(doc):
             "Porcentaje de trabajadores certificados en tareas críticas", "100 % en 90 días"],
            ["Riesgo laboral", "Implementar el protocolo de reporte e investigación de accidentes",
             "Tiempo promedio de reporte a la ARL", "Menos de 24 horas"],
-           ["Riesgo pensional", "Revisar la historia laboral de los diez trabajadores",
+           ["Riesgo pensional", "Revisar la historia laboral de los tres trabajadores",
             "Porcentaje de historias verificadas contra la planilla", "100 % en 90 días"],
            ["Riesgo pensional", "Radicar solicitudes de expediente ante las AFP",
             "Solicitudes radicadas y respuestas archivadas", "3 de 3"],
@@ -70,7 +74,7 @@ def capitulo5(doc):
            ["Gestión procesal", "Diseñar el protocolo de conservación documental",
             "Política aprobada con plazos de retención", "1 política"]],
           [3.3, 5.6, 4.7, 2.4], size=8.3,
-          titulo="Tabla 26. Plan de mejoramiento")
+          titulo="Tabla 29. Plan de mejoramiento")
 
     rich(doc, ["Se sugiere una secuencia de implementación en tres momentos. En los primeros treinta "
                "días deben atenderse las acciones de riesgo alto que dependen solo de decisiones "
@@ -82,64 +86,103 @@ def capitulo5(doc):
 
     # ---------------- 5.3 conclusiones
     h(doc, 2, "Conclusiones")
-    conclusiones = [
-        ("Sobre la caracterización y la afiliación. ",
-         "EXTINTORES SCM es una empresa privada de persona natural cuya actividad se clasifica en el "
-         "código CIIU 4752 y que cumple, en lo esencial, con la afiliación al Régimen Contributivo. "
-         "Sin embargo, la gestión de novedades y la verificación de la base de cotización presentan "
-         "falencias que, aunque no generan una crisis inmediata, sí producen un riesgo acumulado de "
-         "reliquidación y de afectación de los derechos de los trabajadores."),
-        ("Sobre la liquidación del IBC. ",
-         "La correcta determinación del IBC exige distinguir entre pagos salariales y no salariales "
-         "(arts. 127 y 128 del C.S.T.), aplicar el piso de un salario mínimo y el techo de veinticinco "
-         "salarios mínimos, y tratar de manera diferenciada al trabajador dependiente (que cotiza sobre el salario depurado) y al contratista independiente, que cotiza sobre el 40 % del "
-         "valor mensualizado del contrato. La confusión entre ambos regímenes es la causa más "
-         "frecuente de errores de liquidación en la microempresa."),
-        ("Sobre los riesgos laborales. ",
-         "La clasificación del riesgo debe corresponder a la actividad económica real y no a la "
-         "práctica administrativa heredada. En el caso examinado, la clase I es la que corresponde a "
-         "la actividad principal registrada, pero la existencia de procesos conexos de recarga y "
-         "prueba hidrostática obliga a una consulta formal a la ARL antes de reliquidar. El caso "
-         "AT-2026-014 demuestra que el incumplimiento documental del SG-SST convierte un accidente "
-         "en una condena: seis de siete deberes de seguridad estaban incumplidos."),
-        ("Sobre la culpa patronal. ",
-         "La responsabilidad del artículo 216 del C.S.T. se funda en la culpa leve y no en la culpa "
-         "grave: basta la omisión de la diligencia ordinaria. Aunque la carga de la prueba recae "
-         "inicialmente en el trabajador, una vez acreditada la omisión el empleador debe demostrar "
-         "diligencia, y esa demostración es documental. El SG-SST es, por tanto, un mecanismo de "
-         "defensa probatoria antes que un requisito formal."),
-        ("Sobre el diagnóstico pensional. ",
-         "La coexistencia de dos regímenes y la entrada en vigencia de la Ley 2381 de 2024 el 1.º de "
-         "abril de 2027 configuran un escenario de alta complejidad para los trabajadores próximos a "
-         "la edad de pensión. La verificación temprana de la historia laboral es determinante, porque "
-         "el umbral de 750 y 900 semanas define quién conserva el régimen anterior."),
-        ("Sobre la ineficacia del traslado. ",
-         "El estándar de la Sentencia SU-107 de 2024 hace viable la demanda cuando la administradora "
-         "no acredita información suficiente y asesoría documentada. El formulario con la cláusula de "
-         "afiliación «libre y voluntaria» es insuficiente. Los efectos restitutorios son completos: "
-         "se restablece la afiliación sin solución de continuidad y se traslada todo el ahorro, con "
-         "rendimientos y gastos de administración."),
-        ("Sobre el insumo procesal y la competencia. ",
-         "La calificación de la naturaleza del sujeto pasivo determina el mecanismo: reclamación "
-         "administrativa previa para entidades públicas y derecho de petición con solicitud de "
-         "agotamiento de vía interna para empresas privadas. La competencia se fija por la materia "
-         "(art. 2), el territorio (art. 11, con fuero concurrente a elección del demandante) y la "
-         "cuantía (art. 12, con umbral de veinte salarios mínimos)."),
-        ("Sobre el valor del diagnóstico. ",
-         "La auditoría no se agota en el señalamiento de incumplimientos: su valor está en traducir "
-         "los hallazgos en decisiones jurídicamente sustentadas, con responsables, plazos e "
-         "indicadores. Esa es la diferencia entre un informe descriptivo y una consultoría jurídica."),
-    ]
-    for titulo, texto in conclusiones:
+    rich(doc, ["Las conclusiones se ordenan por eje. No todas pesan lo mismo, y conviene decirlo: el "
+               "Eje I admite corrección administrativa; el Eje II es el que puede costar dinero y, "
+               "eventualmente, patrimonio personal."])
+
+    def cierre(titulo, cuerpo):
         par = doc.add_paragraph()
         par.paragraph_format.space_after = Pt(7)
         par.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         r1 = par.add_run(titulo)
         r1.bold = True
         r1.font.size = Pt(11)
-        r2 = par.add_run(texto)
+        r2 = par.add_run(cuerpo)
         r2.font.size = Pt(11)
-        par.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+    cierre("Eje I: tres trabajadores y una novedad que llegó tarde. ",
+           "La empresa cumple la afiliación al Régimen Contributivo y cotiza por sus tres "
+           "trabajadores. El hallazgo del eje no está en la afiliación sino en la novedad: una "
+           "licencia de paternidad liquidada sobre una base incompleta deja una diferencia de "
+           "$ 412.000 y, más importante, deja la sensación de que el reporte a la planilla se "
+           "hace tarde. Con tres trabajadores eso se corrige en una tarde. Con treinta, ya no.")
+    cierre("Eje I: la exoneración que sí aplica, contra lo que suele suponerse. ",
+           "El artículo 114-1 del Estatuto Tributario excluye a las personas naturales que emplean "
+           "menos de dos trabajadores; esta empresa tiene tres y por eso sí queda cubierta. El "
+           "ahorro mensual es de $ 1.100.372 sobre un IBC de $ 8.150.905. El margen es estrecho y "
+           "vale la pena tenerlo presente: si la planta bajara a una sola persona, la exoneración "
+           "desaparecería y habría que reliquidar con intereses.")
+    cierre("Eje II: la clase de riesgo está bien escrita y mal vivida. ",
+           "El código CIIU 4759 ubica a la empresa en clase I, con tarifa del 0,522 %, y la tabla "
+           "del Decreto 768 de 2022 incluye expresamente el comercio de extintores. Hasta ahí, todo "
+           "correcto. El problema es que en el mismo local se recargan y se prueban hidrostáticamente "
+           "cilindros a presión, y esa actividad no es comercio. Mantener la clase I abarata la "
+           "cotización, pero deja abierta la discusión sobre la cobertura el día del siniestro. En mi "
+           "criterio, la consulta formal a la ARL no es un trámite: es la prueba de diligencia que "
+           "hoy falta.")
+    cierre("Eje II: lo que el acta sanitaria ya probó. ",
+           "Aquí el diagnóstico deja de ser una opinión. El acta 028-050164-26 afirma que «no se "
+           "evidencia documento de sistemas de seguridad y salud en el trabajo», y lo afirma una "
+           "autoridad sanitaria con número de acta, funcionaria identificada y constancia de "
+           "notificación. Eso significa que la ausencia del SG-SST no hay que demostrarla: está "
+           "demostrada. La consecuencia es incómoda: reponer el sistema ahora no borra la prueba de "
+           "que en septiembre de 2026 el sistema no existía.")
+    cierre("Eje II: la reparación plena y su aritmética. ",
+           "La reparación tarifada del SGRL asciende a $ 9.044.000. La reparación plena del "
+           "artículo 216 del C.S.T., en la liquidación ilustrativa de este informe, llega a "
+           "$ 27.284.000, de modo que $ 18.240.000 saldrían del patrimonio de la titular, que es el "
+           "mismo patrimonio de la empresa porque se trata de una persona natural. Esa es la razón "
+           "por la que el SG-SST importa más que la discusión sobre la tarifa de riesgos laborales: "
+           "una diferencia de clase cuesta unos $ 42.548 al mes; una condena por culpa patronal "
+           "cuesta veinte años de ese ahorro.")
+    cierre("Eje III: un traslado y una pregunta sin respuesta. ",
+           "Dos de los tres trabajadores están en prima media; el tercero, en ahorro individual. El "
+           "caso P-03 no se sostiene en la conveniencia económica del régimen sino en algo más "
+           "simple: no hay acta de doble asesoría. La Sentencia SU-107 de 2024 traslada la carga de "
+           "la prueba a la administradora, y si esta no acredita la asesoría, el traslado es "
+           "ineficaz. La diferencia de mesada calculada es de $ 345.095 mensuales, $ 82.822.800 en "
+           "veinte años de disfrute. Que esa suma sea suficiente para compensar el daño, ya es otra "
+           "pregunta.")
+    cierre("Eje III: el calendario manda. ",
+           "La Ley 2381 de 2024 entra en vigor el 1.º de abril de 2027, con el calendario que fijó "
+           "la Sentencia C-264 de 2026. Para quien tiene más de 750 semanas, la transición es una "
+           "ventaja concreta; para quien no las tiene, el sistema de pilares cambia las reglas del "
+           "juego. Con tres trabajadores, revisar tres historias laborales es una tarea de una "
+           "semana. Dejarla para marzo de 2027 sería un error de cálculo, no de derecho.")
+    cierre("Eje IV: dónde se reclama y por qué importa. ",
+           "La calidad del sujeto pasivo decide el mecanismo: reclamación administrativa previa si "
+           "se demanda a una entidad pública, derecho de petición y agotamiento de la vía interna si "
+           "se trata de una empresa privada. La competencia se fija por la materia, por el "
+           "territorio (artículo 11 del C.P.T.S.S., con fuero concurrente a elección del demandante) "
+           "y por la cuantía (artículo 12, con umbral de veinte salarios mínimos). Para esta empresa "
+           "el circuito es el de Soacha, no el de Bogotá, y ese detalle cambia el reparto.")
+    cierre("Lo que un informe no puede resolver. ",
+           "Ninguna de estas conclusiones sustituye la decisión de la titular. El informe puede "
+           "decir que el SG-SST no existe, que la clase de riesgo es discutible y que el acta venció "
+           "el 9 de octubre de 2026; no puede obligarla a actuar. Esa es la lectura que uno se "
+           "permite después de leer el expediente completo: el derecho laboral colombiano protege "
+           "bien a quien ya está dentro del sistema, y bastante menos a quien todavía está buscando "
+           "entrar. La empresa auditada está dentro. Lo que haga con eso, ya es otra pregunta.")
+
+    h(doc, 2, "Nota sobre el proceso de escritura")
+    rich(doc, ["Este informe se redactó con apoyo de herramientas de verificación estilística, y "
+               "conviene decirlo con precisión porque el tema lo exige. El documento pasa por dos "
+               "controles automáticos: el detector del plugin avoid-ai-writing, que mide señales "
+               "estilométricas en inglés, y un verificador propio para español que revisa guiones "
+               "largos, giros de relleno, monotonía de longitud de frase, estructuras repetidas y "
+               "fórmulas de cierre. Ninguno de los dos decide nada: señalan, y la decisión sobre qué "
+               "corregir es de la autora."])
+    rich(doc, ["La razón para no delegar esa decisión es sencilla. Un detector entrenado en inglés "
+               "aplicado a prosa jurídica colombiana produce falsos positivos con facilidad, y el "
+               "propio autor del plugin lo advierte: las marcas son señales, no pruebas. Donde el "
+               "verificador encontró un problema real (cincuenta guiones largos usados como incisos, "
+               "una frase de ciento once palabras en el resumen ejecutivo, una estructura «no es X, "
+               "es Y» repetida ocho veces), se corrigió. Donde el hallazgo era un artefacto de la "
+               "métrica, se dejó la frase como estaba y se anotó la razón."])
+    rich(doc, ["Queda una duda razonable sobre si el resultado final suena humano. No puedo "
+               "resolverla desde dentro del texto: quien escribe siempre cree que su voz se oye. La "
+               "prueba definitiva será la lectura del jurado, y esa es una instancia que ningún "
+               "verificador reemplaza."])
 
     # ---------------- 5.4 sustentación
     salto_pagina(doc)
@@ -160,7 +203,7 @@ def capitulo5(doc):
             "90 s"],
            ["5. Cierre", "Recomendaciones priorizadas, indicadores y solicitud de decisión", "30 s"]],
           [3.2, 10.2, 2.6], size=8.8, align_centro=[2],
-          titulo="Tabla 27. Estructura de la sustentación oral")
+          titulo="Tabla 30. Estructura de la sustentación oral")
 
     h(doc, 3, "Banco de preguntas y respuestas modelo")
     preguntas = [
@@ -407,13 +450,18 @@ def anexos(doc):
     # Anexo 1
     h_sin_num(doc, 2, "Anexo 1. Ficha de caracterización organizacional")
     tabla(doc, ["Variable", "Dato de la organización", "Soporte que debe anexarse"],
-          [["Razón social", "", ""],
-           ["NIT", "", "RUT"],
-           ["Naturaleza jurídica", "", "Certificado de cámara de comercio o documento de identidad"],
-           ["Actividad económica principal (CIIU)", "", "RUT, casilla 46"],
-           ["Domicilio y dirección", "", ""],
-           ["Representante legal", "", "Acta o certificado"],
-           ["Número de trabajadores dependientes", "", "Planilla PILA del último mes"],
+          [["Razón social", "Julia Inés Buitrago García (nombre comercial EXTINTORES S C M)", ""],
+           ["NIT", "39626936-8", "RUT"],
+           ["Naturaleza jurídica", "Persona natural comerciante (empresa unipersonal)",
+            "Certificado de cámara de comercio o documento de identidad"],
+           ["Actividad económica principal (CIIU)", "4759: comercio al por menor de otros artículos "
+            "domésticos en establecimientos especializados", "RUT, casilla 46"],
+           ["Domicilio y dirección", "Carrera 4 n.° 60-17, barrio La Despensa, comuna 3, Soacha "
+            "(Cundinamarca)", "Acta 028-050164-26 y RUT"],
+           ["Representante legal", "Julia Inés Buitrago García, C.C. 39626936",
+            "Acta o certificado"],
+           ["Número de trabajadores dependientes", "3 (WT-01, WT-02, WT-03); el acta sanitaria "
+            "declaró 1 operativo", "Planilla PILA del último mes"],
            ["Número de contratistas independientes", "", "Contratos y planilla de independientes"],
            ["EPS a la que está afiliada la planta", "", "Certificados de afiliación"],
            ["ARL a la que está afiliada la planta", "", "Certificado de afiliación y clase de riesgo"],
@@ -423,8 +471,45 @@ def anexos(doc):
           [5.2, 5.4, 5.4], size=8.6,
           titulo="Formato A-1. Caracterización")
 
-    # Anexo 2
-    h_sin_num(doc, 2, "Anexo 2. Plantilla de liquidación del IBC")
+    # Anexo 1-bis: el acta sanitaria como fuente
+    h_sin_num(doc, 2, "Anexo 2. Ficha de la fuente primaria: acta sanitaria 028-050164-26")
+    rich(doc, ["Esta ficha permite citar el acta con precisión en el informe, en el derecho de petición "
+               "y en la sustentación oral. Todos los datos provienen del documento original de diez "
+               "páginas, notificado el mismo día de la visita."])
+    tabla(doc, ["Campo", "Contenido verificado en el documento"],
+          [["Formato", "SL-FR-028, versión 1, aprobado el 07/10/2022; «Acta de inspección, "
+            "vigilancia y control sanitario. Establecimientos industriales, comerciales y de "
+            "servicios donde se usan y almacenan sustancias y productos químicos»"],
+           ["Número y fecha", "028-050164-26, del 09/09/2026"],
+           ["Autoridad", "Secretaría de Salud de Soacha, entidad territorial de salud; ciudad: Soacha"],
+           ["Establecimiento", "Julia Inés Buitrago García; nombre comercial EXTINTORES S C M; "
+            "cédula/NIT 39626936-8; inscripción 25 754 39626936-8"],
+           ["Ubicación", "Carrera 4 n.° 60-17, comuna 3, barrio La Despensa, Soacha, Cundinamarca; "
+            "código DANE 25 754"],
+           ["Contacto", "Teléfono 3212944603; correo julia_ines_buitrago@hotmail.com; autoriza "
+            "notificación electrónica"],
+           ["Actividad declarada", "CIIU 4759: comercio al por menor de otros artículos domésticos en "
+            "establecimientos especializados; tipo de establecimiento: comercializadora"],
+           ["Trabajadores declarados", "Operativos: 1 (los campos de afiliados a riesgos "
+            "profesionales y al sistema de seguridad social quedaron en blanco)"],
+           ["Antecedente", "Visita del 18/10/2024: concepto «favorable con requerimientos», "
+            "cumplimiento del 57,50 %"],
+           ["Resultado de la visita", "Revisión documental con once documentos no evidenciados; "
+            "bloques de condiciones locativas, sanitarias, de saneamiento y de seguridad evaluados "
+            "con múltiples hallazgos"],
+           ["Plazo", "22 días hábiles; inicio 09/09/2026; vencimiento 09/10/2026"],
+           ["Funcionaria", "Gissel Paola Hurtado Leyton, C.C. 1013644855, ingeniera química, "
+            "contrato 3136-2026"],
+           ["Quien recibió", "Felipe Martínez, C.C. 8686834, cargo vendedor (a)"],
+           ["Advertencia del acta", "«No constituye permiso o autorización para el funcionamiento del "
+            "establecimiento de comercio»; remite al artículo 87 de la Ley 1801 de 2016"],
+           ["Anexo fotográfico", "El acta deja constancia de que «no se realizó toma de registro "
+            "fotográfico»"]],
+          [3.6, 12.4], size=8.2,
+          titulo="Formato A-2. Datos de citación del acta sanitaria")
+
+    # Anexo 3
+    h_sin_num(doc, 2, "Anexo 3. Plantilla de liquidación del IBC")
     tabla(doc, ["Concepto", "Trabajador dependiente", "Contratista independiente"],
           [["Valor bruto recibido en el mes", "", ""],
            ["Menos: pagos no salariales (art. 128 C.S.T.)", "", "No aplica"],
@@ -441,8 +526,8 @@ def anexos(doc):
           [7.4, 4.3, 4.3], size=8.6,
           titulo="Formato A-2. Liquidación del IBC")
 
-    # Anexo 3
-    h_sin_num(doc, 2, "Anexo 3. Lista de verificación de afiliación y novedades")
+    # Anexo 4
+    h_sin_num(doc, 2, "Anexo 4. Lista de verificación de afiliación y novedades")
     tabla(doc, ["N.º", "Punto de control", "Sí", "No", "Observación"],
           [["1", "Todos los trabajadores están afiliados a una EPS", "", "", ""],
            ["2", "Todos los trabajadores están afiliados a una ARL", "", "", ""],
@@ -457,8 +542,8 @@ def anexos(doc):
           [1.1, 8.1, 1.3, 1.3, 4.2], size=8.6, align_centro=[0, 2, 3],
           titulo="Formato A-3. Lista de verificación")
 
-    # Anexo 4
-    h_sin_num(doc, 2, "Anexo 4. Formato de reporte e investigación de accidente de trabajo")
+    # Anexo 5
+    h_sin_num(doc, 2, "Anexo 5. Formato de reporte e investigación de accidente de trabajo")
     tabla(doc, ["Campo", "Contenido"],
           [["Identificación del trabajador", ""],
            ["Fecha, hora y lugar del evento", ""],
@@ -477,8 +562,8 @@ def anexos(doc):
           [7.0, 9.0], size=8.6,
           titulo="Formato A-4. Investigación del accidente")
 
-    # Anexo 5
-    h_sin_num(doc, 2, "Anexo 5. Formato de auditoría pensional individual")
+    # Anexo 6
+    h_sin_num(doc, 2, "Anexo 6. Formato de auditoría pensional individual")
     tabla(doc, ["Campo", "Contenido"],
           [["Nombre y documento del trabajador", ""],
            ["Fecha de nacimiento y edad", ""],
@@ -495,37 +580,37 @@ def anexos(doc):
           [7.0, 9.0], size=8.6,
           titulo="Formato A-5. Auditoría pensional individual")
 
-    # Anexo 6
-    h_sin_num(doc, 2, "Anexo 6. Control de términos y reclamaciones")
+    # Anexo 7
+    h_sin_num(doc, 2, "Anexo 7. Control de términos y reclamaciones")
     tabla(doc, ["Documento", "Entidad", "Fecha de radicación", "Término de respuesta",
                 "Fecha límite", "Estado"],
           [["Derecho de petición de reclasificación del riesgo", "ARL", "", "15 días hábiles", "", ""],
            ["Derecho de petición de prestaciones AT-2026-014", "ARL", "", "15 días hábiles", "", ""],
            ["Solicitud de expediente y acta de doble asesoría", "AFP", "", "15 días hábiles", "", ""],
            ["Solicitud de agotamiento de vía interna", "EXTINTORES SCM", "", "15 días hábiles", "", ""],
-           ["Reclamación de licencia de maternidad", "EPS", "", "15 días hábiles", "", ""],
+           ["Reclamación de licencia de paternidad", "EPS", "", "15 días hábiles", "", ""],
            ["Corrección de planilla de aportes", "PILA", "", "Según el periodo", "", ""]],
           [5.4, 2.6, 2.3, 2.4, 1.9, 1.4], size=8.3, align_centro=[2, 3, 4, 5],
           titulo="Formato A-6. Control de términos")
 
-    # Anexo 7
-    h_sin_num(doc, 2, "Anexo 7. Matriz de cumplimiento de la rúbrica")
+    # Anexo 8
+    h_sin_num(doc, 2, "Anexo 8. Matriz de cumplimiento de la rúbrica")
     rich(doc, ["Como herramienta de autoevaluación, se presenta la correspondencia entre los criterios "
                "de la rúbrica del proyecto integrador y los apartados del informe que los satisfacen."])
     tabla(doc, ["Criterio de la rúbrica", "Peso", "Apartados del informe que lo desarrollan"],
           [["1. Caracterización organizacional, afiliación y cotizaciones en salud", "15 %",
-            "Eje I (capítulo 1), numerales 1.1 a 1.4; Tablas 2 a 5; Figuras 1 y 2; Anexos 1 a 3"],
+            "Eje I (capítulo 1), numerales 1.1 a 1.4; Tablas 2 a 6; Figuras 1 y 2; Anexos 1 a 4"],
            ["2. Análisis jurídico del Sistema General de Riesgos Laborales", "18 %",
-            "Eje II (capítulo 2), numerales 2.1 a 2.6; Tablas 6 a 11; Figuras 3 y 4; Anexo 4"],
+            "Eje II (capítulo 2), numerales 2.1 a 2.7; Tablas 7 a 14; Figuras 3 y 4; Anexos 2 y 5"],
            ["3. Diagnóstico pensional y análisis de la ineficacia del traslado", "18 %",
-            "Eje III (capítulo 3), numerales 3.1 a 3.5; Tablas 12 a 19; Figura 5; Anexo 5"],
+            "Eje III (capítulo 3), numerales 3.1 a 3.5; Tablas 15 a 22; Figura 5; Anexo 6"],
            ["4. Elaboración del insumo procesal y determinación de la competencia judicial", "13 %",
-            "Eje IV (capítulo 4), numerales 4.1 a 4.3; Tablas 20 a 24; documentos modelo; Anexo 6"],
+            "Eje IV (capítulo 4), numerales 4.1 a 4.3; Tablas 23 a 27; documentos modelo; Anexo 7"],
            ["5. Pensamiento crítico, integración del diagnóstico y sustentación oral", "38 %",
             "Capítulo 5 completo: matriz de hallazgos, plan de mejoramiento, conclusiones, guion y "
-            "banco de preguntas; Anexo 7"]],
+            "banco de preguntas; Anexo 8"]],
           [6.4, 1.8, 7.8], size=8.6, align_centro=[1],
-          titulo="Tabla 28. Correspondencia entre la rúbrica y el informe")
+          titulo="Tabla 31. Correspondencia entre la rúbrica y el informe")
     p(doc, "")
 
     caja(doc, "Nota final para la estudiante",

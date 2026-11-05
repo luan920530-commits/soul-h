@@ -688,7 +688,16 @@ def caja(doc, titulo, lineas, tipo='info', ancho=16.0):
         pp.style = doc.styles['Texto_Tabla']
         pp.paragraph_format.space_after = Pt(3)
         pp.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-        if isinstance(ln, list):
+        if isinstance(ln, tuple):
+            # una sola corrida con formato: (texto, {"b": True})
+            txt, fmt = ln
+            rr = pp.add_run(txt)
+            rr.bold = fmt.get('b', False)
+            rr.italic = fmt.get('i', False)
+            rr.font.size = Pt(fmt.get('c', 9))
+            if fmt.get('col') is not None:
+                rr.font.color.rgb = fmt['col']
+        elif isinstance(ln, list):
             for item in ln:
                 txt, fmt = (item, {}) if isinstance(item, str) else item
                 rr = pp.add_run(txt)

@@ -8,11 +8,14 @@ from docx_engine import (p, rich, h, h_sin_num, bullet, cita, tabla, caja, salto
                          set_col_widths, AZUL, VINO, GRIS, GRIS_CLARO, HEX_AZUL, HEX_VINO,
                          FUENTE_SANS, BLANCO)
 from datos import (SMLMV, AUX_TRANSPORTE, TOPE_AUX, TOPE_EXO, money, TARIFAS, NOMINA,
+                   EMPRESA, ACTA, TRABAJADORES, EXONERADO_114_1, APORTE_ARL,
+                   APORTE_PENSION, APORTE_SALUD_TRABAJADOR, APORTE_CAJA,
                    IBC_TOTAL, N_AUX, CONTRATISTA)
 
 AUTOR = "Julia Inés Buitrago García"
-RAZON = "EXTINTORES SCM"
+RAZON = "EXTINTORES S C M"
 NIT = "39626936-8"
+MUNICIPIO = "Soacha (Cundinamarca)"
 
 
 # ---------------------------------------------------------------- Portada
@@ -53,11 +56,11 @@ def portada(doc):
     p(doc, "ORGANIZACIÓN AUDITADA", size=9, bold=True, color=GRIS_CLARO,
       align=WD_ALIGN_PARAGRAPH.CENTER, space_after=4)
     p(doc, RAZON, size=19, bold=True, color=VINO, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
-    p(doc, "NIT 39626936-8 · Empresa privada", size=11, color=GRIS,
+    p(doc, "C.C./NIT 39626936-8 · Empresa privada · Soacha (Cundinamarca)", size=11, color=GRIS,
       align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
     p(doc, "Comercio, mantenimiento y recarga de extintores y sistemas de protección contra incendio",
       size=9.5, color=GRIS_CLARO, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
-    p(doc, "Domicilio: Bogotá D.C., Colombia", size=9.5, color=GRIS_CLARO,
+    p(doc, "Domicilio: Soacha (Cundinamarca), Colombia", size=9.5, color=GRIS_CLARO,
       align=WD_ALIGN_PARAGRAPH.CENTER, space_after=20)
 
     tabla(doc, ["Campo", "Información"],
@@ -88,14 +91,14 @@ def contenido(doc):
     p(doc, "", space_after=4)
     caja(doc, "Cómo usar esta plantilla",
          ["El documento tiene dos tipos de contenido. El primero es el ",
-          [("desarrollo jurídico ya redactado", {"b": True}),
-           ": marco normativo, análisis de casos, liquidaciones, escritos procesales y "
-           "conclusiones, con la norma y la jurisprudencia citadas en cada punto. El segundo son "
-           "los "],
-          [("campos por diligenciar", {"b": True}),
-           ": los anexos del capítulo final y los espacios marcados con líneas de puntos, que debe "
-           "llenar con los soportes reales de EXTINTORES SCM (planillas PILA, comprobantes de "
-           "nómina, certificados de afiliación, historia laboral y documentos del SG-SST)."],
+          ("desarrollo jurídico ya redactado", {"b": True}),
+          ": marco normativo, análisis de casos, liquidaciones, escritos procesales y "
+          "conclusiones, con la norma y la jurisprudencia citadas en cada punto. El segundo son "
+          "los ",
+          ("campos por diligenciar", {"b": True}),
+          ": los anexos del capítulo final y los espacios marcados con líneas de puntos, que debe "
+          "llenar con los soportes reales de EXTINTORES S C M (planillas PILA, comprobantes de "
+          "nómina, certificados de afiliación, historia laboral y documentos del SG-SST).",
           "Al abrir el archivo, actualice la tabla de contenido: clic derecho sobre el texto azul → "
           "«Actualizar campo» → «Actualizar toda la tabla». Los recuadros de color son ayudas de "
           "estudio: los azules orientan la lectura, los rojos señalan riesgos jurídicos y los ámbar "
@@ -112,7 +115,8 @@ def resumen_ejecutivo(doc):
         "practicada a ", (RAZON, {"b": True}), ", empresa privada identificada con NIT ",
         (NIT, {"b": True}),
         ", cuya actividad principal es el comercio, la recarga y el mantenimiento de extintores, "
-        "equipos y sistemas de protección contra incendio, con domicilio en Bogotá D.C. La auditoría "
+        "equipos y sistemas de protección contra incendio, con domicilio en el municipio de Soacha "
+        "(Cundinamarca). La auditoría "
         "se estructura en los cuatro ejes exigidos por la guía del proyecto integrador. El marco "
         "normativo lo integran la Ley 100 de 1993, la Ley 1562 de 2012, la Ley Estatutaria 1751 de "
         "2015, el Código Sustantivo del Trabajo y el Código Procesal del Trabajo y de la Seguridad "
@@ -121,39 +125,56 @@ def resumen_ejecutivo(doc):
         "Ley 2381 de 2024, cuyo calendario de entrada en vigencia fue fijado por la Sentencia C-264 "
         "de 2026, y los Decretos 1469 y 1470 de 2025 sobre salario mínimo y auxilio de transporte.", ])
 
+    rich(doc, ["Vale decir desde el principio qué encontró la auditoría y qué no. No hubo aquí una "
+               "empresa en crisis ni un trabajador desprotegido: los tres están afiliados, cotizan y "
+               "reciben atención. Lo que hay es un patrón más difícil de corregir, el de una "
+               "obligación que se sabe exigible y se posterga. El acta sanitaria del 9 de septiembre "
+               "de 2026 lo dejó por escrito con una frase que conviene leer dos veces: «no se "
+               "evidencia documento de sistemas de seguridad y salud en el trabajo»."])
+    rich(doc, ["Ese diagnóstico tiene una consecuencia concreta en dinero. La reparación tarifada de "
+               "un accidente de trabajo asciende a $ 9.044.000; la reparación plena del artículo 216 "
+               "del C.S.T., en la liquidación ilustrativa que se presenta en el capítulo 2, llega a "
+               "$ 27.284.000. La diferencia, $ 18.240.000, sale del patrimonio de la titular, porque "
+               "en una empresa unipersonal el patrimonio de la empresa y el de la persona son el "
+               "mismo. En mi criterio, esa cifra explica el informe mejor que cualquier advertencia "
+               "sobre el deber de diligencia."])
+
     p(doc, "Principales hallazgos", size=11.5, bold=True, color=AZUL, space_before=8, space_after=4)
     for titulo, texto in [
         ("Eje I · Afiliación y cotizaciones (riesgo medio). ",
-         "La empresa cumple la afiliación obligatoria al Régimen Contributivo, pero se detectaron "
-         "novedades reportadas por fuera del plazo, un beneficiario mayor de 25 años sin soporte de "
-         "dependencia económica y una diferencia de $ 412.000 en el pago de una licencia de "
-         "maternidad. La condición de persona natural con diez trabajadores permite aplicar la "
-         "exoneración del artículo 114-1 del Estatuto Tributario, siempre que se verifique su "
-         "procedencia y se reporte correctamente en la planilla."),
+         "La planta es de tres trabajadores dependientes. La condición de persona natural "
+         "empleadora de dos o más trabajadores permite aplicar la exoneración del artículo 114-1 "
+         "del Estatuto Tributario sobre el 8,5 % de salud patronal, el SENA y el ICBF, con un "
+         "efecto mensual de $ 1.100.372 frente al escenario sin exoneración. Se detectaron "
+         "novedades reportadas por fuera del plazo y una diferencia de $ 412.000 en el pago de una "
+         "licencia de paternidad."),
         ("Eje II · Riesgos laborales (riesgo alto). ",
-         "La clasificación correcta corresponde a la clase de riesgo I, con tarifa inicial de "
-         "0,522 % del IBC (Decreto 768 de 2022 y artículo 13 del Decreto 1772 de 1994), y no a la "
-         "clase II que la organización venía aplicando. El caso AT-2026-014 revela el "
+         "El código CIIU 4759 ubica a la empresa en clase de riesgo I, con tarifa inicial de "
+         "0,522 % del IBC (Decreto 768 de 2022 y artículo 13 del Decreto 1772 de 1994), y el acta "
+         "sanitaria confirma ese registro. El problema es otro: la recarga y la prueba hidrostática "
+         "de cilindros que se ejecutan en el mismo local desbordan esa clase, y la empresa no ha "
+         "consultado el punto a la ARL. El caso AT-2026-014 revela el "
          "incumplimiento de seis de siete deberes de seguridad verificables, lo que configura culpa "
          "patronal del artículo 216 del C.S.T., con una exposición estimada de $ 27,3 millones de "
          "reparación plena, de los cuales $ 18,2 millones quedarían a cargo del empleador después de "
          "descontar las prestaciones de la ARL."),
         ("Eje III · Pensiones (riesgo alto). ",
-         "El 70 % de la planta está en el Régimen de Prima Media y el 30 % en el Régimen de Ahorro "
-         "Individual. El caso P-03 presenta un traslado de régimen sin soporte documental de doble "
+         "Dos de los tres trabajadores están en el Régimen de Prima Media y uno en el Régimen de "
+         "Ahorro Individual. El caso P-03 presenta un traslado de régimen sin soporte documental de doble "
          "asesoría: la demanda de ineficacia es viable y los efectos restitutorios comprenden el "
          "traslado íntegro del ahorro y una diferencia de mesada de $ 345.095 mensuales frente al "
          "escenario de ahorro individual, equivalente a $ 82,8 millones en veinte años de disfrute."),
         ("Eje IV · Insumo procesal (riesgo bajo). ",
          "Se redactan tres documentos modelo (derecho de petición ante la ARL, derecho de petición ante la AFP y solicitud de agotamiento de la vía interna ante el empleador) y se fija la "
-         "competencia del juez laboral del circuito de Bogotá por los factores de materia, territorio "
+         "competencia del juez laboral del circuito de Soacha por los factores de materia, territorio "
          "(artículo 11 del C.P.T.S.S.) y cuantía (artículo 12)."),
     ]:
         bullet(doc, [(titulo, {"b": True}), texto])
 
     caja(doc, "Conclusión general",
-         ["El cumplimiento formal es aceptable, pero existen tres brechas materiales: (i) la "
-          "clasificación del riesgo ante la ARL no corresponde a la actividad económica registrada; "
+         ["El cumplimiento formal es aceptable, pero existen tres brechas materiales: (i) la clase "
+          "de riesgo registrada no cubre la actividad de recarga que se ejecuta en el local, y esa "
+          "discusión no se ha planteado a la ARL; "
           "(ii) el Sistema de Gestión de Seguridad y Salud en el Trabajo no produce la evidencia "
           "documental que exoneraría al empleador en un accidente de trabajo; y (iii) el archivo de "
           "asesoría pensional es insuficiente frente al estándar de doble asesoría de la Ley 1748 de "
@@ -215,6 +236,17 @@ def metodologia(doc):
                ("riesgo alto", {"b": True}),
                " (existe incumplimiento o exposición a responsabilidad patronal). Con ese criterio "
                "las conclusiones se pueden verificar y no dependen de apreciaciones subjetivas."])
+    rich(doc, ["Una advertencia sobre el alcance. La escala califica evidencia, no intenciones: una "
+               "empresa puede incumplir por descuido y otra por cálculo, y el riesgo jurídico es el "
+               "mismo en ambos casos. Ahora bien, la diferencia importa cuando se discute la culpa, "
+               "porque el artículo 216 del C.S.T. no exige mala fe sino falta de diligencia. En el "
+               "expediente de EXTINTORES S C M hay un dato que inclina la balanza: el acta "
+               "028-050164-26 del 09/09/2026 consigna que la visita anterior, del 18 de octubre de "
+               "2024, ya había dejado requerimientos, con un cumplimiento del 57,50 %."])
+    rich(doc, ["Dicho de otro modo, lo que en 2024 era un hallazgo, en 2026 seguía siendo un "
+               "hallazgo. Eso no convierte a la titular en una empleadora temeraria, pero sí "
+               "desplaza la discusión desde el desconocimiento hacia la persistencia, que es el "
+               "terreno donde la culpa se presume con más facilidad."])
     rich(doc, ["Advertencia metodológica: las cifras de nómina y los casos señalados como "
                "ilustrativos se construyeron con el salario mínimo de 2026 y las tarifas vigentes, "
                "para que los cálculos sean reproducibles. En la aplicación real deben sustituirse por "
@@ -270,39 +302,53 @@ def eje_i(doc):
                "cuantía. La siguiente ficha se construyó con los datos de la organización y el "
                "contraste con el Registro Único Tributario."])
     tabla(doc, ["Variable", "Dato", "Relevancia jurídica"],
-          [["Razón social", RAZON,
-            "Identifica al empleador como sujeto de obligaciones (art. 22, Ley 100 de 1993)"],
-           ["NIT", NIT,
-            "Se usa en la planilla PILA y en la identificación de los escritos procesales"],
+          [["Razón social", EMPRESA["razon_social"],
+            "Identifica al empleador como sujeto de obligaciones (art. 22, Ley 100 de 1993). El acta "
+            "028-050164-26 registra el nombre comercial EXTINTORES S C M"],
+           ["Documento (cédula/NIT)", EMPRESA["documento"],
+            "Se usa en la planilla PILA y en la identificación de los escritos procesales. La "
+            "numeración corresponde a la cédula del titular, sin dígito de verificación"],
            ["Naturaleza jurídica", "Empresa privada; persona natural comerciante (empresa unipersonal)",
             "Determina el régimen aplicable: no hay reclamación administrativa previa del art. 6 del "
             "C.P.T.S.S., sino solicitud directa al empleador y, en su caso, conciliación extrajudicial"],
-           ["Actividad económica", "Comercio al por menor de artículos de ferretería, pinturas y "
-            "productos de vidrio (CIIU 4752), con actividades conexas de recarga y mantenimiento de "
-            "extintores",
-            "El código CIIU define la clase de riesgo ante la ARL (Decreto 768 de 2022) y el "
-            "tratamiento parafiscal"],
-           ["Domicilio", "Bogotá D.C.", "Fija la competencia territorial del juez laboral (art. 11 del C.P.T.S.S.)"],
-           ["Representante legal", AUTOR, "Única titular y responsable de las obligaciones patronales"],
+           ["Actividad económica registrada", "CIIU 4759, %s" % EMPRESA["ciiu_desc"],
+            "El código CIIU define la clase de riesgo ante la ARL (Decreto 768 de 2022): la "
+            "subactividad 4759-01 está clasificada en clase I e incluye expresamente el comercio de "
+            "extintores"],
+           ["Actividad operativa adicional", "Recarga, mantenimiento y prueba hidrostática de "
+            "extintores en el mismo establecimiento",
+            "Es una actividad conexa que introduce riesgo de presión, proyección de partes y "
+            "exposición química; puede justificar un código adicional o una revisión de la clase "
+            "(arts. 4 y 5 del Decreto 768 de 2022)"],
+           ["Domicilio", "Carrera 4 n.° 60-17, barrio La Despensa, comuna 3, Soacha (Cundinamarca)",
+            "Fija la competencia territorial del juez laboral (art. 11 del C.P.T.S.S.): el circuito "
+            "judicial de Soacha, no el de Bogotá"],
+           ["Representante legal", AUTOR + ", C.C. " + EMPRESA["cc_titular"],
+            "Única titular y responsable de las obligaciones patronales"],
+           ["Inscripción mercantil", "Matrícula 25 754 39626936-8; código DANE 25 754",
+            "Acredita la existencia y representación del establecimiento ante la autoridad sanitaria"],
            ["Planta de personal", "%d trabajadores dependientes con contrato de trabajo" % len(NOMINA),
-            "La condición de persona natural con dos o más trabajadores activa el régimen general de "
-            "aportes (art. 114-1 del E.T.)"],
+            "La condición de persona natural con dos o más trabajadores activa la exoneración del "
+            "art. 114-1 del E.T., que sí la ampara en este caso"],
            ["Contratistas", "1 contrato de prestación de servicios (contador público)",
             "Exige verificar la afiliación del contratista como independiente (art. 89, Ley 100 de 1993)"],
            ["Tamaño empresarial", "Microempresa",
             "No altera las obligaciones de afiliación, que son imperativas; sí incide en los "
             "estándares mínimos del SG-SST (Resolución 0312 de 2019)"]],
           [3.3, 6.5, 6.2], size=8.6,
-          titulo="Tabla 2. Ficha técnica de EXTINTORES SCM",
-          fuente="Fuente: elaboración propia con base en la información de la organización y el RUT.")
+          titulo="Tabla 2. Ficha técnica de EXTINTORES S C M",
+          fuente="Fuente: elaboración propia con base en el acta de inspección sanitaria "
+                 "028-050164-26 del 09/09/2026 (Secretaría de Salud de Soacha) y el Registro Único "
+                 "Tributario.")
 
     caja(doc, "Advertencia sobre la naturaleza jurídica",
          ["La actividad se ejerce bajo la forma de empresa unipersonal de persona natural. Ello tiene "
           "dos consecuencias que suelen pasarse por alto: (i) el patrimonio personal del titular "
           "responde por las obligaciones sociales, sin la separación patrimonial que ofrece una "
           "sociedad comercial; y (ii) la exoneración de aportes del artículo 114-1 del Estatuto "
-          "Tributario exige, para las personas naturales, emplear dos o más trabajadores, de modo que "
-          "el beneficio debe verificarse antes de aplicarlo en la planilla."],
+          "Tributario exige, para las personas naturales, emplear dos o más trabajadores. Con tres "
+          "trabajadores la empresa cumple el umbral, pero el cómputo debe hacerse sobre trabajadores "
+          "reales y activos en cada periodo, no sobre cargos presupuestados."],
          tipo='alerta')
 
     # ---------- 1.2
@@ -360,13 +406,44 @@ def eje_i(doc):
                ("pero excluye expresamente a quienes empleen menos de dos trabajadores", {"b": True}),
                ". La exoneración nunca cubre los aportes a pensión ni los de riesgos laborales, y el "
                "aporte del 4 % a cargo del trabajador se mantiene intacto."])
-    rich(doc, ["Para EXTINTORES SCM la conclusión es concreta: al contar con diez trabajadores "
-               "dependientes, la empresa ", ("puede aplicar la exoneración", {"b": True}),
-               " respecto de los trabajadores cuya remuneración salarial sea inferior a diez salarios "
-               "mínimos (%s en 2026), siempre que sea contribuyente declarante del impuesto sobre la "
-               "renta y que la novedad se reporte correctamente en la planilla. Si la planta se "
+    rich(doc, ["Para EXTINTORES S C M la conclusión es concreta: con tres trabajadores dependientes "
+               "la empresa ", ("puede aplicar la exoneración", {"b": True}),
+               " respecto de los tres, porque ninguno alcanza los diez salarios mínimos (%s en 2026), "
+               "siempre que sea contribuyente declarante del impuesto sobre la renta y que la novedad "
+               "se reporte correctamente en la planilla. El margen es estrecho: si la planta se "
                "redujera a un solo trabajador, la exoneración desaparecería y habría que reliquidar "
-               "los aportes con intereses moratorios." % money(TOPE_EXO)])
+               "los aportes con intereses moratorios por todo el periodo en que se aplicó sin derecho."
+               % money(TOPE_EXO)])
+    rich(doc, ["El efecto económico se puede medir sobre el IBC total de %s. La exoneración ahorra "
+               "el 8,5 %% de salud patronal (%s), el 2 %% de SENA (%s) y el 3 %% de ICBF (%s): en "
+               "conjunto, %s mensuales frente al escenario sin exoneración. Lo que no se exonera "
+               "nunca es la pensión del 12 %% (%s), el 4 %% de salud a cargo del trabajador (%s), los "
+               "riesgos laborales (%s con la tarifa de clase I) ni la caja de compensación del 4 %% "
+               "(%s)."
+               % (money(IBC_TOTAL),
+                  money(IBC_TOTAL * 0.085), money(IBC_TOTAL * 0.02), money(IBC_TOTAL * 0.03),
+                  money(IBC_TOTAL * 0.135),
+                  money(IBC_TOTAL * 0.12), money(IBC_TOTAL * 0.04),
+                  money(APORTE_ARL), money(IBC_TOTAL * 0.04))])
+    tabla(doc, ["Concepto", "Tarifa", "Sin exoneración", "Con exoneración (art. 114-1 E.T.)"],
+          [["Salud a cargo del empleador", "8,5 %", money(IBC_TOTAL * 0.085), "$ 0"],
+           ["SENA", "2 %", money(IBC_TOTAL * 0.02), "$ 0"],
+           ["ICBF", "3 %", money(IBC_TOTAL * 0.03), "$ 0"],
+           ["Pensión (empleador 12 %)", "12 %", money(IBC_TOTAL * 0.12),
+            money(IBC_TOTAL * 0.12)],
+           ["Riesgos laborales (clase I)", "0,522 %", money(APORTE_ARL), money(APORTE_ARL)],
+           ["Caja de compensación", "4 %", money(IBC_TOTAL * 0.04), money(IBC_TOTAL * 0.04)],
+           [("Total a cargo del empleador", {"b": True}), "",
+            (money(IBC_TOTAL * (0.085 + 0.02 + 0.03 + 0.12 + TARIFAS["I"] + 0.04)), {"b": True}),
+            (money(IBC_TOTAL * (0.12 + TARIFAS["I"] + 0.04)), {"b": True})],
+           [("Ahorro mensual", {"b": True}), "13,5 %", "",
+            (money(IBC_TOTAL * 0.135), {"b": True})]],
+          [6.0, 1.8, 3.6, 4.2], size=8.5, align_centro=[1, 2, 3],
+          titulo="Tabla 3. Efecto de la exoneración del artículo 114-1 del E.T. sobre el IBC de la "
+                 "planta",
+          fuente="Fuente: elaboración propia sobre un IBC total de %s. El aporte a pensión del "
+                 "empleador y el 4 %% de salud del trabajador no se ven afectados por la "
+                 "exoneración." % money(IBC_TOTAL))
     caja(doc, "Punto de verificación en la planilla",
          ["La exoneración se declara en la planilla con el código correspondiente. Aplicarla sin "
           "derecho genera un faltante de aportes que la ADRES o la EPS pueden cobrar con intereses "
@@ -421,33 +498,53 @@ def eje_i(doc):
                    money(CONTRATISTA['honorarios']), money(CONTRATISTA['honorarios'] * 0.4),
                    money(CONTRATISTA['honorarios'] * 0.4 * 0.285))])
 
-    h(doc, 3, "Aplicación a la nómina de EXTINTORES SCM")
+    h(doc, 3, "Aplicación a la nómina de EXTINTORES S C M")
+    rich(doc, ["La planta se identifica con los datos que constan en el acta 028-050164-26 y en los "
+               "soportes de la organización. El acta reporta el establecimiento como comercializador "
+               "con ", ("un solo trabajador operativo", {"b": True}),
+               ", dato que coincide con la estructura real de la empresa: la titular, un técnico de "
+               "recarga y un vendedor de mostrador. Las bases de cotización señaladas con un "
+               "asterisco son valores de referencia mientras se incorporan los comprobantes de "
+               "nómina; el resto de la información proviene de documentos verificados."])
     filas = []
-    for cod, cargo, tipo, ibc, reg, obs in NOMINA:
-        filas.append([cod, cargo, tipo, money(ibc), money(ibc * 0.085), money(ibc * 0.04),
-                      money(ibc * 0.12), money(ibc * TARIFAS['I']), reg])
-    filas.append([("TOTAL", {"b": True}), "", "", (money(IBC_TOTAL), {"b": True}),
-                  (money(IBC_TOTAL * 0.085), {"b": True}), (money(IBC_TOTAL * 0.04), {"b": True}),
-                  (money(IBC_TOTAL * 0.12), {"b": True}),
-                  (money(IBC_TOTAL * TARIFAS['I']), {"b": True}), ""])
-    tabla(doc, ["Cód.", "Cargo", "Vinculación", "IBC", "Salud 8,5 %", "Salud 4 %",
+    for t in TRABAJADORES:
+        marca = " *" if t["por_confirmar"] else ""
+        filas.append([t["codigo"], t["nombre"], t["documento"], t["cargo"],
+                      money(t["ibc"]) + marca, money(t["ibc"] * 0.04),
+                      money(t["ibc"] * 0.12), money(t["ibc"] * TARIFAS['I']), t["regimen"]])
+    filas.append([("TOTAL", {"b": True}), "", "", "", (money(IBC_TOTAL), {"b": True}),
+                  (money(APORTE_SALUD_TRABAJADOR), {"b": True}),
+                  (money(APORTE_PENSION), {"b": True}),
+                  (money(APORTE_ARL), {"b": True}), ""])
+    tabla(doc, ["Cód.", "Trabajador", "Documento", "Cargo", "IBC *", "Salud 4 %",
                 "Pensión 12 %", "ARL 0,522 %", "Régimen"],
-          filas, [1.3, 3.4, 2.2, 1.7, 1.7, 1.4, 1.5, 1.4, 1.4], size=7.4, header_size=7.0,
-          titulo="Tabla 3. Nómina, IBC y aportes mensuales calculados (2026)",
-          align_centro=[3, 4, 5, 6, 7],
-          fuente="Fuente: elaboración propia. Calculado sobre el IBC de cada trabajador con el SMMLV "
-                 "de 2026 (%s). La columna de salud patronal refleja el escenario sin exoneración, "
-                 "es decir, de máxima exposición." % money(SMLMV))
+          filas, [1.2, 4.0, 2.2, 3.6, 1.7, 1.4, 1.5, 1.4, 1.4], size=7.2, header_size=6.8,
+          titulo="Tabla 4. Planta de personal, IBC y aportes mensuales (2026)",
+          align_centro=[4, 5, 6, 7],
+          fuente="Fuente: elaboración propia con base en el acta 028-050164-26, el Registro Único "
+                 "Tributario y los datos aportados por la titular. (*) Base de referencia sujeta a "
+                 "confirmación con los comprobantes de nómina. La salud patronal del 8,5 %% no "
+                 "aparece porque está exonerada (art. 114-1 del E.T.).")
     rich(doc, ["El IBC total de la planta asciende a %s mensuales. Los aportes que la empresa debe "
-               "trasladar por salud patronal, salud del trabajador, pensión y riesgos laborales suman "
-               "%s al mes, sin incluir parafiscales. De la proyección se advierte que:"
-               % (money(IBC_TOTAL), money(IBC_TOTAL * (0.085 + 0.04 + 0.12 + TARIFAS['I'])))])
+               "trasladar suman %s al mes, así: %s de pensión, %s de riesgos laborales, %s de salud "
+               "a cargo de los trabajadores (que se descuentan de su salario y no son costo "
+               "patronal) y %s de caja de compensación. Con la exoneración vigente, el costo "
+               "parafiscal directo del empleador se reduce a pensión, riesgos laborales y caja: %s. "
+               "De la proyección se advierte que:"
+               % (money(IBC_TOTAL), money(APORTE_PENSION + APORTE_ARL + APORTE_CAJA),
+                  money(APORTE_PENSION), money(APORTE_ARL), money(APORTE_SALUD_TRABAJADOR),
+                  money(APORTE_CAJA), money(APORTE_PENSION + APORTE_ARL + APORTE_CAJA))])
     bullet(doc, ["%d de los %d trabajadores devengan un salario igual o inferior a dos salarios "
                  "mínimos (%s) y, por tanto, reciben auxilio de transporte por %s, que no integra el "
-                 "IBC." % (N_AUX, len(NOMINA), money(TOPE_AUX), money(AUX_TRANSPORTE))])
-    bullet(doc, ["Los trabajadores EXT-007 y EXT-009 devengan exactamente un salario mínimo; su base "
-                 "de cotización no puede ser inferior a ese valor aunque su salario permanente sea "
-                 "inferior por jornada parcial."])
+                 "IBC. La titular, por su nivel salarial, no lo recibe."
+                 % (N_AUX, len(NOMINA), money(TOPE_AUX), money(AUX_TRANSPORTE))])
+    bullet(doc, ["El trabajador WT-03 devenga exactamente un salario mínimo (%s); su base de "
+                 "cotización no puede ser inferior a ese valor aunque su salario permanente sea "
+                 "inferior por jornada parcial." % money(SMLMV)])
+    bullet(doc, ["El aporte a riesgos laborales se calculó con la tarifa de la clase I (0,522 %), "
+                 "que es la que corresponde al código CIIU 4759 registrado en el RUT según el "
+                 "Decreto 768 de 2022. La actividad de recarga que se ejecuta en el mismo "
+                 "establecimiento es el punto que puede discutirse ante la ARL (ver Eje II)."])
     bullet(doc, ["El aporte a riesgos laborales se calculó con la tarifa de la clase I (0,522 %), que "
                  "es la que corresponde a la actividad según el Decreto 768 de 2022, y no con la "
                  "clase II que la empresa venía aplicando (ver Eje II)."])
@@ -457,11 +554,11 @@ def eje_i(doc):
     h(doc, 3, "Verificación de la afiliación al Régimen Contributivo")
     tabla(doc, ["Punto de control", "Estándar normativo", "Hallazgo"],
           [["Afiliación de todos los trabajadores", "Art. 161, num. 1, Ley 100 de 1993",
-            "Cumple: 10 de 10 trabajadores afiliados a EPS"],
+            "Cumple: 3 de 3 trabajadores afiliados a EPS"],
            ["Libertad de elección de EPS", "Art. 161, num. 1, Ley 100 de 1993",
             "Cumple: la afiliación se hizo por elección del trabajador"],
            ["Reporte de novedades en la planilla integrada", "Decreto 1406 de 1999",
-            "Cumple parcialmente: novedades extemporáneas en 2 de 10 casos"],
+            "Cumple parcialmente: novedades extemporáneas en 1 de 3 casos (WT-02)"],
            ["Pago dentro de los plazos", "Arts. 22 y 23, Ley 100 de 1993",
             "Cumple: no se registran moras en el periodo auditado"],
            ["Cobertura del grupo familiar", "Art. 163, Ley 100 de 1993",
@@ -469,7 +566,7 @@ def eje_i(doc):
            ["Afiliación del contratista independiente", "Art. 89, Ley 100 de 1993",
             "Cumple: aporta sobre el 40 % de los honorarios"]],
           [4.3, 4.7, 7.0], size=8.6,
-          titulo="Tabla 4. Matriz de verificación de la afiliación en salud")
+          titulo="Tabla 5. Matriz de verificación de la afiliación en salud")
 
     h(doc, 3, "Cobertura del grupo familiar")
     rich(doc, ["El artículo 163 de la Ley 100 de 1993, modificado por el artículo 218 de la Ley 1753 "
@@ -479,12 +576,13 @@ def eje_i(doc):
                "incapacidad permanente. La cobertura familiar es una manifestación del principio de "
                "solidaridad y su denegación injustificada vulnera el derecho fundamental a la salud "
                "(art. 49 C.P. y Ley Estatutaria 1751 de 2015)."])
-    rich(doc, ["En la auditoría se identificó que un beneficiario mayor de veinticinco años permanece "
-               "incluido en el núcleo familiar sin soporte de estudios ni de incapacidad. La "
-               "corrección de esa novedad no es un asunto meramente administrativo: si la EPS detecta "
-               "el error puede cobrar retroactivamente la Unidad de Pago por Capitación y negar "
-               "servicios, y el trabajador queda expuesto a una desprotección sobreviniente. Debe "
-               "depurarse el novedoso y conservarse los soportes de dependencia económica."])
+    rich(doc, ["En la planta auditada no se identificó ningún beneficiario mayor de veinticinco años "
+               "sin soporte de dependencia, pero la verificación debe repetirse en cada periodo: la "
+               "pérdida de la calidad de beneficiario no opera de forma automática, y la EPS puede "
+               "cobrar retroactivamente la Unidad de Pago por Capitación cuando detecta la inclusión "
+               "indebida. El control consiste en conservar, por cada beneficiario, el registro civil, "
+               "el certificado de estudios o la prueba de la dependencia económica, y reportar la "
+               "novedad de retiro en el mes en que se cumple la mayoría de edad extendida."])
 
     h(doc, 3, "Gestión de las prestaciones económicas")
     rich(doc, ["Las prestaciones económicas del sistema de salud son los pagos en dinero que "
@@ -506,30 +604,32 @@ def eje_i(doc):
             "Fondo de pensiones (con concepto favorable de rehabilitación)",
             "Art. 40, Decreto 1406 de 1999"]],
           [3.7, 3.1, 2.2, 3.6, 3.4], size=8.2,
-          titulo="Tabla 5. Prestaciones económicas del sistema de salud (2026)")
+          titulo="Tabla 6. Prestaciones económicas del sistema de salud (2026)")
 
-    h(doc, 4, "Trámite práctico de una licencia de maternidad")
+    h(doc, 4, "Trámite práctico de una licencia de paternidad")
     for t in [
-        "La trabajadora informa el estado de gestación y aporta el certificado médico con la fecha "
-        "probable de parto. La empresa verifica que la cotización se haya surtido durante todo el "
-        "periodo de gestación como cotizante activa y no como beneficiaria.",
+        "El trabajador informa el nacimiento o la adopción y aporta el registro civil de nacimiento. "
+        "La empresa verifica que la cotización se haya surtido durante todo el periodo de gestación "
+        "como cotizante activo y no como beneficiario.",
         "Al producirse el parto se aporta el registro civil de nacimiento y el certificado de "
         "licencia; la empresa reporta la novedad en la planilla integrada y liquida la prestación "
         "sobre el IBC del periodo.",
         "La empresa paga la licencia en la nómina y presenta la solicitud de recobro ante la EPS "
         "dentro de los términos reglamentarios, conservando el soporte de radicación.",
-        "Si la EPS niega el reconocimiento, la trabajadora conserva la vía de la reclamación ante la "
+        "Si la EPS niega el reconocimiento, el trabajador conserva la vía de la reclamación ante la "
         "entidad y, agotada esta, la acción judicial. La negativa no puede traducirse en pérdida del "
         "pago: el empleador que adelantó la suma puede repetir contra la administradora.",
     ]:
         bullet(doc, t, nivel=1)
     caja(doc, "Hallazgo del Eje I",
-         ["Se identificó una licencia de maternidad (EXT-004) reconocida por la EPS con un pago "
-          "inferior al 100 % del IBC durante las primeras semanas, por haberse reportado la novedad "
-          "de variación de salario con extemporaneidad. La diferencia asciende a $ 412.000. La "
-          "corrección exige solicitud de reliquidación ante la EPS y ajuste de la novedad; si no se "
-          "corrige, el empleador queda expuesto a una demanda por la diferencia y la trabajadora a "
-          "una disminución injustificada de su ingreso.",
+         ["Dos hallazgos concretos. Primero: la licencia de paternidad de WT-03 (Felipe Martínez) fue "
+          "reconocida por la EPS sobre una base inferior al 100 % del IBC, por haberse reportado con "
+          "extemporaneidad la variación de salario; la diferencia asciende a $ 412.000. Segundo: el "
+          "acta sanitaria 028-050164-26 no registra el número de empleados afiliados al Sistema "
+          "General de Riesgos Laborales ni al Sistema de Seguridad Social, campos que quedaron en "
+          "blanco en el formato. La corrección del primer punto exige solicitud de reliquidación ante "
+          "la EPS y ajuste de la novedad; la del segundo, remitir la información a la Secretaría de "
+          "Salud dentro del plazo de respuesta.",
           [("Nivel de riesgo: medio. Responsable: talento humano. Plazo: 30 días.", {"b": True})]],
          tipo='alerta')
     salto_pagina(doc)

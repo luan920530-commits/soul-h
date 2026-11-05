@@ -79,7 +79,7 @@ def firma(doc):
     p(doc, "", space_after=18)
     linea_horizontal(doc, color="9AA4B1", sz=4, space_after=2)
     par = p(doc, AUTOR, size=10.5, bold=True, align=WD_ALIGN_PARAGRAPH.LEFT, space_after=0)
-    p(doc, "C.C. ____________________  ·  Representante legal de EXTINTORES SCM  ·  NIT %s" % NIT,
+    p(doc, "C.C. ____________________  ·  Representante legal de EXTINTORES S C M  ·  NIT %s" % NIT,
       size=9, color=GRIS, space_after=2)
     p(doc, "Correo electrónico de notificaciones: ____________________  ·  Teléfono: ____________________",
       size=9, color=GRIS, space_after=2)
@@ -111,7 +111,7 @@ def eje_iv(doc):
     tabla(doc, ["Naturaleza del demandado", "Mecanismo exigible", "Norma aplicable", "Efecto del escrito"],
           [["Entidad pública", "Reclamación administrativa previa", "Art. 6, C.P.T.S.S.; C-792 de 2006",
             "Requisito de procedibilidad; suspende la prescripción"],
-           ["Empresa privada (EXTINTORES SCM)", "Derecho de petición y solicitud de agotamiento de "
+           ["Empresa privada (EXTINTORES S C M)", "Derecho de petición y solicitud de agotamiento de "
             "la vía interna", "Art. 23 C.P. y Ley 1755 de 2015", "Interrumpe la prescripción y "
             "constituye prueba de la reclamación"],
            ["Entidad del SGSSS (EPS, ARL, AFP)", "Derecho de petición y reclamación directa",
@@ -121,9 +121,9 @@ def eje_iv(doc):
             "conciliable", "Ley 640 de 2001", "Requisito de procedibilidad en los asuntos "
             "susceptibles de conciliación"]],
           [3.6, 4.4, 4.2, 3.8], size=8.4,
-          titulo="Tabla 20. Determinación del mecanismo según la naturaleza del sujeto")
+          titulo="Tabla 23. Determinación del mecanismo según la naturaleza del sujeto")
 
-    rich(doc, ["Para EXTINTORES SCM la consecuencia práctica es que la reclamación se dirige al "
+    rich(doc, ["Para EXTINTORES S C M la consecuencia práctica es que la reclamación se dirige al "
                "empleador mediante derecho de petición y solicitud de agotamiento de la vía interna, "
                "y que las decisiones de las entidades del sistema (EPS, ARL y AFP) se controvierten "
                "mediante derecho de petición y, agotada la respuesta, mediante demanda ante la "
@@ -148,15 +148,16 @@ def eje_iv(doc):
                "y la advertencia sobre el silencio administrativo."])
     salto_pagina(doc)
     encabezado_escrito(doc, "ADMINISTRADORA DE RIESGOS LABORALES [NOMBRE DE LA ARL]  ·  "
-                            "OFICINA DE ATENCIÓN AL USUARIO", "Bogotá D.C., noviembre de 2026")
+                            "OFICINA DE ATENCIÓN AL USUARIO", "Soacha (Cundinamarca), noviembre de 2026")
     rotulo(doc, "Referencia")
     parrafo_doc(doc, "Asunto: derecho de petición de interés particular. Solicitud de revisión de la "
                      "clasificación del riesgo, reconocimiento de prestaciones derivadas del "
                      "accidente de trabajo AT-2026-014 y expedición de copias.", bold=True, size=10.5)
     rotulo(doc, "Identificación del peticionario")
     parrafo_doc(doc, "%s, mayor de edad, identificada con cédula de ciudadanía número __________ "
-                     "expedida en Bogotá, en calidad de representante legal y titular de la empresa "
-                     "EXTINTORES SCM, identificada con NIT %s, con domicilio en Bogotá D.C., "
+                     "expedida en Soacha, en calidad de representante legal y titular de la empresa "
+                     "EXTINTORES S C M, identificada con cédula/NIT %s, con domicilio en el municipio "
+                     "de Soacha (Cundinamarca), carrera 4 n.° 60-17, barrio La Despensa, "
                      "dirección __________, correo electrónico __________, teléfono __________, "
                      "actuando en nombre propio y en ejercicio del derecho fundamental de petición "
                      "consagrado en el artículo 23 de la Constitución Política y regulado por la Ley "
@@ -164,16 +165,20 @@ def eje_iv(doc):
 
     rotulo(doc, "Hechos")
     hechos = [
-        "La empresa EXTINTORES SCM se encuentra afiliada a esa administradora desde el __ de "
-        "__________ de ____, con el número de afiliación __________, y tiene a su cargo diez (10) "
+        "La empresa EXTINTORES S C M se encuentra afiliada a esa administradora desde el __ de "
+        "__________ de ____, con el número de afiliación __________, y tiene a su cargo tres (3) "
         "trabajadores dependientes, todos afiliados al Sistema General de Riesgos Laborales.",
         "La actividad económica principal registrada en el Registro Único Tributario corresponde al "
-        "código CIIU 4752 (comercio al por menor de artículos de ferretería, pinturas y productos de vidrio en establecimientos especializados), que la tabla del Decreto 768 de 2022 clasifica "
-        "en clase de riesgo I, con una tarifa inicial del 0,522 % del ingreso base de cotización.",
-        "No obstante lo anterior, en las planillas de liquidación de aportes de los últimos ____ "
+        "código CIIU 4759 (comercio al por menor de otros artículos domésticos en establecimientos "
+        "especializados), que la tabla del Decreto 768 de 2022 clasifica en clase de riesgo I, "
+        "subactividad 4759-01, con una tarifa inicial del 0,522 % del ingreso base de cotización. Ese "
+        "código coincide con el reportado a la Secretaría de Salud de Soacha en el acta "
+        "028-050164-26 del 09/09/2026.",
+        "A pesar de esa clasificación, en las planillas de liquidación de aportes de los últimos ____ "
         "periodos la empresa ha cotizado con una tarifa equivalente a la clase de riesgo II, sin que "
         "obre decisión motivada de esa administradora que justifique la clasificación aplicada.",
-        "El 12 de agosto de 2026 el trabajador EXT-005 sufrió un accidente de trabajo durante la "
+        "El 12 de agosto de 2026 el trabajador Luis Antonio Aguilar Rodríguez, C.C. 1073694256, sufrió "
+        "un accidente de trabajo durante la "
         "prueba hidrostática de un cilindro extintor, que le produjo fractura conminuta de los dedos "
         "índice y medio de la mano derecha y lesión del tendón flexor.",
         "El accidente fue reportado a esa administradora el 17 de agosto de 2026, es decir, cinco "
@@ -202,8 +207,8 @@ def eje_iv(doc):
 
     rotulo(doc, "Peticiones")
     peticiones = [
-        "Que se revise y, en su caso, se corrija la clase de riesgo asignada a EXTINTORES SCM, "
-        "conforme al código CIIU 4752 y a la tabla del Decreto 768 de 2022, con efectos a partir del "
+        "Que se revise y, en su caso, se corrija la clase de riesgo asignada a EXTINTORES S C M, "
+        "conforme al código CIIU 4759 y a la tabla del Decreto 768 de 2022, con efectos a partir del "
         "periodo en que se produjo la discrepancia.",
         "Que se reliquiden las planillas de aportes y se devuelvan o compensen las sumas pagadas en "
         "exceso, con los intereses a que haya lugar.",
@@ -245,21 +250,22 @@ def eje_iv(doc):
                "decidir si se demanda la ineficacia del traslado."])
     p(doc, "", space_after=6)
     encabezado_escrito(doc, "ADMINISTRADORA DE FONDOS DE PENSIONES [NOMBRE DE LA AFP]  ·  "
-                            "OFICINA DE SERVICIO AL CLIENTE", "Bogotá D.C., noviembre de 2026")
+                            "OFICINA DE SERVICIO AL CLIENTE", "Soacha (Cundinamarca), noviembre de 2026")
     rotulo(doc, "Referencia")
     parrafo_doc(doc, "Asunto: derecho de petición. Solicitud de copia del expediente de afiliación y "
-                     "del acta de doble asesoría de la señora [nombre de la trabajadora], y "
+                     "del acta de doble asesoría de Luis Antonio Aguilar Rodríguez, y "
                      "reclamación por déficit de información en el traslado de régimen pensional.",
                      bold=True, size=10.5)
     rotulo(doc, "Identificación")
     parrafo_doc(doc, "%s, identificada con cédula de ciudadanía número __________, en calidad de "
-                     "representante legal de EXTINTORES SCM (NIT %s), entidad empleadora de la "
-                     "afiliada [nombre], identificada con cédula __________, presento derecho de "
-                     "petición y formulo reclamación en los siguientes términos." % (AUTOR, NIT))
+                     "representante legal de EXTINTORES S C M (NIT %s) y empleadora de Luis Antonio "
+                     "Aguilar Rodríguez, identificado con cédula de ciudadanía 1073694256, presento "
+                     "derecho de petición y formulo reclamación en los siguientes términos."
+                     % (AUTOR, NIT))
     rotulo(doc, "Hechos")
     for i, t in enumerate([
-        "La señora [nombre] se afilió a esa administradora en el año 1997, cuando contaba con 27 años "
-        "de edad, y permanece vinculada como cotizante dependiente a través de EXTINTORES SCM.",
+        "Luis Antonio Aguilar Rodríguez se afilió a esa administradora en el año 1997, cuando contaba con 27 años "
+        "de edad, y permanece vinculado como cotizante dependiente a través de EXTINTORES S C M.",
         "A la fecha cuenta con 1.150 semanas cotizadas y 56 años de edad, y aspira a acceder a la "
         "pensión de vejez en el año 2027.",
         "La afiliada manifiesta que la decisión de traslado se produjo tras una visita de un asesor "
@@ -285,7 +291,7 @@ def eje_iv(doc):
         bullet(doc, t, size=10)
     rotulo(doc, "Peticiones")
     for i, t in enumerate([
-        "Que se expida copia íntegra del expediente de afiliación de la señora [nombre], incluidos el "
+        "Que se expida copia íntegra del expediente de afiliación del solicitante, incluidos el "
         "formulario, las simulaciones, los extractos y las comunicaciones remitidas.",
         "Que se expida copia del acta de doble asesoría o, en su defecto, se certifique que no existe "
         "soporte documental de la asesoría prestada.",
@@ -310,29 +316,31 @@ def eje_iv(doc):
                "documentar la reclamación para efectos de la interrupción de la prescripción y de la "
                "prueba del agotamiento de la vía interna."])
     p(doc, "", space_after=6)
-    encabezado_escrito(doc, "EXTINTORES SCM  ·  GERENCIA GENERAL", "Bogotá D.C., noviembre de 2026")
+    encabezado_escrito(doc, "EXTINTORES S C M  ·  GERENCIA GENERAL", "Soacha (Cundinamarca), noviembre de 2026")
     rotulo(doc, "Referencia")
     parrafo_doc(doc, "Asunto: solicitud de agotamiento de la vía interna y reclamación por "
                      "diferencias en el reconocimiento de prestaciones económicas del Sistema de "
                      "Seguridad Social Integral.", bold=True, size=10.5)
     rotulo(doc, "Hechos")
     for i, t in enumerate([
-        "La suscrita es titular y representante legal de la empresa EXTINTORES SCM, empleadora de "
+        "La suscrita es titular y representante legal de la empresa EXTINTORES S C M, empleadora de "
         "diez (10) trabajadores dependientes.",
         "En la auditoría interna practicada en octubre de 2026 se identificaron diferencias en la "
-        "liquidación de una licencia de maternidad y en el reporte de novedades de dos trabajadores.",
-        "Las diferencias ascienden a %s y afectan el ingreso de la trabajadora EXT-004 y las semanas "
-        "reportadas de los trabajadores EXT-010 y EXT-002." % money(412000),
+        "liquidación de una licencia de paternidad y en el reporte de novedades de uno de los "
+        "trabajadores.",
+        "Las diferencias ascienden a %s y afectan el ingreso de Felipe Martínez (C.C. 8686834), por la "
+        "licencia de paternidad, y las semanas reportadas de los tres trabajadores de la planta."
+        % money(412000),
         "La empresa reconoce la procedencia de la corrección y requiere formalizar el trámite para "
         "que produzca efectos frente a la EPS y al fondo de pensiones.",
     ], 1):
         numerado_doc(doc, i, t)
     rotulo(doc, "Solicitud")
     for i, t in enumerate([
-        "Que se reconozca y ordene el pago de la diferencia dejada de percibir por la trabajadora "
-        "EXT-004, con los ajustes a que haya lugar.",
+        "Que se reconozca y ordene el pago de la diferencia dejada de percibir por el trabajador "
+        "Felipe Martínez, con los ajustes a que haya lugar.",
         "Que se corrija la planilla integrada de liquidación de aportes y se reporten las semanas "
-        "omitidas de los trabajadores EXT-010 y EXT-002.",
+        "omitidas en la historia laboral de los trabajadores de la planta.",
         "Que se expida constancia escrita de la respuesta, con indicación de la fecha y del "
         "responsable de la decisión.",
     ], 1):
@@ -376,17 +384,17 @@ def eje_iv(doc):
                "(lugar de prestación del servicio o domicilio del demandado) y, en los procesos "
                "contra la Nación, el artículo 7."])
     tabla(doc, ["Escenario", "Demandado", "Opciones del demandante", "Juez competente"],
-          [["Ineficacia del traslado (caso P-03)", "AFP con domicilio en Bogotá",
-            "Domicilio de la AFP (Bogotá) o lugar donde se surtió la reclamación (Bogotá)",
-            "Juzgado Laboral del Circuito de Bogotá D.C."],
-           ["Prestaciones del SGRL (AT-2026-014)", "ARL con domicilio en Bogotá",
-            "Domicilio de la ARL o lugar de la reclamación",
-            "Juzgado Laboral del Circuito de Bogotá D.C."],
-           ["Diferencias de aportes o prestaciones", "EXTINTORES SCM (Bogotá)",
-            "Lugar de prestación del servicio o domicilio del demandado (ambos Bogotá)",
-            "Juzgado Laboral del Circuito de Bogotá D.C."]],
+          [["Ineficacia del traslado (caso P-03)", "AFP con domicilio en Bogotá D.C.",
+            "Lugar de prestación del servicio (Soacha) o domicilio de la AFP (Bogotá D.C.)",
+            "A elección del demandante: Juzgado Laboral del Circuito de Soacha o de Bogotá D.C."],
+           ["Prestaciones del SGRL (AT-2026-014)", "ARL con domicilio en Bogotá D.C.",
+            "Lugar de prestación del servicio (Soacha) o domicilio de la ARL (Bogotá D.C.)",
+            "A elección del demandante: Juzgado Laboral del Circuito de Soacha o de Bogotá D.C."],
+           ["Diferencias de aportes o prestaciones", "EXTINTORES S C M (Soacha)",
+            "Lugar de prestación del servicio o domicilio del demandado (ambos en Soacha)",
+            "Juzgado Laboral del Circuito de Soacha"]],
           [4.2, 3.6, 4.2, 4.0], size=8.4,
-          titulo="Tabla 21. Aplicación del factor territorial")
+          titulo="Tabla 24. Aplicación del factor territorial")
     rich(doc, ["La reclamación cumple una función adicional relevante: el artículo 6 del C.P.T.S.S. "
                "establece que mientras esté pendiente el agotamiento de la reclamación administrativa "
                "se suspende el término de prescripción de la respectiva acción. Por esa razón el "
@@ -414,12 +422,13 @@ def eje_iv(doc):
             money(1850000), money(1850000),
             "Juez municipal de pequeñas causas, si existe en el lugar"]],
           [3.8, 5.6, 3.2, 3.4], size=8.4, align_centro=[2],
-          titulo="Tabla 22. Aplicación del factor cuantía a los casos de la empresa")
+          titulo="Tabla 25. Aplicación del factor cuantía a los casos de la empresa")
 
     h(doc, 3, "Competencia funcional e impugnación")
     rich(doc, ["Fijada la competencia del juzgado laboral del circuito en primera instancia, la "
                "impugnación se rige por el factor funcional: la apelación corresponde al Tribunal "
-               "Superior del Distrito Judicial de Bogotá, Sala Laboral, y el recurso extraordinario de "
+               "Tribunal Superior del Distrito Judicial de Cundinamarca, Sala Laboral, y el recurso "
+               "extraordinario de "
                "casación a la Sala de Casación Laboral de la Corte Suprema de Justicia, cuando la "
                "cuantía y la naturaleza del asunto lo permitan. El proceso se tramita por el "
                "procedimiento ordinario laboral de la Ley 1149 de 2007, con audiencias orales y "
@@ -438,11 +447,11 @@ def eje_iv(doc):
            ["6", "Audiencia de trámite y juzgamiento", "Dentro de los 3 meses siguientes"],
            ["7", "Sentencia, apelación o casación", "Según el factor funcional"]],
           [1.3, 8.6, 6.1], size=8.4, align_centro=[0],
-          titulo="Tabla 23. Ruta procesal del reclamo")
+          titulo="Tabla 26. Ruta procesal del reclamo")
 
     h(doc, 3, "Requisitos formales del escrito de demanda")
     tabla(doc, ["Requisito", "Contenido exigible", "Fuente"],
-          [["Designación del juez", "Juez Laboral del Circuito de Bogotá D.C. (reparto)",
+          [["Designación del juez", "Juez Laboral del Circuito de Soacha (reparto)",
             "Arts. 11 y 12, C.P.T.S.S."],
            ["Identificación de las partes", "Nombre, domicilio y datos de notificación del "
             "demandante y del demandado", "Art. 25, C.P.T.S.S."],
@@ -458,11 +467,12 @@ def eje_iv(doc):
            ["Anexos", "Poder, copias, prueba del agotamiento y de la existencia y representación legal",
             "Art. 26, C.P.T.S.S."]],
           [3.8, 7.6, 4.6], size=8.4,
-          titulo="Tabla 24. Lista de verificación del escrito de demanda")
+          titulo="Tabla 27. Lista de verificación del escrito de demanda")
 
     caja(doc, "Cierre del eje procesal",
-         ["El insumo procesal no es un formato: es el punto en que el diagnóstico se convierte en "
-          "actuación jurídica. Un escrito bien construido (con hechos verificables, fundamentos precisos, pretensiones congruentes y competencia correctamente fijada) multiplica las "
+         ["El insumo procesal es el punto en que el diagnóstico se convierte en actuación jurídica, "
+          "y ahí un formato sirve de poco. Un escrito bien construido (con hechos verificables, "
+          "fundamentos precisos, pretensiones congruentes y competencia correctamente fijada) multiplica las "
           "posibilidades de éxito y reduce el riesgo de que el proceso se pierda por razones ajenas "
           "al derecho sustancial."],
          tipo='info')

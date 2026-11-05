@@ -31,6 +31,33 @@ código del plugin**: vive al lado y se aplica antes o después de él.
   español los equivalentes son otros y están en el archivo
   `.skills/house-styles/informe-juridico-es.json`.
 
+## 2-bis. Perfil de autor (v2 del JSON)
+
+El perfil `informe-juridico-es.json` tiene dos capas y no se mezclan a voluntad:
+
+| Capa | Qué gobierna | Dónde se aplica |
+|---|---|---|
+| `register` (fija) | Voz impersonal, precisión normativa, prohibición de relleno, adjetivación escasa | Todo el documento, incluidas tablas y matrices |
+| `escenas` (marcada) | Primera persona moderada, longitud irregular de párrafo, conectores de matiz, preguntas que abren problema, cierre con idea propia | Resumen ejecutivo, nota de método, comentario jurisprudencial, conclusiones y colofón |
+
+La razón de separarlas es simple: escribir «en mi criterio» dentro de una tabla de aportes no es
+estilo, es ruido. La valoración va donde hay algo que valorar.
+
+Lo que el perfil **prohíbe en todo el documento**, y el verificador comprueba:
+
+1. Conectores mecánicos: `Asimismo`, `No obstante`, `Por otro lado`, `En suma`, `En síntesis`.
+2. Cierres vacíos: `En conclusión`, `Para resumir`, `Para finalizar`, `Todo lo anterior nos lleva a`.
+3. Aperturas de época: `En el mundo actual`, `En la actualidad`, `Hoy en día`, `Vivimos en una era`.
+4. Muletillas de énfasis: `Cabe señalar`, `Es importante destacar`, `Vale la pena mencionar`, `Sin duda alguna`.
+5. Adverbios huecos: `claramente`, `evidentemente`, `indudablemente`.
+6. La estructura `No es X, es Y`: **una sola vez en todo el documento**.
+7. Dos párrafos consecutivos que abran con el mismo conector.
+8. Un cierre que sea variación de «el futuro dirá».
+
+Y lo que **exige** en las secciones valorativas: al menos un párrafo de dos oraciones o menos y
+al menos uno de seis o más; al menos un dato numérico o una escena laboral concreta por sección;
+primera persona solo para valorar, nunca para describir.
+
 ## 3. Reglas locales (las que sí aplican aquí)
 
 1. **Guion largo (—).** El perfil lo admite «con moderación»: máximo 1 por cada 1.000
@@ -59,7 +86,8 @@ código del plugin**: vive al lado y se aplica antes o después de él.
 # 1) señal determinista del motor del plugin (inglés, se interpreta con la salvedad del punto 2)
 node .skills/_vendor/bin/avoid-ai-writing.js --context technical documento.txt
 
-# 2) verificación en español (giros de relleno, frases largas, monotonía, guiones, latinos)
+# 2) verificación en español: relleno, frases largas, monotonía de frase, ritmo de párrafo,
+#    estructuras binarias repetidas, conectores de apertura repetidos y fórmulas de cierre
 python3 scripts/estilo_es.py entrega/Informe.docx \
         --style .skills/house-styles/informe-juridico-es.json
 
