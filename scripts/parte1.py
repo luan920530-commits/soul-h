@@ -62,7 +62,8 @@ def portada(doc):
 
     tabla(doc, ["Campo", "Información"],
           [["Elaborado por", AUTOR],
-           ["Modalidad", "Trabajo académico colaborativo — proyecto integrador"],
+           ["Modalidad", "Trabajo académico individual (adaptación del diseño colaborativo "
+             "del proyecto integrador)"],
            ["Periodo académico", "2026-2"],
            ["Fecha de presentación", "Noviembre de 2026"],
            ["Cifras de referencia", "SMMLV %s y auxilio de transporte %s (Decretos 1469 y 1470 de 2025)"
@@ -112,13 +113,13 @@ def resumen_ejecutivo(doc):
         (NIT, {"b": True}),
         ", cuya actividad principal es el comercio, la recarga y el mantenimiento de extintores, "
         "equipos y sistemas de protección contra incendio, con domicilio en Bogotá D.C. La auditoría "
-        "se estructura en los cuatro ejes exigidos por la guía del proyecto integrador y se apoya en "
-        "la normativa vigente —Ley 100 de 1993, Ley 1562 de 2012, Ley Estatutaria 1751 de 2015, "
-        "Código Sustantivo del Trabajo y Código Procesal del Trabajo y de la Seguridad Social—, en la "
-        "jurisprudencia de la Corte Suprema de Justicia y de la Corte Constitucional, y en las normas "
-        "de 2026 que inciden de manera directa en la organización: la Ley 2381 de 2024, cuyo "
-        "calendario de entrada en vigencia fue fijado por la Sentencia C-264 de 2026, y los Decretos "
-        "1469 y 1470 de 2025 sobre salario mínimo y auxilio de transporte.", ])
+        "se estructura en los cuatro ejes exigidos por la guía del proyecto integrador. El marco "
+        "normativo lo integran la Ley 100 de 1993, la Ley 1562 de 2012, la Ley Estatutaria 1751 de "
+        "2015, el Código Sustantivo del Trabajo y el Código Procesal del Trabajo y de la Seguridad "
+        "Social. Se apoyan en la jurisprudencia de la Corte Suprema de Justicia y de la Corte "
+        "Constitucional. Las normas de 2026 inciden de manera directa en la organización: la "
+        "Ley 2381 de 2024, cuyo calendario de entrada en vigencia fue fijado por la Sentencia C-264 "
+        "de 2026, y los Decretos 1469 y 1470 de 2025 sobre salario mínimo y auxilio de transporte.", ])
 
     p(doc, "Principales hallazgos", size=11.5, bold=True, color=AZUL, space_before=8, space_after=4)
     for titulo, texto in [
@@ -144,8 +145,7 @@ def resumen_ejecutivo(doc):
          "traslado íntegro del ahorro y una diferencia de mesada de $ 345.095 mensuales frente al "
          "escenario de ahorro individual, equivalente a $ 82,8 millones en veinte años de disfrute."),
         ("Eje IV · Insumo procesal (riesgo bajo). ",
-         "Se redactan tres documentos modelo —derecho de petición ante la ARL, derecho de petición "
-         "ante la AFP y solicitud de agotamiento de la vía interna ante el empleador— y se fija la "
+         "Se redactan tres documentos modelo (derecho de petición ante la ARL, derecho de petición ante la AFP y solicitud de agotamiento de la vía interna ante el empleador) y se fija la "
          "competencia del juez laboral del circuito de Bogotá por los factores de materia, territorio "
          "(artículo 11 del C.P.T.S.S.) y cuantía (artículo 12)."),
     ]:
@@ -174,7 +174,7 @@ def metodologia(doc):
                "(Constitución, leyes, decretos y jurisprudencia) y fuentes materiales de la empresa "
                "(contratos, comprobantes de nómina, planillas integradas de liquidación de aportes, "
                "certificados de afiliación, historia laboral y documentos del SG-SST). El método "
-               "combina la subsunción normativa —contrastar el hecho con la hipótesis legal— con el "
+               "combina la subsunción normativa (contrastar el hecho con la hipótesis legal) con el "
                "razonamiento jurisprudencial, en especial la ",
                ("ratio decidendi", {"i": True}), " de las providencias citadas."])
     rich(doc, ["El informe no agota el estudio de todas las obligaciones del sistema: delimita el "
@@ -213,8 +213,8 @@ def metodologia(doc):
                " (la obligación se cumple y está documentada), ", ("riesgo medio", {"b": True}),
                " (se cumple, pero sin evidencia suficiente o con errores de liquidación) y ",
                ("riesgo alto", {"b": True}),
-               " (existe incumplimiento o exposición a responsabilidad patronal). El criterio permite "
-               "que las conclusiones sean verificables y no dependan de apreciaciones subjetivas."])
+               " (existe incumplimiento o exposición a responsabilidad patronal). Con ese criterio "
+               "las conclusiones se pueden verificar y no dependen de apreciaciones subjetivas."])
     rich(doc, ["Advertencia metodológica: las cifras de nómina y los casos señalados como "
                "ilustrativos se construyeron con el salario mínimo de 2026 y las tarifas vigentes, "
                "para que los cálculos sean reproducibles. En la aplicación real deben sustituirse por "
@@ -237,9 +237,7 @@ def introduccion(doc):
     rich(doc, ["En ese contexto, la microempresa es el escenario donde las brechas se manifiestan con "
                "mayor crudeza: la gestión de la seguridad social suele concentrarse en una sola "
                "persona, se confunde la afiliación con el pago y se descuida la prueba. ",
-               RAZON, " no es ajena a ese patrón. La actividad que desarrolla —manipulación de "
-               "cilindros presurizados, recarga con agentes extintores, pruebas hidrostáticas y "
-               "transporte de equipo— introduce riesgos específicos que exigen una gestión del Sistema "
+               RAZON, " no es ajena a ese patrón. La actividad que desarrolla (manipulación de cilindros presurizados, recarga con agentes extintores, pruebas hidrostáticas y transporte de equipo) introduce riesgos específicos que exigen una gestión del Sistema "
                "General de Riesgos Laborales técnicamente informada, mientras que su condición de "
                "persona natural empleadora plantea problemas particulares en materia de exoneración "
                "de aportes y de responsabilidad patrimonial."])
@@ -317,8 +315,7 @@ def eje_i(doc):
                "en la EPS que estos elijan, sin que la afiliación colectiva pueda coartar esa libertad "
                "(numeral 1 del artículo 161 de la Ley 100 de 1993)."])
     rich(doc, ["La Ley Estatutaria 1751 de 2015 elevó la salud a derecho fundamental autónomo e "
-               "irrenunciable y fijó sus elementos esenciales —disponibilidad, aceptabilidad, "
-               "accesibilidad, calidad e idoneidad profesional—, además de los principios de "
+               "irrenunciable y fijó sus elementos esenciales (disponibilidad, aceptabilidad, accesibilidad, calidad e idoneidad profesional), además de los principios de "
                "progresividad, integralidad y equidad. Esa ley prohíbe a las entidades administradoras "
                "y a los empleadores negar, retardar o condicionar la afiliación o el acceso a los "
                "servicios, lo que refuerza el deber patronal de reportar novedades de manera oportuna "

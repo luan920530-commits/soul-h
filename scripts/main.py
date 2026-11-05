@@ -35,7 +35,7 @@ def main():
 
     # Propiedades del documento
     cp = doc.core_properties
-    cp.title = "Auditoría y diagnóstico de seguridad social organizacional — EXTINTORES SCM"
+    cp.title = "Auditoría y diagnóstico de seguridad social organizacional: EXTINTORES SCM"
     cp.subject = "Derecho de la Seguridad Social · Proyecto integrador"
     cp.author = "Julia Inés Buitrago García"
     cp.keywords = ("seguridad social; riesgos laborales; pensiones; IBC; culpa patronal; "

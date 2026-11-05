@@ -46,8 +46,7 @@ def capitulo5(doc):
 
     # ---------------- 5.2 plan de mejoramiento
     h(doc, 2, "Plan de mejoramiento con indicadores verificables")
-    rich(doc, ["El plan se estructura en cuatro frentes —cumplimiento documental, gestión del riesgo "
-               "laboral, gestión pensional y gestión procesal— y cada acción tiene un indicador que "
+    rich(doc, ["El plan se estructura en cuatro frentes (cumplimiento documental, gestión del riesgo laboral, gestión pensional y gestión procesal) y cada acción tiene un indicador que "
                "permite verificar su ejecución. Un plan sin indicadores es una declaración de "
                "intenciones; con indicadores, se convierte en un instrumento de control."])
     tabla(doc, ["Frente", "Acción", "Indicador de cumplimiento", "Meta"],
@@ -93,8 +92,7 @@ def capitulo5(doc):
         ("Sobre la liquidación del IBC. ",
          "La correcta determinación del IBC exige distinguir entre pagos salariales y no salariales "
          "(arts. 127 y 128 del C.S.T.), aplicar el piso de un salario mínimo y el techo de veinticinco "
-         "salarios mínimos, y tratar de manera diferenciada al trabajador dependiente —que cotiza "
-         "sobre el salario depurado— y al contratista independiente, que cotiza sobre el 40 % del "
+         "salarios mínimos, y tratar de manera diferenciada al trabajador dependiente (que cotiza sobre el salario depurado) y al contratista independiente, que cotiza sobre el 40 % del "
          "valor mensualizado del contrato. La confusión entre ambos regímenes es la causa más "
          "frecuente de errores de liquidación en la microempresa."),
         ("Sobre los riesgos laborales. ",
@@ -187,7 +185,7 @@ def capitulo5(doc):
          "La nulidad supone un vicio del consentimiento con el régimen general de las nulidades del "
          "Código Civil; la ineficacia, en cambio, es la sanción que los artículos 271 y 272 de la Ley "
          "100 de 1993 atribuyen al incumplimiento del deber de información. La jurisprudencia "
-         "consolidada —y la SU-107 de 2024— emplea la categoría de ineficacia, que produce efectos "
+         "consolidada (y la SU-107 de 2024) emplea la categoría de ineficacia, que produce efectos "
          "restitutorios plenos sin necesidad de declarar un vicio del consentimiento en sentido "
          "estricto."),
         ("¿Puede pedirse la ineficacia si el afiliado ya está pensionado o próximo a pensionarse?",

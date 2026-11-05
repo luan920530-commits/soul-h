@@ -35,6 +35,23 @@ python3 scripts/main.py        # compone el .docx
 - `scripts/parte1.py` … `parte5.py`: contenido por capítulo.
 - `scripts/figuras.py`: figuras vectoriales (IBC, aportes, mapa pensional, ruta ATEP, reparación).
 
+## Plugin de redacción
+
+El repositorio incluye el skill [`conorbronsdon/avoid-ai-writing`](https://github.com/conorbronsdon/avoid-ai-writing)
+(MIT) vendorizado en `.skills/_vendor/`, más una capa propia para español jurídico:
+
+```bash
+# señal determinista del plugin (calibrado en inglés: se interpreta con salvedad)
+node .skills/_vendor/bin/avoid-ai-writing.js --context technical documento.txt
+
+# verificación en español: relleno, frases largas, monotonía, guiones largos
+python3 scripts/estilo_es.py entrega/Auditoria_Seguridad_Social_EXTINTORES_SCM.docx \
+        --style .skills/house-styles/informe-juridico-es.json
+```
+
+Detalle de la instalación, del perfil de estilo y de la salvedad de idioma:
+[`.skills/README.md`](.skills/README.md) y [`.skills/STYLE-PROFILE-es.md`](.skills/STYLE-PROFILE-es.md).
+
 ## Nota
 
 Las cifras de nómina y los casos identificados como ilustrativos (AT-2026-014, P-03) deben

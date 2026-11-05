@@ -58,7 +58,7 @@ def eje_iii(doc):
     h(doc, 3, "La reforma pensional de la Ley 2381 de 2024 y su estado actual")
     rich(doc, ["La Ley 2381 de 2024 transforma el sistema en un esquema de ",
                ("cuatro pilares", {"b": True}),
-               " —solidario, semicontributivo, contributivo y de ahorro voluntario— y establece que "
+               " (solidario, semicontributivo, contributivo y de ahorro voluntario) y establece que "
                "las cotizaciones hasta 2,3 salarios mínimos se dirijan al componente administrado por "
                "Colpensiones, mientras el excedente se canaliza al ahorro individual. Su entrada en "
                "vigencia fue inicialmente suspendida por la Corte Constitucional, que en la ",
@@ -174,7 +174,7 @@ def eje_iii(doc):
          "Corte Constitucional, Sentencia SU-107 de 2024 (9 de abril de 2024)")
 
     rich(doc, ["La Sala de Casación Laboral de la Corte Suprema de Justicia había anticipado esa "
-               "regla y sostiene que es la administradora —y no el afiliado— quien debe acreditar el "
+               "regla y sostiene que es la administradora (y no el afiliado) quien debe acreditar el "
                "cumplimiento del deber: «es a la AFP a quien le corresponde acreditar el cumplimiento "
                "del deber de información al momento del traslado de régimen pensional, pues exigir al "
                "afiliado una prueba de este alcance es un despropósito» (CSJ, SL3179-2023). En "
@@ -220,7 +220,7 @@ def eje_iii(doc):
                "sería de %s. En el escenario de ahorro individual, el capital de %s financiaría una "
                "mesada aproximada de %s, inferior al salario mínimo, de modo que la trabajadora "
                "dependería del Fondo de Garantía de Pensión Mínima y percibiría %s. La pérdida "
-               "patrimonial relevante —la que se reclama en el proceso— es la diferencia entre la "
+               "patrimonial relevante (la que se reclama en el proceso) es la diferencia entre la "
                "mesada que habría recibido en prima media y el mínimo garantizado: %s mensuales, que "
                "proyectados a veinte años de disfrute representan %s." % (
                    money(IBL), money(MESADA_RPM), money(CAPITAL_RAIS),
@@ -229,7 +229,7 @@ def eje_iii(doc):
           [["Prima Media (Colpensiones)", "%s × 65,5 %%" % money(IBL), money(MESADA_RPM),
             money(DIF)],
            ["Ahorro Individual sin garantía", "%s ÷ (20 años × 12 meses)" % money(CAPITAL_RAIS),
-            money(MESADA_RAIS_SIN_GARANTIA), "—"],
+            money(MESADA_RAIS_SIN_GARANTIA), "No aplica"],
            ["Ahorro Individual con garantía estatal", "Pensión mínima garantizada (1 SMMLV)",
             money(SMLMV), "$ 0"],
            [("Pérdida frente al escenario de prima media", {"b": True}),
@@ -271,7 +271,7 @@ def eje_iii(doc):
            "contexto de asesoría comercial que privilegió la captación del afiliado, y la "
            "administradora no podrá demostrar lo contrario porque no conserva soportes. La "
            "circunstancia de que la trabajadora tenga hoy 1.150 semanas y esté próxima a la edad "
-           "refuerza —pero no determina— la procedencia, pues el vicio se predica del acto mismo."]],
+           "refuerza (pero no determina) la procedencia, pues el vicio se predica del acto mismo."]],
          tipo='exito')
 
     h(doc, 3, "Efectos restitutorios frente al fondo de pensiones")
@@ -323,8 +323,7 @@ def eje_iii(doc):
     h(doc, 2, "Diagnóstico del eje y recomendaciones")
     rich(doc, ["De los tres trabajadores afiliados al Régimen de Ahorro Individual, dos no cuentan "
                "con soporte de asesoría y uno presenta inconsistencia en el reporte de semanas. La "
-               "empresa, como empleadora, no es responsable del deber de asesoría —que recae en la "
-               "administradora—, pero sí lo es de la veracidad y oportunidad de las novedades y del "
+               "empresa, como empleadora, no es responsable del deber de asesoría (que recae en la administradora), pero sí lo es de la veracidad y oportunidad de las novedades y del "
                "pago de aportes, y esos elementos son los que la jurisprudencia examina para "
                "reconstruir la historia laboral."])
     tabla(doc, ["Hallazgo", "Consecuencia jurídica", "Riesgo", "Acción"],

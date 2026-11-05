@@ -73,9 +73,7 @@ def eje_ii(doc):
                  "el índice de lesiones incapacitantes y el cumplimiento del SG-SST.")
 
     h(doc, 3, "Clasificación de EXTINTORES SCM")
-    rich(doc, ["La actividad principal registrada corresponde al código CIIU 4752 —comercio al por "
-               "menor de artículos de ferretería, pinturas y productos de vidrio en establecimientos "
-               "especializados—, que la tabla del Decreto 768 de 2022 ubica en la ",
+    rich(doc, ["La actividad principal registrada corresponde al código CIIU 4752 (comercio al por menor de artículos de ferretería, pinturas y productos de vidrio en establecimientos especializados), que la tabla del Decreto 768 de 2022 ubica en la ",
                ("clase de riesgo I, subactividades 4752-01 y 4752-02", {"b": True}),
                ", con una tarifa inicial del 0,522 %% del IBC. La verificación arroja una "
                "discrepancia relevante: la empresa venía cotizando sobre una base asimilada a la "
@@ -83,8 +81,7 @@ def eje_ii(doc):
                    IBC_TOTAL * (TARIFAS['II'] - TARIFAS['I']))])
     rich(doc, ["Sin embargo, la auditoría no puede cerrarse con la sola lectura del código. La "
                "empresa desarrolla actividades conexas de recarga, mantenimiento y prueba "
-               "hidrostática de extintores que introducen riesgos —presión, proyección de partes, "
-               "manejo de agentes químicos y esfuerzo físico— que podrían justificar una "
+               "hidrostática de extintores que introducen riesgos (presión, proyección de partes, manejo de agentes químicos y esfuerzo físico) que podrían justificar una "
                "reclasificación si la ARL considera que la actividad real difiere de la declarada. "
                "El artículo 3 del Decreto 768 de 2022 permite clasificar por la actividad más afín "
                "cuando la principal no refleja el riesgo, y el artículo 4 obliga a cotizar por el "
@@ -93,10 +90,7 @@ def eje_ii(doc):
                "antes de solicitar la reliquidación."])
     caja(doc, "Escenarios de clasificación y efecto económico",
          [[("Escenario A (actividad principal 4752): ", {"b": True}),
-           "clase I, tarifa 0,522 %% — aporte mensual sobre la nómina de %s: %s." % (
-               money(IBC_TOTAL), money(IBC_TOTAL * TARIFAS['I']))],
-          [("Escenario B (reclasificación por actividad conexa a clase II): ", {"b": True}),
-           "tarifa 1,044 %% — aporte mensual: %s. La diferencia anual asciende a %s." % (
+           "clase I, tarifa 0,522 %% (aporte mensual sobre la nómina de %s: %s." % ( money(IBC_TOTAL), money(IBC_TOTAL * TARIFAS['I']))], [("Escenario B (reclasificación por actividad conexa a clase II): ", {"b": True}), "tarifa 1,044 %%) aporte mensual: %s. La diferencia anual asciende a %s." % (
                money(IBC_TOTAL * TARIFAS['II']), money(IBC_TOTAL * TARIFAS['II'] * 12))],
           "La decisión debe sustentarse en el proceso real y no en la conveniencia económica: una "
           "clasificación subdeclarada expone a la empresa al cobro retroactivo y, en caso de "
@@ -153,8 +147,7 @@ def eje_ii(doc):
                "de 2025." % money(IBC_CASO)])
     rich(doc, ["El accidente se reportó a la ARL y a la EPS cinco días después de ocurrido. La "
                "investigación del evento se elaboró cuatro semanas más tarde, sin la participación "
-               "del trabajador ni de los representantes del SG-SST, y con la conclusión —"
-               "insuficiente— de que «el trabajador actuó con exceso de confianza»."])
+               "del trabajador ni de los representantes del SG-SST, y con la conclusión (insuficiente) de que «el trabajador actuó con exceso de confianza»."])
 
     h(doc, 3, "Determinación del nexo causal")
     rich(doc, ["La calificación del origen laboral exige acreditar tres elementos: (i) la existencia "
@@ -167,8 +160,7 @@ def eje_ii(doc):
          "empresa, en jornada laboral, durante la ejecución de una tarea contratada (la prueba "
          "hidrostática). El lugar, el tiempo y la actividad están documentados en el reporte y en "
          "los registros de trabajo del taller."],
-        [("Elemento objetivo: ", {"b": True}), "existe un daño demostrado —fractura conminuta y "
-         "lesión tendinosa— con incapacidad certificada por la ARL y posterior calificación de "
+        [("Elemento objetivo: ", {"b": True}), "existe un daño demostrado (fractura conminuta y lesión tendinosa) con incapacidad certificada por la ARL y posterior calificación de "
          "pérdida de capacidad laboral."],
         [("Elemento causal: ", {"b": True}), "el daño no habría ocurrido fuera de la ejecución de "
          "la tarea: el desprendimiento de la válvula es un riesgo inherente a la actividad de "
@@ -258,16 +250,14 @@ def eje_ii(doc):
                "trabajador o sus causahabientes (art. 167 del Código General del Proceso). No "
                "obstante, la Corte Suprema ha admitido una dinámica probatoria: acreditada la "
                "ocurrencia del accidente y la omisión de un deber de seguridad, la carga se traslada "
-               "al empleador, que debe demostrar diligencia y cuidado —suministro de elementos de "
-               "protección, capacitación, instrucciones, mantenimiento y supervisión— para exonerarse. "
+               "al empleador, que debe demostrar diligencia y cuidado (suministro de elementos de protección, capacitación, instrucciones, mantenimiento y supervisión) para exonerarse. "
                "En palabras de la Corporación, «el empleador puede desligarse de ella demostrando "
                "diligencia y cuidado en la realización del trabajo»."])
     rich(doc, ["Ese traslado explica por qué el SG-SST no es un requisito formal sino un medio de "
                "prueba. La sentencia SL2480 de 2025 ilustra el otro extremo: la Sala negó la "
                "indemnización del artículo 216 porque el empleador acreditó la entrega de elementos "
                "de protección, la realización de inducciones y capacitaciones y la impartición de "
-               "instrucciones, mientras que la conducta del trabajador —expresamente prohibida y "
-               "advertida momentos antes del siniestro— configuró culpa exclusiva de la víctima y "
+               "instrucciones, mientras que la conducta del trabajador (expresamente prohibida y advertida momentos antes del siniestro) configuró culpa exclusiva de la víctima y "
                "rompió el nexo causal. El resultado del proceso, por tanto, depende de la calidad de "
                "la prueba documental que el empleador haya construido antes del accidente."])
 
@@ -338,7 +328,7 @@ def eje_ii(doc):
            "artículo 216 del C.S.T. Fuente: elaboración propia.")
     rich(doc, ["El ejercicio permite dimensionar el impacto económico: la reparación plena supera en "
                "casi tres veces la suma que asume la ARL, y ese excedente sale del patrimonio de la "
-               "empresa —que, tratándose de una persona natural, es el patrimonio del propio titular—. "
+               "empresa (que, tratándose de una persona natural, es el patrimonio del propio titular). "
                "La prescripción de la acción es de tres años contados desde la ocurrencia del hecho o "
                "desde la calificación de la pérdida de capacidad laboral, conforme al artículo 151 del "
                "C.P.T.S.S."])

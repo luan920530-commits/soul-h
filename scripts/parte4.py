@@ -97,7 +97,7 @@ def eje_iv(doc):
                "distinción no es formal sino de fondo: la reclamación administrativa previa del "
                "artículo 6 del Código Procesal del Trabajo y de la Seguridad Social es un requisito "
                "de procedibilidad dirigido a las entidades de derecho público, y su incumplimiento "
-               "—según la jurisprudencia— es insubsanable. Aplicarla a un particular implicaría "
+               "(según la jurisprudencia) es insubsanable. Aplicarla a un particular implicaría "
                "trasladar al empleador una carga procesal que el legislador reservó para la "
                "Administración, con el riesgo adicional de que el escrito no produzca efecto "
                "interruptivo alguno."])
@@ -125,7 +125,7 @@ def eje_iv(doc):
 
     rich(doc, ["Para EXTINTORES SCM la consecuencia práctica es que la reclamación se dirige al "
                "empleador mediante derecho de petición y solicitud de agotamiento de la vía interna, "
-               "y que las decisiones de las entidades del sistema —EPS, ARL y AFP— se controvierten "
+               "y que las decisiones de las entidades del sistema (EPS, ARL y AFP) se controvierten "
                "mediante derecho de petición y, agotada la respuesta, mediante demanda ante la "
                "jurisdicción laboral. Es importante precisar que la conciliación extrajudicial solo "
                "procede respecto de derechos inciertos y discutibles; los derechos ciertos e "
@@ -144,8 +144,7 @@ def eje_iv(doc):
     rich(doc, ["Se redacta el escrito dirigido a la administradora de riesgos laborales con dos "
                "pretensiones conexas: la revisión de la clasificación del riesgo y el reconocimiento "
                "de las prestaciones derivadas del accidente AT-2026-014. El modelo incluye los "
-               "elementos que la Ley 1755 de 2015 exige —designación de la autoridad, identificación "
-               "del peticionario, objeto, razones y petición concreta— y añade la solicitud de copias "
+               "elementos que la Ley 1755 de 2015 exige (designación de la autoridad, identificación del peticionario, objeto, razones y petición concreta) y añade la solicitud de copias "
                "y la advertencia sobre el silencio administrativo."])
     salto_pagina(doc)
     encabezado_escrito(doc, "ADMINISTRADORA DE RIESGOS LABORALES [NOMBRE DE LA ARL]  ·  "
@@ -169,8 +168,7 @@ def eje_iv(doc):
         "__________ de ____, con el número de afiliación __________, y tiene a su cargo diez (10) "
         "trabajadores dependientes, todos afiliados al Sistema General de Riesgos Laborales.",
         "La actividad económica principal registrada en el Registro Único Tributario corresponde al "
-        "código CIIU 4752 —comercio al por menor de artículos de ferretería, pinturas y productos de "
-        "vidrio en establecimientos especializados—, que la tabla del Decreto 768 de 2022 clasifica "
+        "código CIIU 4752 (comercio al por menor de artículos de ferretería, pinturas y productos de vidrio en establecimientos especializados), que la tabla del Decreto 768 de 2022 clasifica "
         "en clase de riesgo I, con una tarifa inicial del 0,522 % del ingreso base de cotización.",
         "No obstante lo anterior, en las planillas de liquidación de aportes de los últimos ____ "
         "periodos la empresa ha cotizado con una tarifa equivalente a la clase de riesgo II, sin que "
@@ -375,7 +373,7 @@ def eje_iv(doc):
                "consagra, por tanto, un fuero concurrente con dos opciones y deja la elección en "
                "manos del demandante, lo que constituye una garantía de acceso a la administración de "
                "justicia. Para los procesos contra particulares rige la regla general del artículo 5 "
-               "—lugar de prestación del servicio o domicilio del demandado— y, en los procesos "
+               "(lugar de prestación del servicio o domicilio del demandado) y, en los procesos "
                "contra la Nación, el artículo 7."])
     tabla(doc, ["Escenario", "Demandado", "Opciones del demandante", "Juez competente"],
           [["Ineficacia del traslado (caso P-03)", "AFP con domicilio en Bogotá",
@@ -392,8 +390,7 @@ def eje_iv(doc):
     rich(doc, ["La reclamación cumple una función adicional relevante: el artículo 6 del C.P.T.S.S. "
                "establece que mientras esté pendiente el agotamiento de la reclamación administrativa "
                "se suspende el término de prescripción de la respectiva acción. Por esa razón el "
-               "escrito debe radicarse con constancia —sello, correo certificado o radicado "
-               "electrónico— y conservarse junto con la respuesta."])
+               "escrito debe radicarse con constancia (sello, correo certificado o radicado electrónico) y conservarse junto con la respuesta."])
 
     h(doc, 3, "Competencia por razón de la cuantía (artículo 12 del C.P.T.S.S.)")
     rich(doc, ["El artículo 12 del C.P.T.S.S., modificado por el artículo 46 de la Ley 1395 de 2010, "
@@ -465,8 +462,7 @@ def eje_iv(doc):
 
     caja(doc, "Cierre del eje procesal",
          ["El insumo procesal no es un formato: es el punto en que el diagnóstico se convierte en "
-          "actuación jurídica. Un escrito bien construido —con hechos verificables, fundamentos "
-          "precisos, pretensiones congruentes y competencia correctamente fijada— multiplica las "
+          "actuación jurídica. Un escrito bien construido (con hechos verificables, fundamentos precisos, pretensiones congruentes y competencia correctamente fijada) multiplica las "
           "posibilidades de éxito y reduce el riesgo de que el proceso se pierda por razones ajenas "
           "al derecho sustancial."],
          tipo='info')

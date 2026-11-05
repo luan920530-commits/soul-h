@@ -1,0 +1,26 @@
+{
+  "name": "Informe técnico-jurídico · EXTINTORES SCM (es-CO)",
+  "genre": "informe jurídico académico",
+  "register": [
+    "Español jurídico colombiano, registro formal-académico, tercera persona y voz activa cuando el sujeto está identificado.",
+    "Precisión normativa: cada afirmación jurídica va anclada a la norma o a la providencia que la sustenta; no se afirma la vigencia de una norma sin verificar su fecha.",
+    "Prohibido el relleno persuasivo: nada de «cabe destacar», «es importante señalar», «en la actualidad», «en definitiva», «juega un papel crucial», «sin duda», «robusto», «holístico», «vibrante».",
+    "Preferir el verbo concreto al sustantivo abstracto: «la ARL pagó» antes que «se efectuó el pago por parte de la ARL».",
+    "Mantener las citas textuales, los artículos, los radicados y las cifras exactamente como están; no parafrasear lo que va entre comillas.",
+    "Términos técnicos protegidos: IBC, SMLMV, ATEP, IPP, SG-SST, C.P.T.S.S., C.S.T., EPS, ARL, AFP, PILA, RAIS, RPM.",
+    "Español neutro colombiano: «usted» o tercera persona; nunca «tú» ni «vosotros»; moneda en formato «$ 1.750.905».",
+    "No cerrar párrafos con frases-resumen vacías («en resumen, podemos decir que…»); el párrafo jurídico termina en la consecuencia o en la conclusión, no en un eco."
+  ],
+  "frontmatter": {},
+  "detector": {
+    "language": "es",
+    "context": "technical"
+  },
+  "mechanics": {
+    "quotes": "curly",
+    "emDash": "sparing",
+    "latinAbbrev": "parentheses",
+    "headings": "sentence",
+    "serialComma": false
+  }
+}
