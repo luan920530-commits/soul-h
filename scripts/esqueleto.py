@@ -75,12 +75,11 @@ def introduccion(doc):
     h(doc, 1, """
 INTRODUCCIÓN""")
     p(doc, "Objetivo general", bold=True, size=12, color=AZUL, space_before=6, space_after=4)
-    rich(doc, ["Analizar el cumplimiento de las obligaciones del Sistema de Seguridad Social Integral "
-               "en %s, empresa privada de %s dedicada al comercio y la recarga de extintores, para "
-               "establecer cómo están la afiliación y las cotizaciones en salud, qué exposición al "
-               "riesgo laboral tiene la planta y si hay culpa patronal, en qué situación pensional "
-               "están los tres trabajadores y con qué mecanismos jurídicos cuenta la empresa para "
-               "controvertir lo que decidan las entidades." % (RAZON, CIUDAD)])
+    rich(doc, ["Establecer si %s, un negocio de %s con tres trabajadores, cumple sus obligaciones "
+               "de seguridad social y en qué puntos está expuesta. La pregunta se abre en cuatro: "
+               "cómo están la afiliación y las cotizaciones en salud, cuánto riesgo corre la planta y "
+               "quién responde si se materializa, qué pasa con la pensión de cada trabajador y por "
+               "qué vía puede la empresa pelear lo que decidan las entidades." % (RAZON, CIUDAD)])
 
     rich(doc, ["Trabajé con dos fuentes. La primera son los papeles de la empresa: la planilla "
                "integrada, los certificados de afiliación y la nómina de octubre de 2026. La segunda "
@@ -172,8 +171,8 @@ def salud(doc):
                "Antonio, %s; y Felipe, %s, que es un mínimo. Suman %s de IBC mensual."
                % (money(SAL01), money(SAL02), money(SAL03), money(IBC_TOTAL))])
     p(doc, "¿Cómo se calcula el IBC?", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["El artículo 18 de la Ley 100 de 1993: todos los factores salariales, con dos límites "
-               "(no menos de un mínimo, no más de veinticinco) y sin los pagos no salariales del "
+    rich(doc, ["Se suman todos los factores salariales del artículo 18 de la Ley 100 de 1993, con dos "
+               "límites (no menos de un mínimo, no más de veinticinco) y sin los pagos no salariales del "
                "artículo 128 del Código Sustantivo del Trabajo. El que más pesa es el auxilio de "
                "transporte, que en 2026 vale %s y no se cotiza. Ahí está el error clásico de la "
                "nómina pequeña: sumarlo a la base y pagar de más, o restarlo del salario y pagar de "
@@ -261,13 +260,12 @@ def riesgos(doc):
     h(doc, 1, "2. RIESGOS LABORALES")
 
     h(doc, 2, "2.1 Identificación de la clase de riesgo")
-    rich(doc, ["Actividad económica: ",
+    rich(doc, ["La empresa declaró en el RUT, y repitió ante la Secretaría de Salud de Soacha, el ",
                ("CIIU 4759", {"b": True}),
-               ", comercio al por menor de otros artículos domésticos en establecimientos "
-               "especializados, que es lo que la empresa declaró en el RUT y lo que reportó a la "
-               "Secretaría de Salud de Soacha. La tabla del Decreto 768 de 2022 pone la subactividad "
-               "4759-01 en clase I, tarifa inicial del 0,522 %, y su descripción menciona el comercio "
-               "de extintores. Con ese papel en la mano, la clasificación está bien puesta."])
+               ": comercio al por menor de otros artículos domésticos en establecimientos "
+               "especializados. La tabla del Decreto 768 de 2022 pone la subactividad 4759-01 en "
+               "clase I, tarifa inicial del 0,522 %, y su descripción menciona el comercio de "
+               "extintores. Con ese papel en la mano, la clasificación está bien puesta."])
     p(doc, "Justificación", bold=True, size=11, space_before=6, space_after=3)
     rich(doc, ["El problema está en el local, no en el código. En el mismo establecimiento se "
                "recargan cilindros a presión, se les hace prueba hidrostática y se manipulan agentes "
@@ -297,11 +295,12 @@ def riesgos(doc):
                "el numeral 2.4." % money(APORTE_ARL)])
     rich(doc, ["Estar afiliado es obligatorio. Estar protegido es otra cosa."])
     rich(doc, ["La cobertura tiene dos mitades que casi nadie separa bien."])
-    rich(doc, ["La asistencial es la atención: médica, quirúrgica, farmacéutica, hospitalización, "
-               "prótesis y rehabilitación, y la paga la red de la ARL. La económica es el subsidio por "
-               "incapacidad temporal, la indemnización por incapacidad permanente parcial, las "
-               "pensiones de invalidez y sobrevivientes y el auxilio funerario; todo eso se liquida "
-               "sobre el IBC."])
+    rich(doc, ["Una es la atención: médica, quirúrgica, farmacéutica, hospitalización, prótesis, "
+               "rehabilitación. La paga la red de la ARL y al trabajador no le cuesta nada. La otra "
+               "es plata: subsidio por incapacidad temporal, indemnización por incapacidad permanente "
+               "parcial, pensiones de invalidez y sobrevivientes, auxilio funerario. Todo eso se "
+               "liquida sobre el IBC, y por eso el IBC de la Tabla 3 termina siendo la cifra que "
+               "decide cuánto recibe un trabajador el día que se accidenta."])
 
     h(doc, 2, "2.3 Caso de accidente laboral")
     p(doc, "Descripción de los hechos", bold=True, size=11, space_before=6, space_after=3)
@@ -351,9 +350,9 @@ def riesgos(doc):
                "controles en el banco de prueba, reporte oportuno e investigación con el trabajador. "
                "El único que se cumple es la afiliación y el pago de aportes."])
     p(doc, "Argumentación", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["El artículo 216 del Código Sustantivo del Trabajo obliga a la «indemnización total y "
-               "ordinaria por perjuicios» cuando hay culpa suficientemente comprobada, y ordena "
-               "descontar lo que la ARL ya pagó. La culpa que se exige es la leve, la del artículo 63 "
+    rich(doc, ["Cuando hay culpa suficientemente comprobada, el artículo 216 del Código Sustantivo del "
+               "Trabajo obliga a la «indemnización total y ordinaria por perjuicios», con descuento de "
+               "lo que la ARL ya pagó. La culpa que se exige es la leve, la del artículo 63 "
                "del Código Civil: no hace falta dolo ni culpa grave, basta con no haber tenido la "
                "diligencia ordinaria. Y la Sala de Casación Laboral acepta que, probada la omisión de "
                "un deber de seguridad, a quien le toca demostrar diligencia es al empleador."])
@@ -411,9 +410,9 @@ def pensiones(doc):
            ["Ingreso base de liquidación de referencia", money(IBL_P03)]],
           [6.4, 9.6], size=8.8, titulo="Tabla 6. Datos del caso pensional")
     p(doc, "Posibilidad de acceder a la pensión", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, ["En prima media la pensión de vejez pide 62 años a los hombres y 1.300 semanas. Con "
-               "1.150 faltan 150, que son unos tres años de cotización. Hoy no cumple; si sigue "
-               "cotizando, cumple antes de la edad. Ese no es el problema."])
+    rich(doc, ["Luis Antonio tiene 1.150 semanas y 56 años. La pensión de vejez en prima media pide "
+               "1.300 semanas y 62 años, así que le faltan 150 semanas, unos tres años de cotización. "
+               "Hoy no cumple; si sigue cotizando, cumple antes de la edad. Ese no es el problema."])
     rich(doc, ["El problema es la mesada. En prima media, con 65,5 %% de tasa de reemplazo sobre un "
                "IBL de %s, serían %s. En ahorro individual, el capital de %s alcanza para unos %s al "
                "mes, por debajo del mínimo, así que el afiliado terminaría en el Fondo de Garantía de "
@@ -559,7 +558,8 @@ def documento(doc):
 
     h(doc, 2, "4.5 Juez competente")
     p(doc, "Autoridad competente", bold=True, size=11, space_before=6, space_after=3)
-    rich(doc, [("Juzgado Laboral del Circuito de Soacha", {"b": True}),
+    rich(doc, ["El asunto corresponde al ",
+               ("Juzgado Laboral del Circuito de Soacha", {"b": True}),
                ", en primera instancia. La competencia se decide con cuatro factores, en este orden: "
                "materia, territorio, cuantía y función."])
     p(doc, "Justificación", bold=True, size=11, space_before=6, space_after=3)
